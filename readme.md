@@ -4,6 +4,9 @@
 # 목차
 
 1.  데이터사이언스 및 R 기초
+    (<a href="https://hyunyulhenry.github.io/dmmr_quant/r_basic.html"
+    class="uri">https</a><a href="https://hyunyulhenry.github.io/dmmr_quant/r_basic.html"
+    class="uri">://hyunyulhenry.github.io/dmmr_quant/r_basic.html</a>)
 2.  크롤링과 API를 이용한 데이터 수집
 3.  백테스트에 대한 이론과 실습
 4.  성과 및 위험 평가하기
