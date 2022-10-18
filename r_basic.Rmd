@@ -2008,7 +2008,7 @@ KOR_sector = KOR_sector %>% mutate(CMP_CD = str_pad(CMP_CD, 6,'left', 0))
 
 각 파일을 불러온 후 티커에 해당하는 종목코드와 CMP_CD 열을 6자리 숫자로 만들어줍니다. 
 
-## *_join: 데이터 합치기
+## `*_join()`: 데이터 합치기
 
 먼저 두 테이블을 하나로 합쳐줍니다.
 
