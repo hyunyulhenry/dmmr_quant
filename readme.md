@@ -14,4 +14,4 @@
 5.  성과 및 위험 평가하기
     (<https://hyunyulhenry.github.io/dmmr_quant/performance.html>)
 6.  자동화 및 문서화
-    (<https://hyunyulhenry.github.io/dmmr_quant/communication.html>)
+    (<https://hyunyulhenry.github.io/dmmr_quant/communicate.html>)
