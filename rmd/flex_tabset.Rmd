@@ -1,0 +1,21 @@
+## Column {data-width=650}
+
+### Chart A
+
+```{r}
+
+```
+
+## Column {.tabset data-width=350}
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```

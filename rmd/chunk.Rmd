@@ -1,0 +1,3 @@
+```{r pressure, echo=FALSE}
+plot(pressure)
+```

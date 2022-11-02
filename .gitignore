@@ -40,3 +40,6 @@ vignettes/*.pdf
 
 # test
 test.*
+
+# backup
+backup.R

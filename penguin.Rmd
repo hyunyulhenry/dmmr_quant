@@ -1,0 +1,132 @@
+---
+title: "펭귄 데이터 분석"
+
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r}
+library(shiny)
+library(flexdashboard)
+library(ggplot2)
+library(magrittr)
+library(plotly)
+library(dplyr)
+library(palmerpenguins)
+library(DT)
+library(stringr)
+```
+
+# Dashboard {data-icon="ion-android-clipboard"}
+
+## Column {.sidebar data-width=250}
+
+<h3> **Dashboard** </h3>
+
+이곳은 **대시보드**만들기 샘플 페이지 입니다.
+
+펭귄 종류는 다음과 같습니다.
+
+```{r}
+species = penguins %>% distinct(species) %>% pull()
+selectInput("species", label = h3("species"), 
+    choices = species)
+```
+
+<hr>
+
+```{r}
+span(img(src = "www/penguins.png", width = 230))
+```
+
+## Column {data-width=330}
+
+### 펭귄 데이터
+
+해당 데이터는 팔머(Palmer) 펭귄의 3가지 종류에 대한 데이터입니다.
+
+- **species**: 펭귄 종으로써 아델리(Adelie), 젠투(Gentoo), 턱끈(Chinstrap) 펭귄 3종류가 있습니다.
+- **island**: 남극의 펭귄의 서식지로써 Torgersen, Biscoe, Dream가 있습니다.
+- **bill_length_mm**: 부리의 길이에 해당합니다.
+- **bill_depth_mm**: 부리의 위아래 두께에 해당합니다.
+- **flipper_length_mm**: 펭귄의 날개 길이에 해당합니다.
+- **body_mass_g**: 몸무게에 해당합니다.
+- **sex**: 성별에 해당합니다.
+- **year**: 조사년도에 해당합니다.
+
+<hr>
+
+```{r}
+penguins %>%
+  set_colnames(str_replace_all(colnames(penguins), "_", " ")) %>%
+    datatable(rownames= FALSE,
+            escape = FALSE,
+            extensions = 'Buttons',
+            options = list(pageLength = 10,
+                           dom = 'pBfrti',
+                           buttons = c('copy', 'csv', 'excel', 'pdf')
+                           ))
+```
+
+## Column {data-width=270}
+
+### 펭귄별 차이 (부리길이)
+
+```{r}
+penguins %>%
+  group_by(species) %>%
+  summarize(bill_length_mm = median(bill_length_mm, na.rm = TRUE)) %>%
+  ggplot(aes(x = species, y = bill_length_mm)) +
+  geom_col()
+```
+
+### 펭귄별 차이(날개 및 무게)
+
+```{r}
+(penguins %>%
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g, color = species, shape = species))+
+  geom_point(size = 4) +
+  xlab('flipper length(mm)') + ylab('body mass(g)') +
+  theme_bw()) %>%
+  ggplotly()
+```
+
+
+## Column {data-width=150}
+
+### Gauge
+
+```{r}
+b = 75
+
+gauge(75, min = 0, max = 100, symbol = 'mm', gaugeSectors(
+  success = c(80, 100), warning = c(20, 79), danger = c(0, 19)
+))
+```
+
+### Box 1
+
+```{r}
+sales = 1500000
+valueBox(format(sales, big.mark = ",", scientific = FALSE),
+         icon = "ion-social-usd-outline",
+         color = ifelse(sales >= 1000000, "primary", "warning"))
+```
+
+### Box 2
+
+```{r}
+growth = -0.0231
+valueBox(paste(round(growth * 100, 2), '%'),
+         icon = "ion-arrow-graph-up-right",
+         color = ifelse(growth >= 0, "primary", "danger"))
+```
+
+### Box 3
+
+```{r}
+comments = 11
+valueBox(comments, icon = "ion-chatboxes")
+```
