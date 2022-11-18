@@ -958,6 +958,8 @@ remD$open()
 
 ![](images/api/sel_1.png)
 
+## 셀레니움 실습하기
+
 ```{r eval = FALSE}
 remD$navigate("https://www.naver.com/")
 unlist(remD$getPageSource())

@@ -1999,8 +1999,8 @@ download.file('https://raw.githubusercontent.com/hyunyulhenry/dmmr_quant/master/
 library(stringr)
 library(dplyr)
 
-KOR_ticker = read.csv('KOR_ticker.csv')
-KOR_sector = read.csv('KOR_sector.csv')
+KOR_ticker = read.csv('KOR_ticker.csv', fileEncoding = 'EUC-KR')
+KOR_sector = read.csv('KOR_sector.csv', fileEncoding = 'EUC-KR')
 
 KOR_ticker = KOR_ticker %>% mutate(종목코드 = str_pad(종목코드, 6,'left', 0))
 KOR_sector = KOR_sector %>% mutate(CMP_CD = str_pad(CMP_CD, 6,'left', 0))
