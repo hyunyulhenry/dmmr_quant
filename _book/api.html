@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>퀀트 투자 전문가 과정 - 5&nbsp; API를 이용한 데이터 수집</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./crawl.html" rel="next">
+<link href="./r_sql.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">퀀트 투자 전문가 과정</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./api.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#야후-파이낸스-이용하기" id="toc-야후-파이낸스-이용하기" class="nav-link active" data-scroll-target="#야후-파이낸스-이용하기"><span class="toc-section-number">6</span>  야후 파이낸스 이용하기</a>
+  <ul class="collapse">
+  <li><a href="#주가-다운로드" id="toc-주가-다운로드" class="nav-link" data-scroll-target="#주가-다운로드"><span class="toc-section-number">6.1</span>  주가 다운로드</a></li>
+  <li><a href="#국내-종목-주가-다운로드" id="toc-국내-종목-주가-다운로드" class="nav-link" data-scroll-target="#국내-종목-주가-다운로드"><span class="toc-section-number">6.2</span>  국내 종목 주가 다운로드</a></li>
+  <li><a href="#sql에-데이터-저장하기" id="toc-sql에-데이터-저장하기" class="nav-link" data-scroll-target="#sql에-데이터-저장하기"><span class="toc-section-number">6.3</span>  SQL에 데이터 저장하기</a></li>
+  </ul></li>
+  <li><a href="#유료-데이터-벤더-이용하기" id="toc-유료-데이터-벤더-이용하기" class="nav-link" data-scroll-target="#유료-데이터-벤더-이용하기"><span class="toc-section-number">7</span>  유료 데이터 벤더 이용하기</a>
+  <ul class="collapse">
+  <li><a href="#가입-및-api-token-받기" id="toc-가입-및-api-token-받기" class="nav-link" data-scroll-target="#가입-및-api-token-받기"><span class="toc-section-number">7.1</span>  가입 및 API token 받기</a></li>
+  <li><a href="#데이터-다운로드" id="toc-데이터-다운로드" class="nav-link" data-scroll-target="#데이터-다운로드"><span class="toc-section-number">7.2</span>  데이터 다운로드</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>API 제공자는 본인이 가진 데이터베이스를 다른 누군가가 쉽게 사용할 수 있는 형태로 가지고 있으며, 해당 데이터베이스에 접근할 수 있는 열쇠인 API 주소를 가진 사람은 이를 언제든지 사용할 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/api.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/api/api.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>API는 API 주소만 가지고 있다면 데이터를 언제, 어디서, 누구나 쉽게 이용할 수 있다는 장점이 있습니다. 또한 대부분의 경우 사용자가 필요한 데이터만을 가지고 있으므로 접속 속도가 빠르며, 데이터를 가공하는 번거로움도 줄어듭니다. 해외에는 금융 데이터를 API의 형태로 제공하는 업체가 많으므로, 이를 잘만 활용한다면 매우 손쉽게 퀀트 투자에 필요한 데이터를 수집할 수 있습니다.</p>
+<section id="야후-파이낸스-이용하기" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 야후 파이낸스 이용하기</h1>
+<p>야후 파이낸스에서는 주가 데이터를 무료로 제공하며, quantmod 패키지의 <code>getSymbols()</code> 함수는 해당 API에 접속해 데이터를 다운로드합니다.</p>
+<section id="주가-다운로드" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="주가-다운로드"><span class="header-section-number">6.1</span> 주가 다운로드</h2>
+<p><code>getSymbols()</code> 함수의 기본적인 사용법은 매우 간단합니다. 괄호 안에 다운로드하려는 종목의 티커를 입력하면 됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getSymbols</span>(<span class="st">'AAPL'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "AAPL"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(AAPL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           AAPL.Open AAPL.High AAPL.Low AAPL.Close AAPL.Volume AAPL.Adjusted
+2007-01-03  3.081786  3.092143 2.925000   2.992857  1238319600      2.551164
+2007-01-04  3.001786  3.069643 2.993571   3.059286   847260400      2.607790
+2007-01-05  3.063214  3.078571 3.014286   3.037500   834741600      2.589219
+2007-01-08  3.070000  3.090357 3.045714   3.052500   797106800      2.602006
+2007-01-09  3.087500  3.320714 3.041071   3.306071  3349298400      2.818154
+2007-01-10  3.383929  3.492857 3.337500   3.464286  2952880000      2.953019</code></pre>
+</div>
+</div>
+<p>먼저 <code>getSymbols()</code> 함수 내에 애플의 티커인 AAPL을 입력합니다. 티커와 동일한 변수인 AAPL이 생성되며, 주가 데이터가 다운로드된 후 xts 형태로 입력됩니다.</p>
+<p>다운로드 결과로 총 6개의 열이 생성됩니다. Open은 시가, High는 고가, Low는 저가, Close는 종가를 의미합니다. 또한 Volume은 거래량을 의미하며, Adjusted는 배당이 반영된 수정주가를 의미합니다. 이 중 가장 많이 사용되는 데이터는 Adjusted, 즉 배당이 반영된 수정주가입니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chart_Series</span>(<span class="fu">Ad</span>(AAPL))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="api_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="api_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:50.0%"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>Ad()</code> 함수를 통해 다운로드한 데이터에서 수정주가만을 선택한 후 <code>chart_Series()</code> 함수를 이용해 시계열 그래프를 그릴 수도 있습니다. 시계열 기간을 입력하지 않으면 2007년 1월부터 현재까지의 데이터가 다운로드되며, 입력 변수를 추가해서 원하는 기간의 데이터를 다운로드할 수도 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">getSymbols</span>(<span class="st">'AAPL'</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">from =</span> <span class="st">'2000-01-01'</span>, <span class="at">to =</span> <span class="st">'2018-12-31'</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">auto.assign =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           AAPL.Open AAPL.High AAPL.Low AAPL.Close AAPL.Volume AAPL.Adjusted
+2000-01-03  0.936384  1.004464 0.907924   0.999442   535796800      0.851942
+2000-01-04  0.966518  0.987723 0.903460   0.915179   512377600      0.780115
+2000-01-05  0.926339  0.987165 0.919643   0.928571   778321600      0.791530
+2000-01-06  0.947545  0.955357 0.848214   0.848214   767972800      0.723033
+2000-01-07  0.861607  0.901786 0.852679   0.888393   460734400      0.757282
+2000-01-10  0.910714  0.912946 0.845982   0.872768   505064000      0.743963</code></pre>
+</div>
+</div>
+<p>from에는 시작시점을 입력하고 to에는 종료시점을 입력하면 해당 기간의 데이터가 다운로드됩니다.</p>
+<p><code>getSymbols()</code> 함수를 통해 다운로드한 데이터는 자동으로 티커와 동일한 변수명에 저장됩니다. 만일 티커명이 아닌 원하는 변수명에 데이터를 저장하려면 auto.assign 인자를 FALSE로 설정해주면 다운로드한 데이터가 원하는 변수에 저장됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ticker <span class="ot">=</span> <span class="fu">c</span>(<span class="st">'META'</span>, <span class="st">'NVDA'</span>) </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getSymbols</span>(ticker)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "META" "NVDA"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(META)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           META.Open META.High META.Low META.Close META.Volume META.Adjusted
+2012-05-18     42.05     45.00    38.00      38.23   573576400         38.23
+2012-05-21     36.53     36.66    33.00      34.03   168192700         34.03
+2012-05-22     32.61     33.59    30.94      31.00   101786600         31.00
+2012-05-23     31.37     32.50    31.36      32.00    73600000         32.00
+2012-05-24     32.95     33.21    31.77      33.03    50237200         33.03
+2012-05-25     32.90     32.95    31.11      31.91    37149800         31.91</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(NVDA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           NVDA.Open NVDA.High NVDA.Low NVDA.Close NVDA.Volume NVDA.Adjusted
+2007-01-03  6.178333  6.253333 5.798333   6.013333   115482000      5.518749
+2007-01-04  5.991667  6.013333 5.838333   5.985000    79729800      5.492748
+2007-01-05  5.843333  5.866667 5.570000   5.610000   124334400      5.148589
+2007-01-08  5.630000  5.760000 5.533333   5.651667    65727000      5.186831
+2007-01-09  5.660000  5.698333 5.535000   5.541667    76416600      5.085878
+2007-01-10  5.483333  5.866667 5.400000   5.815000   110874600      5.336729</code></pre>
+</div>
+</div>
+<p>한 번에 여러 종목의 주가를 다운로드할 수도 있습니다. 위 예제와 같이 메타와 엔비디아의 티커인 META와 NVDA를 ticker 변수에 입력하고 <code>getSymbols()</code> 함수에 티커를 입력한 변수를 넣으면 두 종목의 주가가 순차적으로 다운로드됩니다.</p>
+</section>
+<section id="국내-종목-주가-다운로드" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="국내-종목-주가-다운로드"><span class="header-section-number">6.2</span> 국내 종목 주가 다운로드</h2>
+<p><code>getSymbols()</code> 함수를 이용하면 미국뿐 아니라 국내 종목의 주가도 다운로드할 수 있습니다. 국내 종목의 티커는 총 6자리로 구성되어 있으며, 해당 함수에 입력되는 티커는 코스피 상장 종목의 경우 <strong>티커.KS</strong>, 코스닥 상장 종목의 경우 <strong>티커.KQ</strong>의 형태로 입력해야 합니다.</p>
+<p>다음은 코스피 상장 종목인 삼성전자 데이터의 다운로드 예시입니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getSymbols</span>(<span class="st">'005930.KS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "005930.KS"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">Ad</span>(<span class="st">`</span><span class="at">005930.KS</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           005930.KS.Adjusted
+2023-01-12              60500
+2023-01-13              60800
+2023-01-16              61100
+2023-01-17              61000
+2023-01-18              60400
+2023-01-19              60600</code></pre>
+</div>
+</div>
+<p><code>Cl()</code> 함수는 Close, 즉 종가만을 선택하며, 사용 방법은 <code>Ad()</code> 함수와 동일합니다. 비록 배당을 고려할 수는 없지만, 전반적으로 오류가 없는 데이터를 사용할 수 있습니다.</p>
+<p>다음은 코스닥 상장종목인 셀트리온제약의 예시이며, 티커인 068670에 .KQ를 붙여 함수에 입력합니다. 역시나 데이터가 다운로드되어 티커명의 변수에 저장됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getSymbols</span>(<span class="st">"068760.KQ"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "068760.KQ"</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(<span class="fu">Cl</span>(<span class="st">`</span><span class="at">068760.KQ</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           068760.KQ.Close
+2023-01-12              NA
+2023-01-13              NA
+2023-01-16              NA
+2023-01-17              NA
+2023-01-18              NA
+2023-01-19           65300</code></pre>
+</div>
+</div>
+</section>
+<section id="sql에-데이터-저장하기" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="sql에-데이터-저장하기"><span class="header-section-number">6.3</span> SQL에 데이터 저장하기</h2>
+<p>API나 크롤링을 통해 수집한 데이털르 SQL에 저장해보도록 하겠다. 먼저 SQL에서 다음과 같이 데이터베이스와 주가가 들어갈 테이블을 만든다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>create database stock_db;</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>use stock_db;</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>create table price</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    날짜 date,</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    시가 double,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    고가 double,</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    저가 double,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    종가 double,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    거래량 double,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    종목코드 <span class="fu">varchar</span>(<span class="dv">6</span>),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    primary <span class="fu">key</span>(날짜, 종목코드)</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-510628253.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/image-510628253.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>이제 삼성전자 주가를 SQL에 저장해보도록 하자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="st">`</span><span class="at">005930.KS</span><span class="st">`</span> <span class="sc">%&gt;%</span> <span class="fu">fortify.zoo</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(종목코드 <span class="ot">=</span> <span class="st">'005930'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_colnames</span>(<span class="fu">c</span>(<span class="st">'날짜'</span>, <span class="st">'시가'</span>, <span class="st">'고가'</span>, <span class="st">'저가'</span>, <span class="st">'종가'</span>, <span class="st">'거래량'</span>, <span class="st">'종목코드'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>데이터를 받은 후 클렌징 처리를 해준다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RMySQL)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">=</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">drv =</span> <span class="fu">MySQL</span>(),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">user =</span> <span class="st">'root'</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">password =</span> <span class="st">'1234'</span>, </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">host =</span> <span class="st">'127.0.0.1'</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">dbname =</span> <span class="st">'stock_db'</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SET GLOBAL local_infile = TRUE;"</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"price"</span>, df,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>             <span class="at">overwrite =</span> <span class="cn">TRUE</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p>R과 SQL을 연결한다.</p></li>
+<li><p><strong>local_infile</strong>를 TRUE로 설정한다.</p></li>
+<li><p><code>dbWriteTable()</code> 함수를 이용해 데이터를 price 테이블에 저장한다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-1090061300.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/image-1090061300.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div></li>
+</ol>
+<p>SQL을 확인해보면 주가 데이터가 저장되어 있습니다.</p>
+</section>
+</section>
+<section id="유료-데이터-벤더-이용하기" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 유료 데이터 벤더 이용하기</h1>
+<p>미국 시장의 데이터만 필요할 경우 유료 데이터 벤더를 이용하는 것도 좋은 방법입니다. 미국에는 금융 데이터를 API로 제공하는 수많은 업체가 있으며, tiingo의 경우는 월 $10만 지불하면 미국과 중국의 4만여개 종목에 대한 데이터를 API 형태로 받을 수 있습니다. 이는 상장폐지된 종목을 커버할 뿐만 아니라, API를 이용하므로 크롤링과는 비교할 수 없는 속도로 데이터를 받을 수 있다는 장점이 있습니다. 이 외에도 Alpha Vantage, Quandl, Polygon 등 수많은 데이터 벤더가 존재합니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/tiingo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/api/tiingo.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>tiingo는 무료 계정도 하루 1,000회까지 API 요청을 할 수 있으며, R/파이썬에서 사용할 수 있는 패키지도 있어 쉽게 사용이 가능합니다.</p>
+<ul>
+<li>API 사용법: <a href="https://api.tiingo.com/documentation/general/overview" class="uri">https://api.tiingo.com/documentation/general/overview</a></li>
+<li>R: <a href="https://business-science.github.io/riingo/" class="uri">https://business-science.github.io/riingo/</a></li>
+<li>파이썬: <a href="https://github.com/hydrosquall/tiingo-python" class="uri">https://github.com/hydrosquall/tiingo-python</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/token1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/api/token1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<section id="가입-및-api-token-받기" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="가입-및-api-token-받기"><span class="header-section-number">7.1</span> 가입 및 API token 받기</h2>
+<p>먼저 <a href="https://api.tiingo.com/" class="uri">https://api.tiingo.com/</a> 사이트에 접속하여 우측 상단의 [Sign-up]을 클릭해 회원가입을 합니다. 그 후 로그인을 한 후 우측 상단에서 본인의 ID를 클릭한 후 [Account]를 선택, 좌측 메뉴의 [API] 부분에서 [Token]을 클릭하면 본인의 API token을 확인할 수 있습니다.</p>
+<p>다음으로 발급받은 API Key를 .Renviron 파일에 추가하도록 합니다. 해당 파일에는 여러 패스워드를 추가해 안전하게 관리할 수 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file.edit</span>(<span class="st">"~/.Renviron"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>.Renviron</strong> 파일이 열리면 다음과 같이 입력을 해줍니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>RIINGO_TOKEN <span class="ot">=</span> <span class="st">'발급받은 API'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>파일을 저장한 후 해당 파일을 적용하기 위해 <strong>R의 Session</strong>을 재시작(ctrl+shift+F10)합니다. 그 후 아래 명령어를 실행하여 API Key를 불러오도록 합니다. (재시작하지 않으면 Key를 불러올 수 없습니다.)</p>
+<p>다시 시작한 후 API Key를 불러옵니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>RIINGO_TOKEN <span class="ot">=</span> <span class="fu">Sys.getenv</span>(<span class="st">"RIINGO_TOKEN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="데이터-다운로드" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="데이터-다운로드"><span class="header-section-number">7.2</span> 데이터 다운로드</h2>
+<p>R에서 tiingo를 사용할 수 있게 해주는 riingo 패키지를 이용해 데이터를 받아보도록 하겠습니다. 먼저 tiingo에서 제공하는 종목은 어떠한 것이 있는지 티커 정보들을 확인해봅니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("riingo")</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(riingo)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">=</span> <span class="fu">supported_tickers</span>()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>tickers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 106,998 × 6
+   ticker exchange assetType priceCurr…¹ startDate           endDate            
+   &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dttm&gt;              &lt;dttm&gt;             
+ 1 000001 SHE      Stock     CNY         2007-01-04 00:00:00 2023-01-18 00:00:00
+ 2 000002 SHE      Stock     CNY         2007-01-04 00:00:00 2023-01-18 00:00:00
+ 3 000003 SHE      Stock     CNY         NA                  NA                 
+ 4 000004 SHE      Stock     CNY         2007-08-31 00:00:00 2023-01-18 00:00:00
+ 5 000005 SHE      Stock     CNY         2007-08-31 00:00:00 2023-01-18 00:00:00
+ 6 000006 SHE      Stock     CNY         2007-01-04 00:00:00 2023-01-18 00:00:00
+ 7 000007 SHE      Stock     CNY         2007-08-31 00:00:00 2023-01-18 00:00:00
+ 8 000008 SHE      Stock     CNY         2007-01-04 00:00:00 2023-01-18 00:00:00
+ 9 000009 SHE      Stock     CNY         2007-01-05 00:00:00 2023-01-18 00:00:00
+10 000010 SHE      Stock     CNY         2007-08-31 00:00:00 2023-01-18 00:00:00
+# … with 106,988 more rows, and abbreviated variable name ¹​priceCurrency</code></pre>
+</div>
+</div>
+<p>ticker(티커), exchange(거래소), assetType(주식 종류), priceCurrency(거래 통화), startDate(시작일), endDate(마감일) 정보가 표시됩니다. 거래소와 통화 별 종목이 몇개가 있는지 확인해보도록 하겠습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>tickers <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(exchange, priceCurrency) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(priceCurrency, <span class="fu">desc</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 27 × 3
+# Groups:   exchange [24]
+   exchange priceCurrency     n
+   &lt;chr&gt;    &lt;chr&gt;         &lt;int&gt;
+ 1 ASX      AUD             169
+ 2 SHE      CNY            2570
+ 3 SHG      CNY            1936
+ 4 SHEB     HKD              42
+ 5 SHE      HKD              12
+ 6 NMFQS    USD           46245
+ 7 PINK     USD           14416
+ 8 NASDAQ   USD           13113
+ 9 NYSE     USD            8170
+10 OTCGREY  USD            4011
+# … with 17 more rows</code></pre>
+</div>
+</div>
+<p>이 중 마이너 거래소나 장외 거래소의 경우 정보를 받아도 우리나라의 증권사를 통해서는 실제로 거래를 할 수 없을수도 있습니다. 따라서 실제 거래가 가능한 거래소 데이터만 필터링한 후 해당 종목들을 받는 것이 효율적입니다.</p>
+<p>각 종목의 상세 정보를 확인해보도록 하겠습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">riingo_meta</span>(<span class="st">"AAPL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  ticker name      description   startDate           endDate             excha…¹
+  &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;         &lt;dttm&gt;              &lt;dttm&gt;              &lt;chr&gt;  
+1 AAPL   Apple Inc Apple Inc. (… 1980-12-12 00:00:00 2023-01-18 00:00:00 NASDAQ 
+# … with abbreviated variable name ¹​exchangeCode</code></pre>
+</div>
+</div>
+<p><code>riingo_meta()</code> 함수 내에 티커를 입력하면 티커, 종목명, 사업내역 등 대략적인 정보를 받아올 수 있습니다.</p>
+<p>이제 주가를 받아보도록 합시다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">riingo_prices</span>(<span class="st">"AAPL"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 251 × 14
+   ticker date                close  high   low  open    volume adjClose adjHigh
+   &lt;chr&gt;  &lt;dttm&gt;              &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+ 1 AAPL   2022-01-19 00:00:00  166.  171.  166.  170   92914792     165.    170.
+ 2 AAPL   2022-01-20 00:00:00  165.  170.  164.  167.  91420515     163.    168.
+ 3 AAPL   2022-01-21 00:00:00  162.  166.  162.  164. 122848858     161.    165.
+ 4 AAPL   2022-01-24 00:00:00  162.  162.  155.  160. 162706686     160.    161.
+ 5 AAPL   2022-01-25 00:00:00  160.  163.  157.  159. 115798367     159.    162.
+ 6 AAPL   2022-01-26 00:00:00  160.  164.  158.  164. 108275308     159.    163.
+ 7 AAPL   2022-01-27 00:00:00  159.  164.  158.  162. 121954638     158.    163.
+ 8 AAPL   2022-01-28 00:00:00  170.  170.  163.  166. 179935660     169.    169.
+ 9 AAPL   2022-01-31 00:00:00  175.  175   170.  170. 115541590     174.    174.
+10 AAPL   2022-02-01 00:00:00  175.  175.  172.  174.  86213911     173.    174.
+# … with 241 more rows, and 5 more variables: adjLow &lt;dbl&gt;, adjOpen &lt;dbl&gt;,
+#   adjVolume &lt;int&gt;, divCash &lt;dbl&gt;, splitFactor &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><code>riingo_prices()</code> 함수 내에 티커를 입력하면 close(종가), high(고가), low(저가), open(시가), volumne(거래량) 및 수정주가와 divCash(현금 배당), splitFactor(주식분할 조정계수)까지 데이터를 받을 수 있습니다.</p>
+<p>이번에는 일별 가치지표를 받아보도록 합니다. (무료 계정의 경우 다우존스 30 지수에 포함되는 종목 정보만 제공합니다.)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">riingo_fundamentals_metrics</span>(<span class="st">'AAPL'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 254 × 7
+   ticker date                    marketCap enterprise…¹ peRatio pbRatio trail…²
+   &lt;chr&gt;  &lt;dttm&gt;                      &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+ 1 AAPL   2022-01-19 00:00:00 2727235373310      2.81e12    27.1    37.9    1.12
+ 2 AAPL   2022-01-20 00:00:00 2699016370470      2.78e12    26.8    37.5    1.11
+ 3 AAPL   2022-01-21 00:00:00 2664562936770      2.75e12    26.5    37.0    1.10
+ 4 AAPL   2022-01-24 00:00:00 2651601883140      2.74e12    26.4    36.9    1.09
+ 5 AAPL   2022-01-25 00:00:00 2621414112660      2.71e12    26.1    36.4    1.08
+ 6 AAPL   2022-01-26 00:00:00 2619937536930      2.71e12    26.1    36.4    1.08
+ 7 AAPL   2022-01-27 00:00:00 2612226530340      2.70e12    26.0    36.3    1.08
+ 8 AAPL   2022-01-28 00:00:00 2779690385530      2.87e12    27.6    38.6    1.15
+ 9 AAPL   2022-01-31 00:00:00 2852311897980      2.94e12    28.4    39.7    1.18
+10 AAPL   2022-02-01 00:00:00 2849537593010      2.94e12    28.3    39.6    1.17
+# … with 244 more rows, and abbreviated variable names ¹​enterpriseVal,
+#   ²​trailingPEG1Y</code></pre>
+</div>
+</div>
+<p><code>riingo_fundamentals_metrics()</code> 함수 내에 티커를 입력하면 일간 시가총액, 기업가치, PER, PBR, PEG 정보가 받아집니다.</p>
+<p>마지막으로 재무제표를 받아보도록 합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">riingo_fundamentals_statements</span>(<span class="st">'AAPL'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 8
+  ticker date                 year quarter balanceSheet  cashF…¹ incom…² overv…³
+  &lt;chr&gt;  &lt;dttm&gt;              &lt;int&gt;   &lt;int&gt; &lt;list&gt;        &lt;list&gt;  &lt;list&gt;  &lt;list&gt; 
+1 AAPL   2022-09-24 00:00:00  2022       4 &lt;df [26 × 2]&gt; &lt;df&gt;    &lt;df&gt;    &lt;df&gt;   
+2 AAPL   2022-09-24 00:00:00  2022       0 &lt;df [26 × 2]&gt; &lt;df&gt;    &lt;df&gt;    &lt;df&gt;   
+3 AAPL   2022-06-25 00:00:00  2022       3 &lt;df [26 × 2]&gt; &lt;df&gt;    &lt;df&gt;    &lt;df&gt;   
+4 AAPL   2022-03-26 00:00:00  2022       2 &lt;df [26 × 2]&gt; &lt;df&gt;    &lt;df&gt;    &lt;df&gt;   
+# … with abbreviated variable names ¹​cashFlow, ²​incomeStatement, ³​overview</code></pre>
+</div>
+</div>
+<p>티블 내에 다시 데이터프레임이 들어간 형태입니다. 이 중 필요한 데이터만 선택해 묶음을 풀어주면 됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(ticker, date, year, quarter, balanceSheet) <span class="sc">%&gt;%</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">'balanceSheet'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 104 × 6
+   ticker date                 year quarter dataCode                     value
+   &lt;chr&gt;  &lt;dttm&gt;              &lt;int&gt;   &lt;int&gt; &lt;chr&gt;                        &lt;dbl&gt;
+ 1 AAPL   2022-09-24 00:00:00  2022       4 liabilitiesCurrent    153982000000
+ 2 AAPL   2022-09-24 00:00:00  2022       4 equity                 50672000000
+ 3 AAPL   2022-09-24 00:00:00  2022       4 taxLiabilities                   0
+ 4 AAPL   2022-09-24 00:00:00  2022       4 liabilitiesNonCurrent 148101000000
+ 5 AAPL   2022-09-24 00:00:00  2022       4 retainedEarnings       -3068000000
+ 6 AAPL   2022-09-24 00:00:00  2022       4 debtCurrent            21110000000
+ 7 AAPL   2022-09-24 00:00:00  2022       4 taxAssets                        0
+ 8 AAPL   2022-09-24 00:00:00  2022       4 assetsNonCurrent      217350000000
+ 9 AAPL   2022-09-24 00:00:00  2022       4 acctPay                64115000000
+10 AAPL   2022-09-24 00:00:00  2022       4 debt                  120069000000
+# … with 94 more rows</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./r_sql.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./crawl.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});</script>
+
+
+
+</body></html>

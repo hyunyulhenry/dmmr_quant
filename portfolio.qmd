@@ -1,0 +1,1116 @@
+---
+title: "포트폴리오 구성하기"
+---
+
+퀀트 투자는 크게 포트폴리오 운용 전략과 트레이딩 전략으로 나눌 수 있습니다. 포트폴리오 운용 전략은 과거 주식 시장을 분석해 좋은 주식의 기준을 찾아낸 후 해당 기준에 만족하는 종목을 매수하거나, 이와 반대에 있는 나쁜 주식을 공매도하기도 합니다. 투자의 속도가 느리며, 다수의 종목을 하나의 포트폴리오로 구성해 운용하는 특징이 있습니다. 반면 트레이딩 전략은 주식이 오르거나 내리는 움직임을 연구한 후 각종 지표를 이용해 매수 혹은 매도하는 전략입니다. 투자의 속도가 빠르며 소수의 종목을 대상으로 합니다. 본 수업에서는 퀀트 전략을 이용한 종목선정에 대해 알아보겠습니다.
+
+## 팩터 이해하기
+
+하나 혹은 소수의 주식만을 연구해서 주식이 오르거나 내리는 공통적인 이유를 찾는 것은 불가능에 가깝지만, 그룹으로 살펴보면 어느 정도 파악이 가능합니다. 어떠한 특성, 예를 들어 기업의 크기 별로 주식들을 묶은 후 수익률을 살펴보면, 크기가 큰 기업의 수익률이 좋았는지 아니면 작은 기업의 수익률이 좋았는지 알 수 있습니다. 즉, 오르는 주식과 내리는 주식은 애초에 가지고 있는 특성이 다르며 그로 인해 수익률에도 차이가 있습니다. 이처럼 주식의 수익률에 영향을 미치는 특성들을 '팩터(Factor)'라고 하며, 주식의 수익률은 이러한 팩터들로 대부분 설명됩니다. 주식이 가지고 있는 특성만 제대로 알아도 오를만한 주식을 선별하거나, 혹은 내릴만한 주식을 걸러낼 수 있습니다.
+
+그러나 단순히 특성을 기준으로 수익률이 높거나 낮다고 해서 팩터로 인정되는 것은 아닙니다. 팩터로 인정되고 전략으로 사용되기 위해서는 아래의 조건을 충족해야 합니다.
+
+-   지속성: 오랜 기간, 그리고 여러 경제 상황에서도 꾸준히 작동해야 합니다. 몇 달 혹은 몇 년 동안의 기간에서만 작동한다면 우연의 결과일 가능성이 매우 큽니다.
+
+-   범용성: 특정 국가에서만 작동하는 것이 아닌 다양한 국가, 지역, 섹터, 자산군에서도 작동해야 합니다. 전세계 중 한국에서만 작동하는 전략이라면 이 역시 우연일 가능성이 큽니다.
+
+-   이해 가능성: 전략이 작동하는 이유 및 지속 가능한지에 대한 설명이 가능해야 합니다. 수익률이 높은 이유를 경제학이나 이론적으로 설명할 수 있어야 앞으로도 수익률이 높을 것이라 믿을 수 있습니다. 이유가 없는 효과는 우연 혹은 과최적화의 결과일 가능성이 매우 높습니다.
+
+-   강건성: 같은 팩터라면 비슷한 정의(예: 가치주를 정의하는 PBR, PER, PSR 등) 모두에서 작동해야 합니다. 전략이 작동하는 이유가 명확하다면 정의가 약간씩 달라도 당연히 작동해야 하며, 결과 역시 비슷해야 합니다.
+
+-   투자 가능성: 이론적으로만 작동하는 것이 아닌 실제로 투자가 가능해야 합니다. 아무리 좋은 전략도 수수료, 세금, 법률적인 문제 등으로 실제 투자가 불가능하다면 돈을 벌 수 없기 때문입니다.
+
+퀀트 운용 전략에서는 팩터의 강도가 양인 종목들로 구성한 포트폴리오는 향후 수익률이 높을 것으로 예상되어 매수를 하며, 팩터의 강도가 음인 종목들로 구성한 포트폴리오는 반대로 향후 수익률이 낮을 것으로 예상되어 매수를 하지 않거나 공매도를 합니다. 기본적인 팩터들에 대해 알아보고, 우리가 구한 데이터를 바탕으로 각 팩터별 투자 종목을 선택하는 방법을 알아보겠습니다.
+
+## 데이터 불러오기
+
+먼저 샘플로 사용할 주가 및 재무제표 데이터를 다운로드 받습니다. 데이터는 아래 링크에 .sql 파일로 업로드 되어 있습니다.
+
+<https://drive.google.com/file/d/13KLFlZTGJvyrlXQYQ_mR0RgAbfYtufti/view?usp=share_link>
+
+\[다운로드\] 버튼을 눌러 파일을 다운로드 합니다. 그 후 SQL에서 해당 데이터베이스를 불러옵니다.
+
+![](images/image-1852388872.png)
+
+1.  Navigator에서 Administration 부분을 클릭한 후 Data Import를 선택합니다.
+2.  Import from Self-Contained File를 선택한 후 \[...\]을 눌러 다운로드 받은 파일을 선택합니다.
+3.  Default Target Schema 우측의 New를 누른 후 저장될 데이터베이스 이름을 입력합니다.
+4.  하단의 Start Import를 클릭합니다.
+
+![](images/image-873647637.png)
+
+데이터베이스를 확인해보면 티커, 주가, 재무제표 데이터가 들어와 있습니다.
+
+## 밸류 전략
+
+가치주 효과란 내재 가치 대비 낮은 가격의 주식(저PER, 저PBR 등)이, 내재 가치 대비 비싼 주식(고PER, 고PBR)보다 수익률이 높은 현상을 뜻합니다. 가치주 효과가 발생하는 원인은 바로 사람들이 가치주(저밸류에이션)를 기피하고, 성장주(고밸류에이션)를 선호하기 때문입니다. 달리 말하면 사람들이 기피한 주식이 가치주가 되었다고 할 수도 있습니다. 가치주는 일반적으로 차입비율이 높고, 수익의 변동성이 크며, 경기가 좋지 않을 때 더 위험한 경향이 있습니다. 사람들은 이처럼 위험한 주식에 필요 이상으로 과민 반응을 보입니다. 그로 인해 주가가 하락하고 가치주가 되는 것입니다. 반면 인간은 익숙한 것을 안전하다고 착각하는 경향이 있습니다. 최근 성과가 좋은 주식은 여러 매체를 통해 접하기 쉬운데, 이런 주식을 안전하다고 착각해 많은 사람이 매수에 나섭니다. 그로 인해 주가가 상승하고 고평가주가 됩니다. 보고 싶은 것만 보는 확증 편향으로 인해 투자자들은 위험하다고 생각되는 가치주가 망할 것 같은 이유만 찾아 더욱 기피하고, 안전하다고 생각되는 성장주는 영원히 상승할 것 같은 이유만 찾아 더욱 선호합니다. 그러나 가치주가 생각보다 위험하지 않다는 것을, 성장주가 너무 많이 상승해 안전하지 않다는 것을 깨닫는 순간 주가는 원래 수준으로 회귀하기 마련이고, 이로 인해 가치주 효과가 발생합니다.
+
+### French Library 데이터 불러오기
+
+파마-프렌치 모형으로 유명한 프렌치 교수가 제공하는 라이브러리에서는 다양한 팩터 데이터를 다운로드 받을 수 있습니다.
+
+<https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/data_library.html>
+
+해당 데이터를 분석하기 위해 사이트에 접속하여 데이터를 내려받아 압축을 푼 후 csv 파일을 불러오는 방법 보다는, R 내에서 데이터를 다운로드 받은 후 불러오는 것이 훨씬 효율적입니다. 또한 이미 개발된 패키지를 사용할 경우 이러한 작업을 매우 쉽게 할수도 있습니다.
+
+<https://nareal.github.io/frenchdata/articles/basic_usage.html>
+
+R에서 해당 패키지를 사용해 팩터 데이터를 다운로드 받은 후 성과를 확인해보도록 하겠습니다.
+
+```{r}
+library(frenchdata)
+data_sets = get_french_data_list()
+
+data_sets$files_list
+```
+
+먼저 필요한 패키지들을 불러온 후, `get_french_data_list()` 함수를 사용해 다운로드 받을 수 있는 데이터를 조회합니다. data_sets의 files_list에는 다운로드 받을 수 있는데 데이터와 해당 url이 표시되어 있습니다. 이 중 우리는 name 컬럼의 데이터 이름을 알면 됩니다. 이 중 밸류에 해당하는 데이터의 이름은 \[Portfolios Formed on Book-to-Market\] 입니다. B/M에서 B는 장부가치(Book Value), M는 시장가치(Market Value)로써, 이는 PBR의 역수라고 생각해도 됩니다. 즉 해당값이 높을수록 저PBR 주식을 의미합니다. 해당 데이터를 다운로드 받도록 하겠습니다.
+
+```{r}
+ff_value = download_french_data('Portfolios Formed on Book-to-Market')
+
+ff_value$subsets
+```
+
+리스트 중 subsets를 확인해보면 월간수익률(시가총액가중평균, 동일가중평균), 연간수익률(시가총액가중평균, 동일가중평균) 및 기타 데이터가 포함되어 있습니다. 이 중 일반적으로 많이 사용하는 시가총액가중포트폴리오의 월간 수익률 (Value Weighted Returns -- Monthly)를 확인해보겠습니다.
+
+```{r}
+ff_value_vw = ff_value$subsets$data[[1]]
+head(ff_value_vw)
+```
+
+-   \<=0: PBR이 0 이하인 기업들의 포트폴리오
+-   Lo 30, Med 40, Hi 30: PBR 기준 상위 30%, 30-70%, 하위 30%로 나눈 포트폴리오
+-   Lo 20, Qnt 2, Qnt 3, Qnt 4, Hi 20: PBR 기준 상위 20%, 20-40%, 40-60%, 60-80%, 80-100%로 나눈 포트폴리오
+-   Lo 10, Dec 2, Dec 3, ..., Dec 9, Hi 19: PBR 기준 상위 10% 씩으로 나눈 포트폴리오
+
+이 중 20%씩 나눈 \[Lo 20, Qnt 2, Qnt 3, Qnt 4, Hi 20\] 열만 선택하여 누적 수익률을 확인보도록 하겠습니다.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(lubridate)
+library(zoo)
+
+data_to_plot = function(data) {
+  
+  data %>%
+    mutate(date = as.character(date)) %>%
+    mutate(date = as.Date(as.yearmon(date, "%Y%m"), frac = 1)) %>%
+    mutate(across(!date, ~.x / 100)) %>%
+    mutate(across(!date, ~log(1+.x))) %>%
+    mutate(across(!date, ~cumsum(.x))) %>%
+    pivot_longer(-date) %>%
+    mutate(name = factor(name, levels = .$name %>% unique)) %>%
+    ggplot(aes(x = date, y = value, color = name)) +
+    geom_line() +
+    xlab('') +
+    ylab('') +
+    theme_bw() +
+    theme(legend.title=element_blank())
+  
+}
+```
+
+먼저 데이터를 클렌징한 후 그림으로 나타내는 함수를 만듭니다.
+
+-   date열을 yyyy-mm-dd로 변경
+-   해당 데이터에서는 1이 1%를 의미하므로, 올바른 계산을 위해 100으로 나누어 줌
+-   로그수익률로 치환
+-   `cumsum()` 함수를 통해 누적합 계산
+-   `pivot_longer()` 함수를 통해 형태 변경
+-   name 열의 순서 지정을 위해 팩터 levels 재설정
+-   그림으로 나타내기
+
+이제 PBR 기준 5분위 열만 선택한 후 해당 함수를 적용합니다.
+
+```{r}
+ff_value_vw %>% select(date, `Lo 20`, `Qnt 2`, `Qnt 3`, `Qnt 4`, `Hi 20`) %>%
+  data_to_plot()
+```
+
+Hi 20, 즉 B/M이 높은(PBR이 낮은) 포트폴리오의 누적 수익률이 가장 높으며, B/M이 낮을수록(PBR이 높을수록) 누적 수익률이 낮아집니다.
+
+```{r}
+ff_value_vw %>% select(date, `Lo 20`, `Qnt 2`, `Qnt 3`, `Qnt 4`, `Hi 20`) %>%
+  pivot_longer(-date) %>%
+  mutate(name = factor(name, levels = .$name %>% unique)) %>%
+  ggplot(aes(x = name, y = value)) +
+  geom_boxplot()
+```
+
+박스 플랏을 분석해 보면 PBR이 낮을수록 수익률의 변동성은 크지만, 큰 수익이 나는 경우가 더 많습니다.
+
+이번에는 고PBR 대비 저PBR 수익률인 HML 팩터의 수익률을 살펴보겠습니다. 흔히 롱숏 모델을 비교할때는 상하위 30% 수익률을 이용합니다.
+
+```{r}
+ff_value_vw %>% select(date, `Lo 30`, `Hi 30`) %>%
+  mutate(HML = `Hi 30` - `Lo 30`) %>%
+  select(date, HML) %>%
+  data_to_plot()
+```
+
+1940년 이후 꾸준히 상향하며 저PBR이 고PBR 대비 뛰어난 성과를 기록하였습니다. 반면 2008년 이후 10여년 동안 하락하다가, 2020년을 기점으로 다시 반등하는 모습입니다.
+
+French 라이브러리에서는 PBR외에도 PER나 PCR 팩터의 수익률도 확인할 수 있으며, 미국이 아닌 글로벌 수익률도 확인할 수 있습니다.
+
+### 밸류 포트폴리오 구하기
+
+가치주에 투자하는 것이 훨씬 수익률이 높다는 점을 확인하였으니, 국내 종목들 중 가치주에는 어떠한 것이 있는 확인해보도록 합니다. 먼저 전통적인 가치지표인 PER와 PBR이 낮은 종목을 선정해보도록 합니다.
+
+```{r message=FALSE}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'stock_db' # 사용하고자 하는 스키마
+)
+
+ticker = dbGetQuery(con,
+                    "select * from kor_ticker
+where 기준일 = (select max(기준일) from kor_ticker)
+	and 종목구분 = '보통주';")
+                  
+value = dbGetQuery(con ,
+"select * from kor_value
+where 기준일 = (select max(기준일) from kor_value);
+")
+
+dbDisconnect(con)
+```
+
+먼저 DB에서 티커 테이블과 가치지표 테이블을 불러옵니다. 티커는 최신일 기준 및 보통주에 해당하는 종목만 불러오며, 가치지표는 최신일 기준 데이터를 불러옵니다.
+
+```{r}
+value = value %>%
+  mutate(값 = ifelse(값 <=0, NA, 값)) %>%
+  pivot_wider(names_from = '지표', values_from = '값') %>%
+  select(-기준일)
+
+value_bind = ticker %>% 
+  left_join(value)
+
+value_bind %>% head()
+```
+
+1.  일부 종목은 가치지표가 0보다 작은 경우(예: 적자기업의 경우 PER가 음수, 혹은 배당수익률이 0%인 종목)가 있으며 이러한 데이터는 NA로 변경합니다.
+2.  테이블을 가로로 긴 형태로 변경합니다.
+3.  두 테이블을 합칩니다.
+
+이제 PER와 PBR이 낮은 종목을 찾아보도록 합니다.
+
+```{r}
+value_bind %>%
+  mutate(across(c(PBR, PER), min_rank, .names = "rank_{col}")) %>%
+  mutate(rank = min_rank(rank_PBR + rank_PER)) %>%
+  filter(rank <= 20) 
+  # select(종목코드, 종목명, PBR, PER)
+```
+
+1.  `min_rank()` 함수를 통해 PER와 PBR 열의 순위를 구하며, `rank_열` 이름으로 저장합니다.
+2.  앞서 구한 두 열을 합한 후 다시 순위를 구합니다.
+3.  순위가 낮은 20종목을 선택합니다. 이는 PER와 PBR이 낮은 종목이라고 볼 수 있습니다.
+
+### 여러 지표 결합하기
+
+이번에는 가치지표에 해당하는 모든 지표, 즉 PER, PBR, PCR, PSR, DY를 고려한 밸류 포트폴리오를 만들어보도록 하겠다. 먼저 각 지표 별 상관관계를 살펴보도록 합니다.
+
+```{r}
+value_bind_rank = value_bind %>%
+  mutate(across(c(PBR, PER, PCR, PSR), min_rank, .names = "rank_{col}")) %>%
+  mutate(rank_DY = min_rank(desc(DY)))
+
+value_bind_rank %>%
+  select(contains('rank')) %>%
+  cor(., use = 'complete.obs') %>%
+  round(., 2)
+```
+
+PER, PBR, PCR, PSR의 경우 값이 낮을수록 가치주에 해당하지만, DY의 경우 값이 높을수록 배당수익률이 높은 가치주에 해당한다. 따라서 DY는 `desc()` 함수를 통해 내림차순으로 순위를 매겨줍니다. 비슷한 가치지표임에도 불구하고 서로 간의 상관관계가 꽤 낮은 지표도 있습니다. 따라서 지표를 통합적으로 고려하면 분산효과를 기대할 수도 있습니다.
+
+```{r}
+value_bind_rank %>%
+  mutate(rank_sum = rowSums(across(contains('rank')))) %>%
+  mutate(rank_final = min_rank(rank_sum)) %>%
+  filter(rank_final <= 20) 
+```
+
+## 모멘텀 전략
+
+투자에서 모멘텀이란 주가 혹은 이익의 추세로서, 상승 추세의 주식은 지속적으로 상승하며 하락 추세의 주식은 지속적으로 하락하는 현상을 말합니다. 모멘텀의 종류는 크게 기업의 이익에 대한 추세를 나타내는 이익 모멘텀과 주가의 모멘텀에 대한 가격 모멘텀이 있으며, 이 중에서 3개월에서 12개월 가격 모멘텀을 흔히 모멘텀이라고 합니다. 즉 과거 12개월 수익률이 높았던 종목이 계속해서 상승하는 현상을 모멘텀이라 합니다.
+
+모멘텀 효과가 발생하는 이유는 기업의 가치 변화에 대한 사람들의 반응 때문입니다. 기업의 이익이 증가하면 내재가치(펀더멘털 가치) 역시 증가하고, 이러한 가치는 즉각적으로 변합니다. 반면 주식의 가격은 늘 새로운 정보에 반응해 상승하기는 하지만, 초기에는 이익에 대한 과소 반응으로 인해 상승폭이 낮으며 그 이후 계속해서 상승합니다. 주식의 가격이 가치에 수렴하기 위해 상승하다 보면 투자자들의 주목을 끌기 마련이며, 양떼 효과로 인해 따라서 투자하는 이들이 많아집니다. 그 결과, 과잉 반응이 발생해 주가는 계속해서 상승하며 모멘텀 효과가 발생합니다. 그러나 투자자들이 기업의 가치에 비해 주가가 너무 비싸졌다고 판단하는 순간 주가는 하락하기 시작하며 반전이 이루어집니다.
+
+![](images/portfolio/momentum.png)
+
+### 모멘텀별 포트폴리오의 수익률
+
+프렌치 라이브러리 데이터를 이용해 최근 12개월 수익률을 기준으로 구성된 포트폴리오의 수익률을 비교해보겠습니다.
+
+```{r}
+library(frenchdata)
+ff_mom = download_french_data('10 Portfolios Formed on Momentum')
+
+ff_mom_vw = ff_mom$subsets$data[[1]]
+ff_mom_vw %>% data_to_plot() + scale_colour_manual(values = rainbow(10))
+```
+
+모멘텀별 포트폴리오의 누적수익률을 확인해보면, 최근 12개월 수익률이 높을수록(Hi PRIOR) 향후에도 지속적으로 수익률이 높으며, 최근 12월 수익률이 낮을수록(Lo PRIOR) 향후에도 수익률이 낮은 '모멘텀 현상'이 존재합니다. 이번에는 저모멘텀 대비 고모멘텀 수익률인 UMD 팩터의 수익률을 살펴보겠습니다.
+
+```{r}
+ff_umd = download_french_data('Momentum Factor (Mom)')
+ff_umd$subsets$data[[1]] %>%
+  data_to_plot()
+```
+
+장기적으로 우상향 하는 모습을 보이지만 시장이 급락한 이후 반등할 때 모멘텀 팩터가 무너지는 현상이 발생하며, 이를 '모멘텀 크래쉬'라 합니다.
+
+### 모멘텀 포트폴리오 구하기
+
+최근 12개월 수익률이 높은 주식에 투자하는 것이 훨씬 수익률이 높다는 점을 확인하였으니, 국내 종목들 중 모멘텀 주식에는 어떠한 것이 있는 확인해보도록 하겠습니다.
+
+```{r}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'stock_db' # 사용하고자 하는 스키마
+)
+
+ticker = dbGetQuery(con,
+                    "select * from kor_ticker
+where 기준일 = (select max(기준일) from kor_ticker)
+	and 종목구분 = '보통주';")
+                  
+price = dbGetQuery(con ,
+"select 날짜, 종가, 종목코드
+from kor_price
+where 날짜 >= (select (select max(날짜) from kor_price) - interval 1 year);
+")
+
+dbDisconnect(con)
+
+ret_1yr =
+  price %>% select(날짜, 종목코드, 종가) %>%
+  group_by(종목코드) %>%
+  summarise(ret = last(종가) / first(종가) - 1)
+```
+
+1.  먼저 티커 테이블과 가격 테이블을 불러옵니다. 가격 테이블은 최근 1년에 해당하는 데이터만 불러옵니다.
+2.  가격 테이블에서 종목코드 별로 그룹을 묶습니다.
+3.  최근 종가를 1년전 종가로 나누어 1년간의 수익률을 계산합니다.
+
+이제 12개월 수익률이 높은 종목을 찾아보도록 합니다.
+
+```{r}
+momentum_bind = ret_1yr %>% mutate(rank = min_rank(desc(ret))) %>%
+  filter(rank <= 20) %>%
+  left_join(ticker)
+
+momentum_bind
+```
+
+`min_rank()` 함수를 통해 수익률의 순위를 구하며, 모멘텀의 경우 지표가 높을수록 좋으므로 `desc()` 함수를 통해 내림차순으로 순위를 구합니다. 마지막으로 해당 종목들의 가격 그래프를 확인해보도록 하겠습니다.
+
+```{r}
+price %>% filter(종목코드 %in% (momentum_bind %>% select(종목코드) %>% pull())) %>%
+  group_by(종목코드) %>%
+  slice_tail(n = 255) %>%
+  ggplot(aes(x = as.Date(날짜), y = 종가)) +
+  geom_line() +
+  facet_wrap(. ~종목코드, scales = 'free') +
+  xlab(NULL) +
+  ylab(NULL) +
+  theme(axis.text.x=element_blank())
+```
+
+### K-Ratio
+
+12개월 수익률 기준 모멘텀 종목들의 주가 그래프를 보면 단순히 수익률 만으로 종목을 선택할 경우 다음과 같은 종목 또한 포함됩니다.
+
+-   장기간 수익률이 횡보하다가 최근 주가가 급등하여 누적수익률 역시 높게 나타나는 종목
+-   이미 몇달전에 주가가 급등한 후 최근에는 하락세이지만, 누적수익률 자체는 높게 나타나는 종목
+
+반면 좋은 모멘텀 주식이란 단순히 많이 상승한 것이 아닌, 꾸준하게 상승하는 종목이다. 하나의 예를 살펴봅시다.
+
+![](images/portfolio/factor_k.png)
+
+동일한 누적수익률을 가진 두 종목이 있다고 가정해봅시다. A의 경우 상승폭이 작다가 최근 급등하여 누적수익률이 높아진 경우입니다. 반면 B의 경우 꾸준하게 상승하여 누적수익률이 높아진 경우입니다. 이 중 꾸준하게 상승한 B가 더 뛰어난 모멘텀 주식이라고 볼 수 있습니다. 이처럼 꾸준한 상승을 측정하기 위해 실무에서는 단순 12개월 수익률이 아닌 3\~12개월 수익률을 같이 보거나, 변동성을 함께 고려하기도 합니다. 그 중 모멘텀의 꾸준함을 측정하는 지표 중 하나가 'K-Ratio'입니다. 해당 지표는 다음과 같습니다.
+
+$$K-Ratio = \frac{누적수익률의\ 기울기}{표준\ 오차}$$ 누적수익률이 높을수록 기울기도 커져 분자는 커집니다. 또한 추세가 꾸준할수록 표준 오차가 작아 분모는 작아집니다. 따라서 추세가 꾸준하게 많이 상승할수록 K-Ratio는 증가합니다. 먼저 K-Ratio를 측정하는 법을 살펴봅시다.
+
+```{r}
+library(tidyr)
+library(broom)
+
+tbl = price %>% filter(종목코드 == '005930') %>%
+  mutate(ret = 종가 / lag(종가) - 1) %>%
+  mutate(ret = log(1+ret)) %>%
+  slice(-1) %>%
+  mutate(cumret = cumsum(ret)) %>%
+  mutate(id = row_number()) 
+
+reg = lm(cumret ~ id, data = tbl)
+summary(reg)
+```
+
+1.  먼저 삼성전자에 해당하는 데이터만 뽑아 수익률을 계산합니다.
+2.  로그수익률로 변경한 후 로그 누적수익률을 계산합니다.
+3.  `row_number()` 함수를 통해 순서를 입력합니다.
+4.  `lm()` 함수를 통해 $x$ 축에는 기간, $y$ 축에는 로그 누적수익률로 회귀분석을 실행합니한다.
+
+결과표의 'Estimate'는 기울기를, 'std err'는 표준 오차를 나타냅니다.
+
+```{r}
+cat(coef(summary(reg))[2, 1],
+    coef(summary(reg))[2, 2],
+    coef(summary(reg))[2, 1] / coef(summary(reg))[2, 2]
+)
+```
+
+기울기와 표준오차를 추출한 후, 이 두개를 나눈 값이 K-Ratio 입니다. 이를 이용해 모든 종목의 K-Ratio를 계산하도록 하겠습니다.
+
+```{r}
+library(purrr)
+library(broom)
+
+step_1 = price %>%
+  group_by(종목코드) %>%
+  filter(n() >= 200) %>%
+  mutate(ret = 종가 / lag(종가) - 1) %>%
+  mutate(ret = log(1+ret)) %>%
+  slice(-1) %>%
+  mutate(cumret = cumsum(ret)) %>%
+  mutate(id = row_number()) 
+
+step_2 = step_1 %>% 
+  ungroup() %>%
+  nest(data = -종목코드) %>%
+  mutate(model = map(data, ~lm(cumret~id, data = .)),
+         tidied = map(model, tidy))
+
+k_ratio = step_2 %>%
+  unnest(tidied) %>%
+  filter(term == 'id') %>%
+  mutate(k_ratio = estimate / `std.error`) 
+
+# k_ratio = price %>%
+#   group_by(종목코드) %>%
+#   filter(n() == t) %>%
+#   mutate(ret = 종가 / lag(종가) - 1) %>%
+#   mutate(ret = log(1+ret)) %>%
+#   slice(-1) %>%
+#   mutate(cumret = cumsum(ret)) %>%
+#   mutate(id = row_number()) %>%
+#   do({model = lm(cumret ~ id, data = .);
+#        data.frame(slope =  coef(summary(model))[2, 1], std_err =coef(summary(model))[2, 2])}) %>%
+#   mutate(k_ratio = slope / std_err) %>%
+#   ungroup()
+```
+
+1.  상장한지 200일 이상 된 종목만 선택합니다.
+2.  수익률을 계산합니다.
+3.  K-Ratio를 구합니다.
+
+이를 토대로 K-Ratio 상위 종목을 구해보겠습니다.
+
+```{r}
+k_bind = k_ratio %>% mutate(rank = min_rank(desc(k_ratio))) %>%
+  filter(rank <= 20) %>%
+  left_join(ticker)
+
+price %>% filter(종목코드 %in% (k_bind %>% select(종목코드) %>% pull())) %>%
+  group_by(종목코드) %>%
+  slice_tail(n = 255) %>%
+  ggplot(aes(x = as.Date(날짜), y = 종가)) +
+  geom_line() +
+  facet_wrap(. ~종목코드, scales = 'free') +
+  xlab(NULL) +
+  ylab(NULL) +
+  theme(axis.text.x=element_blank())
+```
+
+기존 단순 모멘텀이 비해 훨씬 더 꾸준하게 우상향하는 종목들이 선택되었습니다.
+
+## 퀄리티 전략
+
+벤자민 그레이엄 이후 유지되고 있는 기본적 분석 혹은 가치 투자자들의 가장 중요한 투자 지표 중 하나는 기업의 우량성(퀄리티)입니다. 벤저민 그레이엄은 종목 선정에 있어 유동 자산이 풍부하여 재무적으로 건전하고, 꾸준하게 이익을 달성하는 기업을 강조했습니다. 최고의 투자자로 꼽히는 워런 버핏의 종목 선정 기준 역시 실적의 강력한 성장 추세와 높은 자기자본 이익률로 알려져 있습니다.
+
+그러나 어떠한 지표가 기업의 우량성을 나타내는지 한 마디로 정의하기에는 너무나 주관적이고 광범위해 쉽지 않습니다. 연구에 따르면 수익성, 성장성, 안정성이 높을 주식일수록 수익률이 높은 경향이 있습니다. 이 외에도 학계 혹은 업계에서 사용되는 우량성 관련 지표는 다음과 같이 요약할 수 있습니다.
+
+-   수익성: 기업이 돈을 얼마나 잘 버는가(ROE, ROA, 매출총이익률 등).
+-   수익의 안정성: 기업이 얼마나 안정적으로 돈을 버는가(ROE의 변동성 등).
+-   재무 구조: 기업의 재무 구조가 얼마나 안전한가(차입비율 등).
+-   이익의 성장: 기업의 이익 증가율이 얼마나 되는가(전년 대비 ROE 증가율 등).
+-   재무 신뢰도: 재무제표를 얼마나 신뢰할 수 있는가(회계 처리 방법 등).
+-   배당: 얼마나 주주 친화적인가(배당금, 신주발행, 자사주 매입 등.)
+-   투자: 얼마나 신사업에 투자를 하는가(총자산의 증가 등)
+
+이 중 사람들이 가장 중요하게 여기는 것은 바로 수익성입니다. 돈을 벌지 못하는 기업은 지속될 수 없기 때문입니다. 기업의 규모가 크면 당연히 돈을 더 많이 벌기 때문에 단순히 수익의 양이 아닌, 기업의 규모에 비해 얼마를 버는지 표준화를 통해 비교해야 합니다.
+
+| 지표 | 설명           | 분자       | 분모           |
+|------|----------------|------------|----------------|
+| ROE  | 자기자본이익률 | 당기순이익 | 자본           |
+| ROA  | 총자산이익률   | 당기순이익 | 자산           |
+| ROIC | 투하자본이익률 | 당기순이익 | 투하자본       |
+| GP   | 매출총이익률   | 매출총이익 | 자산 혹은 자본 |
+
+우량주 효과가 발생하는 이유 역시 사람들의 반응과 관계가 있습니다. 기업의 수익성이 높을 경우, 투자자들은 이익이 다시 원래 수준으로 빠르게 돌아갈 것이라 생각하지만, 실제로는 수익성이 높은 기업은 계속해서 높은 수익성을 보이는 경향이 있습니다. 반대로 기업의 수익성이 낮은 경우, 투자자들은 이익이 반등할 것이라 생각하지만 나쁜 기업은 계속해서 나쁜 경향이 있습니다.
+
+### 수익성별 포트폴리오의 수익률
+
+프렌치 라이브러리 데이터를 이용해 영업수익성을 기준으로 구성된 포트폴리오의 수익률을 비교해보겠습니다.
+
+```{r}
+ff_op = download_french_data('Portfolios Formed on Operating Profitability')
+
+ff_op_vw = ff_op$subsets$data[[1]]
+ff_op_vw %>%select(date, `Lo 20`, `Qnt 2`, `Qnt 3`, `Qnt 4`, `Hi 20`) %>%
+  data_to_plot()
+```
+
+누적수익률을 확인해보면 수익성이 높을수록(Hi 20) 향후에도 지속적으로 수익률이 높으며, 수익성이 낮을수록(Lo 20) 향후에도 수익률이 낮은 '퀄리티 현상'이 존재합니다. 이번에는 저수익성 대비 고수익성 수익률인 QMJ 팩터의 수익률을 살펴보겠습니다.
+
+```{r}
+ff_op_vw %>%
+  select(date, `Lo 30`, `Hi 30`) %>%
+  mutate(QMJ = `Hi 30` - `Lo 30`) %>%
+  select(date, QMJ) %>%
+  data_to_plot()
+```
+
+역시나 장기간 우상향하는 모습입니다.
+
+### 우량성 포트폴리오 구하기
+
+이번에는 국내 종목들 중 우량성(수익성)이 높은 종믁은 어떠한 것이 있는지 확인해보도록 하겠습니다.
+
+```{r}
+library(DBI)
+library(RMySQL)
+library(RcppRoll)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'stock_db' # 사용하고자 하는 스키마
+)
+
+ticker = dbGetQuery(con,
+                    "select * from kor_ticker
+where 기준일 = (select max(기준일) from kor_ticker)
+	and 종목구분 = '보통주';")
+                  
+fs = dbGetQuery(con ,
+"select * from kor_fs
+where 계정 in ('당기순이익', '매출총이익', '영업활동으로인한현금흐름', '자산', '자본')
+and 공시구분 = 'q';
+")
+
+dbDisconnect(con)
+
+fs_roll = fs %>% arrange(종목코드, 계정, 기준일) %>%
+  group_by(종목코드, 계정) %>%
+  mutate(rollsum = roll_sum(값, n = 4, align = 'right', fill = NA)) %>%
+  slice(n()) %>%
+  mutate(rollsum = case_when(
+    계정 %in% c('자본', '자산') ~ rollsum / 4,
+    TRUE ~ rollsum
+  )) %>%
+  ungroup()
+
+fs_roll
+```
+
+1.  티커와 재무제표 테이블을 가져오고, 수익성을 계산하는데 필요한 계정(당기순이익, 매출총이익, 영업활동으로인한현금흐름, 자산, 자본 / 분기 데이터)을 불러옵니다.
+2.  종목코드와 계정별로 그룹을 묶은 후, `roll_sum()` 함수를 이용해 최근 4분기 데이터의 합을 구합니다.
+3.  `slice(n())` 함수를 통해 그룹에서 가장 최근 데이터만 선택합니다.
+4.  자산과 자본의 경우 재무상태표 항목이므로 합이 아닌 평균을 구하며, 나머지 항목은 합을 그대로 사용합니다.
+
+이제 각종 수익성 지표를 계산하겠습니다.
+
+```{r}
+fs_roll_pivot = fs_roll %>% select(계정, 종목코드, rollsum) %>%
+  pivot_wider(names_from = 계정, values_from = rollsum) %>%
+  mutate(ROE = 당기순이익 / 자본,
+         GPA = 매출총이익 / 자산,
+         CFO = 영업활동으로인한현금흐름 / 자산)
+```
+
+마지막으로 수익성 지표의 순위를 구한 후, 상위 20 종목을 선택합니다.
+
+```{r}
+fs_roll_pivot %>%
+  mutate(across(c(ROE, GPA, CFO), .fns = ~rank(desc(.)), .names = "rank_{col}")) %>%
+  mutate(rank = rank(rank_ROE + rank_GPA + rank_CFO)) %>%
+  filter(rank <= 20) %>%
+  left_join(ticker) %>%
+  select(종목명, 종목코드, ROE, GPA, CFO)
+```
+
+## 섹터 중립 포트폴리오
+
+팩터 전략의 단점 중 하나는 선택된 종목들이 특정 섹터로 쏠리는 경우가 있다는 점입니다. 특히 과거 수익률을 토대로 종목을 선정하는 모멘텀 전략은 특정 섹터의 호황기에 동일한 섹터의 모든 종목이 함께 움직이는 경향이 있어 이러한 쏠림이 심할 수 있습니다.
+
+실제 연구 결과를 살펴보아도 섹터 중립 포트폴리오의 수익률이 일반적인 포트폴리오의 수익률 보다 높습니다.
+
+![](images/image-1445836602.png)
+
+먼저 12개월 모멘텀을 이용한 포트폴리오 구성 방법을 다시 살펴봅시다.
+
+```{r}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'stock_db' # 사용하고자 하는 스키마
+)
+
+sector = dbGetQuery(con,
+                    "select * from kor_sector
+where 기준일 = (select max(기준일) from kor_sector);"
+)
+                  
+price = dbGetQuery(con ,
+"select 날짜, 종가, 종목코드
+from kor_price
+where 날짜 >= (select (select max(날짜) from kor_price) - interval 1 year);
+")
+
+dbDisconnect(con)
+
+ret_1yr =
+  price %>% select(날짜, 종목코드, 종가) %>%
+  group_by(종목코드) %>%
+  summarise(ret = last(종가) / first(종가) - 1)
+
+ret_1yr %>% mutate(rank = min_rank(desc(ret))) %>%
+  filter(rank <= 20) %>%
+  left_join(sector, by = (c("종목코드" = "CMP_CD"))) %>%
+  group_by(SEC_NM_KOR) %>%
+  summarize(n = n()) %>%
+  arrange(n) %>%
+  mutate(SEC_NM_KOR = factor(SEC_NM_KOR, levels = .$SEC_NM_KOR %>% unique)) %>%
+  ggplot(aes(x = SEC_NM_KOR, y = n)) +
+  geom_col() +
+  geom_text(aes(label = n, hjust = -1)) +
+  coord_flip()
+```
+
+12개월 기준 모멘텀 상위 종목을 선택한 후, 섹터 테이블을 이용해 섹터별 갯수를 구합니다. 간혹 특정 섹터의 모멘텀이 매우 좋을 경우, 해당 섹터에 쏠림이 심한 경우가 있습니다. 이러한 섹터 쏠림 현상을 제거한 섹터 중립 포트폴리오를 구성해보도록 하겠습니다.
+
+```{r}
+ret_1yr_neutral = ret_1yr %>%
+  left_join(sector, by = (c("종목코드" = "CMP_CD"))) %>%
+  group_by(SEC_NM_KOR) %>%
+  mutate(scale_per_sector = scale(ret),
+         scale_per_sector = ifelse(is.na(`SEC_NM_KOR`),
+                                   NA, scale_per_sector)) %>%
+  ungroup()
+         
+head(ret_1yr_neutral)
+```
+
+1.  `group_by()` 함수를 통해 섹터별 그룹을 만들어줍니다.
+2.  `scale()` 함수를 이용해 그룹별 정규화를 해줍니다. 정규화는 $\frac{x-\mu}{\sigma}$로 계산됩니다.
+3.  섹터 정보가 없을 경우 NA로 변경합니다.
+
+위의 정규화 과정을 살펴보면, 전체 종목에서 12개월 수익률을 비교하는 것이 아닌 각 섹터별로 수익률의 강도를 비교하게 됩니다. 따라서 특정 종목의 과거 수익률이 전체 종목과 비교해서 높았더라도 해당 섹터 내에서의 순위가 낮다면, 정규화된 값은 낮아집니다.
+
+따라서 섹터별 정규화 과정을 거친 값으로 비교 분석을 한다면, 섹터 효과가 제거된 포트폴리오를 구성할 수 있습니다.
+
+```{r}
+ret_1yr_neutral %>%
+  mutate(rank = min_rank(desc(scale_per_sector))) %>%
+  filter(rank <= 20)
+```
+
+```{r}
+ret_1yr_neutral %>%
+  mutate(rank = min_rank(desc(scale_per_sector))) %>%
+  filter(rank <= 20) %>%
+  group_by(SEC_NM_KOR) %>%
+  summarize(n = n()) %>%
+  arrange(n) %>%
+  mutate(SEC_NM_KOR = factor(SEC_NM_KOR, levels = .$SEC_NM_KOR %>% unique)) %>%
+  ggplot(aes(x = SEC_NM_KOR, y = n)) +
+  geom_col() +
+  geom_text(aes(label = n, hjust = -1)) +
+  coord_flip()
+```
+
+`group_by()` 함수를 통해 손쉽게 그룹별 중립화를 할 수 있으며, 글로벌 투자를 하는 경우에는 지역, 국가, 섹터별로도 중립화된 포트폴리오를 구성하기도 합니다.
+
+## 이상치 데이터 처리 및 팩터의 결합
+
+안정적인 퀀트 포트폴리오를 구성하기 위해서는 팩터 데이터를 어떻게 처리하여 결합할지에 대해서도 알고 있어야 하므로, 이러한 점에 대해 살펴보도록 하겠습니다.
+
+모든 데이터 분석에서 중요한 문제 중 하나가 이상치(극단치, Outlier) 데이터를 어떻게 처리할 것인가입니다. 과거 12개월 수익률이 10배인 주식이 과연 모멘텀 관점에서 좋기만 한 주식인지, ROE가 100%를 넘는 주식이 과연 퀄리티 관점에서 좋기만 한 주식인지 고민이 되기 마련입니다. 따라서 이러한 이상치를 제외하고 분석할지, 포함해서 분석할지를 판단해야 합니다. 만일 이상치를 포함한다면 그대로 사용할 것인지, 보정해 사용할 것인지도 판단해야 합니다.
+
+우리가 가지고 있는 PBR 데이터에서 이상치 데이터를 탐색해보도록 하겠습니다.
+
+```{r}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', 
+  host = '127.0.0.1',
+  dbname = 'stock_db'
+)
+
+value = dbGetQuery(con ,
+"select * from kor_value
+where 기준일 = (select max(기준일) from kor_value);
+")
+
+dbDisconnect(con)
+
+PBR = value %>%
+  mutate(값 = ifelse(값 <=0, NA, 값)) %>%
+  filter(지표 == 'PBR') %>%
+  pivot_wider(names_from = '지표', values_from = '값') %>%
+  select(-기준일)
+
+PBR %>% summarize(max_pbr = max(PBR, na.rm = T), min_pbr = min(PBR, na.rm = T))
+```
+
+먼저 밸류 테이블을 불러온 후 PBR 데이터만 선택합니다. PBR의 최대값과 최소값을 확인해보면 값이 매우 큰 것을 확인할 수 있습니다.
+
+```{r}
+PBR %>%
+  ggplot(aes(x = PBR)) +
+  geom_histogram(bins = 100)
+```
+
+국내 종목들의 PBR을 히스토그램으로 그려보면 오른쪽으로 꼬리가 매우 긴 분포를 보입니다. 이는 PBR이 극단적으로 큰 이상치 데이터가 있기 때문입니다. 이처럼 모든 팩터 데이터에는 극단치가 있기 마련이며, 이를 처리하는 방법을 알아보도록 하겠습니다.
+
+### 트림(Trim): 이상치 데이터 삭제
+
+트림은 이상치 데이터를 삭제하는 방법입니다. 위의 예제에서 이상치에 해당하는 상하위 1% 데이터를 삭제하겠습니다.
+
+```{r}
+PBR %>%
+  mutate(PBR = ifelse(percent_rank(PBR) > 0.99, NA, PBR),
+         PBR = ifelse(percent_rank(PBR) < 0.01, NA, PBR)) %>%
+  ggplot(aes(x = PBR)) +
+  geom_histogram(bins = 100)
+```
+
+`percent_rank()` 함수를 통해 백분위를 구한 후 상하위 1%에 해당하는 데이터를 제외한 데이터만 선택합니다. 결과적으로 지나치게 PBR이 낮은 종목과 높은 종목은 제거되어 $x$축의 스케일이 많이 줄어든 모습입니다.
+
+평균이나 분산 같이 통계값을 구하는 과정에서는 이상치 데이터를 제거하는 것이 바람직할 수 있습니다. 그러나 팩터를 이용해 포트폴리오를 구하는 과정에서 해당 방법은 조심스럽게 사용되어야 합니다. 데이터의 손실이 발생하게 되며, 제거된 종목 중 정말로 좋은 종목이 있을 수도 있기 때문입니다.
+
+### 윈저라이징(Winsorizing): 이상치 데이터 대체
+
+이상치 데이터를 다른 데이터로 대체하는 윈저라이징 방법을 사용할 수도 있습니다. 예를 들어 상위 1%를 초과하는 데이터는 1% 값으로 대체하며, 하위 1% 미만의 데이터는 1% 데이터로 대체합니다. 즉, 좌우로 울타리를 쳐놓고 해당 범위를 넘어가는 값을 강제로 울타리에 맞춰줍니다.
+
+```{r}
+PBR %>%
+  mutate(PBR = ifelse(percent_rank(PBR) > 0.99,
+                      quantile(.$PBR, 0.99, na.rm = TRUE), PBR),
+         PBR = ifelse(percent_rank(PBR) < 0.01,
+                      quantile(.$PBR, 0.01, na.rm = TRUE), PBR)) %>%
+  ggplot(aes(x = PBR)) +
+  geom_histogram(bins = 100)
+```
+
+이번에는 값이 상하위 1%를 벗어나는 경우, 1%에 해당하는 값으로 대체하였습니다. 그림을 살펴보면 축 양 끝부분의 막대(붉은색)가 길어진 것을 확인할 수 있습니다.
+
+### 팩터의 결합방법
+
+앞서 밸류 지표의 결합, 퀄리티 지표의 결합, 마법공식 포트폴리오를 구성할 때는 단순히 순위를 더하는 방법을 사용했습니다. 물론 투자 종목수가 얼마 되지 않거나, 개인 투자자의 입장에서는 이러한 방법이 가장 단순하면서도 효과적일수 있습니다. 그러나 전문투자자가 포트폴리오를 구성하거나 팩터를 분석하는 업무를 할 경우 이처럼 단순히 순위를 더하는 방법은 여러 가지 문제를 안고 있습니다.
+
+각 밸류 지표의 순위를 구한 후 히스토그램으로 나타내보도록 하겠습니다.
+
+```{r}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'stock_db' # 사용하고자 하는 스키마
+)
+
+ticker = dbGetQuery(con,
+                    "select * from kor_ticker
+where 기준일 = (select max(기준일) from kor_ticker)
+	and 종목구분 = '보통주';")
+                  
+value = dbGetQuery(con ,
+"select * from kor_value
+where 기준일 = (select max(기준일) from kor_value);
+")
+
+dbDisconnect(con)
+
+value = value %>%
+  mutate(값 = ifelse(값 <=0, NA, 값)) %>%
+  pivot_wider(names_from = '지표', values_from = '값') %>%
+  select(-기준일) %>%
+  mutate(across(c(PBR, PER, PCR, PSR), min_rank, .names = "rank_{col}")) %>%
+  mutate(rank_DY = min_rank(desc(DY)))
+
+value %>%
+  select(종목코드, contains('rank_')) %>%
+  pivot_longer(-종목코드) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(name ~. , ncol = 1)
+```
+
+그림에서 알 수 있듯이 순위를 구하는 것의 가장 큰 장점은 극단치로 인한 효과가 사라진다는 점과 균등한 분포를 가진다는 점입니다. 그러나 각 지표의 $x$축을 보면 최댓값이 서로 다릅니다. 이는 지표별 결측치로 인해 유효 데이터의 갯수가 달라 나타나는 현상입니다.
+
+```{r}
+value %>%
+  select(종목코드, contains('rank_')) %>%
+  pivot_longer(-종목코드) %>%
+  group_by(name) %>%
+  summarize(na_count = sum(is.na(value)))
+```
+
+밸류 지표 별 NA 개수를 확인해보면 그 결과가 모두 다르며, 특히 배당 수익률의 경우 절반 정도가 NA 데이터입니다. 따라서 서로 다른 범위의 분포를 단순히 합치는 것은 좋은 방법이 아닙니다. 예를 들어 A, B, C, D 팩터에 각각 비중을 25%, 25%, 25%, 25% 부여해 포트폴리오를 구성한다고 가정해봅시다. 각 순위는 분포의 범위가 다르므로, 순위와 비중의 가중평균을 통해 포트폴리오를 구성하면 왜곡된 결과를 발생시킵니다.
+
+이러한 문제를 해결하는 가장 좋은 방법은 순위를 구한 후 이를 Z-Score로 정규화하는 것입니다.
+
+```{r}
+value_z_score = value %>%
+  select(1:6) %>%
+  mutate(across(c(PBR, PER, PCR, PSR), min_rank, .names = "rank_{col}")) %>%
+  mutate(rank_DY = min_rank(desc(DY))) %>%
+  mutate(across(c(rank_PBR, rank_PER, rank_PCR, rank_PSR, rank_DY), scale, .names = "z_{col}")) 
+
+value_z_score %>%
+  select(종목코드, contains('z_')) %>%
+  pivot_longer(-종목코드) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(name ~. , ncol = 1)
+```
+
+앞서 구해진 순위에 scale 함수를 통해 정규화를 해줍니다. 기본적으로 순위의 분포가 가진 극단치 효과가 사라지는 점과 균등 분포의 장점을 유지하고 있으며, 분포의 범위 역시 거의 동일하게 바뀌었습니다. 이처럼 여러 팩터를 결합해 포트폴리오를 구성하고자 하는 경우, 먼저 각 팩터(지표)별 순위를 구한 후 이를 정규화한 뒤 더해야 왜곡 효과가 제거되어 안정적인 포트폴리오가 됩니다.
+
+$$Z-Score(Rank(Factor\ A)) + Z-Score(Rank(Factor\ B)) + \dots + Z-Score(Rank(Factor\ N))$$
+
+## 멀티팩터 포트폴리오
+
+앞에서 배웠던 팩터 이론들과 결합 방법들을 응용해 멀티팩터 포트폴리오를 구성해봅시다. 각 팩터에 사용되는 지표는 다음과 같습니다.
+
+-   퀄리티: 자기자본이익률(ROE), 매출총이익(GPA), 영업활동현금흐름(CFO)
+-   밸류: PER, PBR, PSR, PCR, DY
+-   모멘텀: 12개월 수익률, K-Ratio
+
+```{r}
+library(DBI)
+library(RMySQL)
+
+# 연결
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', 
+  host = '127.0.0.1',
+  dbname = 'stock_db'
+)
+
+# 티커
+ticker = dbGetQuery(con,
+                    "select * from kor_ticker
+where 기준일 = (select max(기준일) from kor_ticker)
+	and 종목구분 = '보통주';")
+      
+# 주가            
+price = dbGetQuery(con ,
+"select 날짜, 종가, 종목코드
+from kor_price
+where 날짜 >= (select (select max(날짜) from kor_price) - interval 1 year);
+")
+
+# 밸류
+value = dbGetQuery(con ,
+"select * from kor_value
+where 기준일 = (select max(기준일) from kor_value);
+")
+
+# 재무제표
+fs = dbGetQuery(con ,
+"select * from kor_fs
+where 계정 in ('당기순이익', '매출총이익', '영업활동으로인한현금흐름', '자산', '자본')
+and 공시구분 = 'q';
+")
+
+# 섹터
+sector = dbGetQuery(con,
+                    "select * from kor_sector
+where 기준일 = (select max(기준일) from kor_sector);"
+)
+
+dbDisconnect(con)
+```
+
+티커, 섹터, 주가, 재무제표, 가치지표 데이터를 불러옵니다.
+
+```{r}
+value = value %>%
+  mutate(값 = ifelse(값 <=0, NA, 값)) %>%
+  pivot_wider(names_from = '지표', values_from = '값') %>%
+  select(-기준일) %>%
+  mutate(across(c(PBR, PER, PCR, PSR), min_rank, .names = "rank_{col}")) %>%
+  mutate(rank_DY = min_rank(desc(DY)))
+```
+
+가치지표를 핸들링합니다.
+
+```{r}
+library(RcppRoll)
+
+fs_roll = fs %>% arrange(종목코드, 계정, 기준일) %>%
+  group_by(종목코드, 계정) %>%
+  mutate(rollsum = roll_sum(값, n = 4, align = 'right', fill = NA)) %>%
+  slice(n()) %>%
+  mutate(rollsum = case_when(
+    계정 %in% c('자본', '자산') ~ rollsum / 4,
+    TRUE ~ rollsum
+  )) %>%
+  ungroup()
+
+fs_roll_pivot = fs_roll %>% select(계정, 종목코드, rollsum) %>%
+  pivot_wider(names_from = 계정, values_from = rollsum) %>%
+  mutate(ROE = 당기순이익 / 자본,
+         GPA = 매출총이익 / 자산,
+         CFO = 영업활동으로인한현금흐름 / 자산)
+```
+
+퀄리티 지표를 계산하기 위해 TTM 기준 ROE, GPA, CFO를 계산합니다.
+
+```{r}
+ret_1yr =
+  price %>% select(날짜, 종목코드, 종가) %>%
+  group_by(종목코드) %>%
+  slice_tail(n = 255) %>%
+  summarise(ret = last(종가) / first(종가) - 1)
+
+k_ratio = price %>%
+  group_by(종목코드) %>%
+  filter(n() >= 200) %>%
+  mutate(ret = 종가 / lag(종가) - 1) %>%
+  mutate(ret = log(1+ret)) %>%
+  slice(-1) %>%
+  mutate(cumret = cumsum(ret)) %>%
+  mutate(id = row_number())  %>%
+  ungroup() %>%
+  nest(data = -종목코드) %>%
+  mutate(model = map(data, ~lm(cumret~id, data = .)),
+         tidied = map(model, tidy)) %>%
+  unnest(tidied) %>%
+  filter(term == 'id') %>%
+  mutate(k_ratio = estimate / `std.error`) 
+```
+
+최근 12개월 수익률과 K-Ratio를 계산합니다. 이제 모든 테이블을 하나로 합치도록 합니다.
+
+```{r}
+library(tibble)
+
+data_bind  = 
+  ticker %>%
+  left_join(sector, by = c('종목코드' = 'CMP_CD')) %>%
+  left_join(fs_roll_pivot %>% select(종목코드, ROE, GPA, CFO)) %>%
+  left_join(value) %>%
+  left_join(ret_1yr) %>%
+  left_join(k_ratio %>% select(종목코드, k_ratio)) 
+
+data_bind = data_bind %>%
+  mutate(SEC_NM_KOR = replace_na(SEC_NM_KOR, '기타')) %>% as_tibble()
+
+data_bind
+```
+
+테이블을 합친 후, 섹터 정보가 없는 경우 '기타'를 입력합니다.
+
+이번에는 각 섹터별로 아웃라이어를 제거한 후 순위와 Z-Score를 구하도록 하겠습니다. 첫번째로 퀄리티 지표의 Z-Score를 계산합니다.
+
+```{r}
+z_quality = data_bind %>% select(종목코드, SEC_NM_KOR, ROE, GPA, CFO) %>%
+  group_by(SEC_NM_KOR) %>%
+  mutate(across(c(ROE, GPA, CFO), .fns = ~min_rank(desc(.)), .names = "rank_{col}")) %>%  
+  mutate(across(c(rank_ROE, rank_GPA, rank_CFO), .fns = ~scale(.), .names = "z_{col}")) %>%
+  mutate(z_quality = rowSums(across(contains('z_rank')))) %>%
+  ungroup()
+
+data_bind = data_bind %>%
+  left_join(z_quality %>% select(종목코드, z_quality))
+
+data_bind
+```
+
+두번째로 밸류 지표의 Z-Score를 계산합니다.
+
+```{r}
+z_value =
+  data_bind %>% select(종목코드, SEC_NM_KOR, DY, PBR, PCR, PER, PSR) %>%
+  group_by(SEC_NM_KOR) %>%
+  mutate(rank_DY = min_rank(desc(DY))) %>%
+  mutate(across(c(PBR, PCR, PER, PSR), .fns = ~min_rank(.), .names = "rank_{col}")) %>%  
+  mutate(across(c(rank_DY, rank_PBR, rank_PCR, rank_PER, rank_PSR), .fns = ~scale(.), .names = "z_{col}")) %>%
+  mutate(z_value = rowSums(across(contains('z_rank')))) %>%
+  ungroup()
+
+data_bind = data_bind %>%
+  left_join(z_value %>% select(종목코드, z_value))
+```
+
+마지막으로 모멘텀 지표의 Z-Score를 구합니다.
+
+```{r}
+z_momentum =
+  data_bind %>% select(종목코드, SEC_NM_KOR, ret, k_ratio) %>%
+  group_by(SEC_NM_KOR) %>%
+  mutate(across(c(ret, k_ratio), .fns = ~min_rank(desc(.)), .names = "rank_{col}")) %>%  
+  mutate(across(c(rank_ret, rank_k_ratio), .fns = ~scale(.), .names = "z_{col}")) %>%
+  mutate(z_momentum = rowSums(across(contains('z_rank')))) %>%
+  ungroup()
+
+data_bind = data_bind %>%
+  left_join(z_momentum %>% select(종목코드, z_momentum))
+```
+
+각 팩터의 분포를 시각화해보도록 하겠습니다.
+
+```{r}
+data_bind %>%
+  select(종목코드, contains('z_')) %>%
+  pivot_longer(-종목코드) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_grid(name ~ .)
+```
+
+각각 퀄리티 지표는 3개, 밸류 지표는 5개, 모멘텀 지표는 2개 기준을 이용해 계산했습니다. 그림에서 알 수 있듯이 기준을 많이 사용할 수록 Z-Score가 넓게 퍼져있는 모습을 보이며, 각 팩터별 분포가 동일하지 않습니다. 따라서 다시 Z-Score를 계산해 분포의 넓이를 비슷하게 맞춰주도록 합니다.
+
+```{r}
+library(magrittr)
+
+data_bind_final  = data_bind %>%
+  select(종목코드, z_quality, z_value, z_momentum) %>%
+  mutate(across(c(z_quality, z_value, z_momentum), .fns = ~scale(.))) %>%
+  set_colnames(c('종목코드', 'quality', 'value', 'momentum'))
+
+data_bind_final %>%
+  pivot_longer(-종목코드) %>%
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_grid(name ~ .)
+```
+
+재계산된 Z-Score의 분포의 넓이를 살펴보면 이전에 비해 훨씬 비슷해진 것을 알 수 있습니다. 각 팩터들 간의 상관관계를 살펴보겠습니다.
+
+```{r}
+data_bind_final %>%
+  select(-종목코드) %>%
+  cor(., use = 'complete.obs') %>%
+  round(., 2)
+```
+
+각 팩터간 상관관계가 매우 낮으며, 여러 팩터를 동시에 고려함으로서 분산효과를 기대할 수 있습니다. 이제 계산된 팩터들을 토대로 최종 포트폴리오를 구성해보도록 하겠습니다.
+
+```{r}
+wts = c(0.3, 0.3, 0.3)
+
+data_bind_final = data_bind_final %>%
+  column_to_rownames('종목코드') %>%
+  multiply_by(wts) %>% 
+  mutate(qvm = rowSums(.)) %>%
+  rownames_to_column(var = '종목코드') %>%
+  select(종목코드, qvm)
+  
+data_bind = data_bind %>%
+  left_join(data_bind_final) %>%
+  mutate(invest = ifelse(min_rank(qvm) <= 20, 'Y', 'N'))
+
+data_bind %>%
+  filter(invest == 'Y')
+```
+
+1.  각 팩터별 비중을 리스트로 만들며, 0.3으로 동일한 비중을 입력합니다다. 비중을 \[0.2, 0.4, 0.4\]와 같이 팩터별로 다르게 줄 수도 있으며, 이는 어떠한 팩터를 더욱 중요하게 생각하는지 혹은 더욱 좋게 보는지에 따라 조정이 가능합니다.
+2.  팩터별 Z-Score와 비중의 곱을 구한 후 이를 합합니다.
+3.  기존 테이블(data_bind)과 합칩니다.
+4.  최종 Z-Score의 합(qvm) 기준 순위가 1\~20인 경우는 투자 종목에 해당하므로 'Y', 그렇지 않으면 'N'으로 표시합니다.
+
+최종 선택된 종목들을 보면 전반적으로 퀄리티가 높고, 밸류에이션이 낮으며, 최근 수익률이 높습니다. 물론 특정 팩터(예: 모멘텀)가 좋지 않아도 다른 팩터(예: 밸류)가 지나치게 좋아 선택되는 경우도 있습니다. 이제 선택된 종목들과 그렇지 않은 종목들간의 특성을 그림으로 표현해보겠습니다.
+
+```{r}
+data_bind %>%
+  select(ROE, GPA, CFO, invest) %>%
+  na.omit() %>%
+  pivot_longer(-invest) %>%
+  group_by(name) %>%
+  mutate(rank = min_rank(desc(value))) %>%
+  ggplot(aes(x = rank, y = 1, shape = invest, color = invest, alpha = invest)) +
+  geom_point(size = 3) +
+  scale_color_manual(values=c("grey", "red")) +
+  facet_grid(name~.) 
+```
+
+1.  퀄리티 지표가 포함된 데이터를 선택한다.
+2.  각 지표(name)별 그룹을 묶은 후 순위를 계산합니다.
+3.  그림으로 나타냅니다.
+
+붉은색 ▲ 마크는 투자하는 종목, 회색 ● 마크는 투자하지 않는 종목입니다. 전반적으로 멀티팩터 기준으로 선정된 종목들의 퀄리티 순위가 높음을 알 수 있습니다.
+
+이번에는 동일한 방법으로 밸류 지표의 차이를 살펴보겠습니다.
+
+```{r}
+data_bind %>%
+  select(DY, PBR, PER, PCR, PSR, invest) %>%
+  na.omit() %>%
+  pivot_longer(-invest) %>%
+  group_by(name) %>%
+  mutate(rank = 
+           ifelse(name == 'DY', min_rank(desc(value)), min_rank(value))) %>%
+  ggplot(aes(x = rank, y = 1, shape = invest, color = invest, alpha = invest)) +
+  geom_point(size = 3) +
+  scale_color_manual(values=c("grey", "red")) +
+  facet_grid(name~.) 
+```
+
+밸류 지표 역시 멀티팩터 기준으로 선정된 종목들의 순위가 높습니다. 그러나 사용되는 지표가 많은 만큼 일부 지표에서는 순위가 낮은 종목들이 선정되기도 합니다.
+
+이번에는 모멘텀 지표의 차이를 살펴보겠습니다.
+
+```{r}
+data_bind %>%
+  select(ret, k_ratio, invest) %>%
+  na.omit() %>%
+  pivot_longer(-invest) %>%
+  group_by(name) %>%
+  mutate(rank = min_rank(desc(value))) %>%
+  ggplot(aes(x = rank, y = 1, shape = invest, color = invest, alpha = invest)) +
+  geom_point(size = 3) +
+  scale_color_manual(values=c("grey", "red")) +
+  facet_grid(name~.) 
+```
+
+모멘텀 지표 역시 멀티팩터 기준으로 선정된 종목들의 순위가 높습니다.
+
+이처럼 멀티팩터 기준으로 종목을 선정할 경우 각 팩터가 골고루 좋은 종목을 선택할 수 있습니다. 이 외에도 팩터를 만들 수 있는 기본 데이터가 모두 있으므로 최근 적자기업 제외, 매출 증가 등 다양한 전략을 추가할 수도 있습니다.

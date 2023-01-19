@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "퀀트 투자 전문가 과정"
+  author: "이현열"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - sql.qmd
+    - r_basic.qmd
+    - r_sql.qmd
+    - api.qmd
+    - crawl.qmd
+    - portfolio.qmd
+    - backtest.qmd
+    - performance.qmd
+    
+format:
+  html:
+    theme: cosmo
+
+editor: visual
+
+filters:
+   - lightbox
+lightbox: auto

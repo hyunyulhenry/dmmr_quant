@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>퀀트 투자 전문가 과정 - 6&nbsp; 크롤링 기초</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./portfolio.html" rel="next">
+<link href="./api.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">퀀트 투자 전문가 과정</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crawl.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#인코딩의-이해와-r에서-utf-8-설정하기" id="toc-인코딩의-이해와-r에서-utf-8-설정하기" class="nav-link active" data-scroll-target="#인코딩의-이해와-r에서-utf-8-설정하기"><span class="toc-section-number">6.1</span>  인코딩의 이해와 R에서 UTF-8 설정하기</a></li>
+  <li><a href="#한글-인코딩-방식의-종류" id="toc-한글-인코딩-방식의-종류" class="nav-link" data-scroll-target="#한글-인코딩-방식의-종류"><span class="toc-section-number">6.2</span>  한글 인코딩 방식의 종류</a></li>
+  <li><a href="#웹의-동작-방식" id="toc-웹의-동작-방식" class="nav-link" data-scroll-target="#웹의-동작-방식"><span class="toc-section-number">6.3</span>  웹의 동작 방식</a>
+  <ul class="collapse">
+  <li><a href="#http" id="toc-http" class="nav-link" data-scroll-target="#http"><span class="toc-section-number">6.3.1</span>  HTTP</a></li>
+  </ul></li>
+  <li><a href="#html과-css" id="toc-html과-css" class="nav-link" data-scroll-target="#html과-css"><span class="toc-section-number">6.4</span>  HTML과 CSS</a>
+  <ul class="collapse">
+  <li><a href="#html-기본-구조" id="toc-html-기본-구조" class="nav-link" data-scroll-target="#html-기본-구조"><span class="toc-section-number">6.4.1</span>  HTML 기본 구조</a></li>
+  <li><a href="#태그와-속성" id="toc-태그와-속성" class="nav-link" data-scroll-target="#태그와-속성"><span class="toc-section-number">6.4.2</span>  태그와 속성</a></li>
+  <li><a href="#h-태그와-p-태그" id="toc-h-태그와-p-태그" class="nav-link" data-scroll-target="#h-태그와-p-태그"><span class="toc-section-number">6.4.3</span>  h 태그와 p 태그</a></li>
+  <li><a href="#리스트를-나타내는-ul-태그와-ol-태그" id="toc-리스트를-나타내는-ul-태그와-ol-태그" class="nav-link" data-scroll-target="#리스트를-나타내는-ul-태그와-ol-태그"><span class="toc-section-number">6.4.4</span>  리스트를 나타내는 ul 태그와 ol 태그</a></li>
+  <li><a href="#table-태그" id="toc-table-태그" class="nav-link" data-scroll-target="#table-태그"><span class="toc-section-number">6.4.5</span>  table 태그</a></li>
+  <li><a href="#a-태그와-img-태그-및-속성" id="toc-a-태그와-img-태그-및-속성" class="nav-link" data-scroll-target="#a-태그와-img-태그-및-속성"><span class="toc-section-number">6.4.6</span>  a 태그와 img 태그 및 속성</a></li>
+  <li><a href="#div-태그" id="toc-div-태그" class="nav-link" data-scroll-target="#div-태그"><span class="toc-section-number">6.4.7</span>  div 태그</a></li>
+  <li><a href="#css" id="toc-css" class="nav-link" data-scroll-target="#css"><span class="toc-section-number">6.4.8</span>  CSS</a></li>
+  <li><a href="#클래스와-id" id="toc-클래스와-id" class="nav-link" data-scroll-target="#클래스와-id"><span class="toc-section-number">6.4.9</span>  클래스와 id</a></li>
+  </ul></li>
+  <li><a href="#크롤링-이해하기" id="toc-크롤링-이해하기" class="nav-link" data-scroll-target="#크롤링-이해하기"><span class="toc-section-number">7</span>  크롤링 이해하기</a>
+  <ul class="collapse">
+  <li><a href="#get과-post-방식-이해하기" id="toc-get과-post-방식-이해하기" class="nav-link" data-scroll-target="#get과-post-방식-이해하기"><span class="toc-section-number">7.1</span>  GET과 POST 방식 이해하기</a>
+  <ul class="collapse">
+  <li><a href="#get-방식" id="toc-get-방식" class="nav-link" data-scroll-target="#get-방식"><span class="toc-section-number">7.1.1</span>  GET 방식</a></li>
+  <li><a href="#post-방식" id="toc-post-방식" class="nav-link" data-scroll-target="#post-방식"><span class="toc-section-number">7.1.2</span>  POST 방식</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#크롤링-예제" id="toc-크롤링-예제" class="nav-link" data-scroll-target="#크롤링-예제"><span class="toc-section-number">8</span>  크롤링 예제</a>
+  <ul class="collapse">
+  <li><a href="#명언-크롤링하기" id="toc-명언-크롤링하기" class="nav-link" data-scroll-target="#명언-크롤링하기"><span class="toc-section-number">8.1</span>  명언 크롤링하기</a></li>
+  <li><a href="#xpath를-이용해-원하는-지점만-찾기" id="toc-xpath를-이용해-원하는-지점만-찾기" class="nav-link" data-scroll-target="#xpath를-이용해-원하는-지점만-찾기"><span class="toc-section-number">8.2</span>  xpath를 이용해 원하는 지점만 찾기</a></li>
+  <li><a href="#표-크롤링" id="toc-표-크롤링" class="nav-link" data-scroll-target="#표-크롤링"><span class="toc-section-number">8.3</span>  표 크롤링</a></li>
+  <li><a href="#post-방식-크롤링" id="toc-post-방식-크롤링" class="nav-link" data-scroll-target="#post-방식-크롤링"><span class="toc-section-number">8.4</span>  POST 방식 크롤링</a></li>
+  </ul></li>
+  <li><a href="#셀레니움을-이용한-동적-크롤링" id="toc-셀레니움을-이용한-동적-크롤링" class="nav-link" data-scroll-target="#셀레니움을-이용한-동적-크롤링"><span class="toc-section-number">9</span>  셀레니움을 이용한 동적 크롤링</a>
+  <ul class="collapse">
+  <li><a href="#셀레니움-실습하기" id="toc-셀레니움-실습하기" class="nav-link" data-scroll-target="#셀레니움-실습하기"><span class="toc-section-number">9.1</span>  셀레니움 실습하기</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>API를 이용하면 데이터를 매우 쉽게 수집할 수 있지만, 국내 주식 데이터를 다운로드 하기에는 한계가 있으며, 원하는 데이터가 API의 형태로 제공된다는 보장도 없습니다. 따라서 우리는 필요한 데이터를 얻기 위해 직접 찾아 나서야 합니다.</p>
+<p>크롤링 혹은 스크래핑이란 웹사이트에서 원하는 정보를 수집하는 기술입니다. 대부분의 금융 웹사이트는 간단한 형태로 작성되어 있어, 몇 가지 기술만 익히면 어렵지 않게 데이터를 크롤링할 수 있습니다.</p>
+<p>**크롤링을 할 때 주의해야 할 점이 있습니다. 특정 웹사이트의 페이지를 쉬지 않고 크롤링하는 행위를 무한 크롤링이라고 합니다. 무한 크롤링은 해당 웹사이트의 자원을 독점하게 되어 타인의 사용을 막게 되며 웹사이트에 부하를 주게 됩니다. 일부 웹사이트에서는 동일한 IP로 쉬지 않고 크롤링을 할 경우 접속을 막아버리는 경우도 있습니다. 따라서 하나의 페이지를 크롤링한 후 1\~2초 가량 정지하고 다시 다음 페이지를 크롤링하는 것이 좋습니다.**</p>
+<section id="인코딩의-이해와-r에서-utf-8-설정하기" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="인코딩의-이해와-r에서-utf-8-설정하기"><span class="header-section-number">6.1</span> 인코딩의 이해와 R에서 UTF-8 설정하기</h2>
+<p>R에서 스크립트를 한글로 작성해 저장한 후 이를 다시 불러올 때, 혹은 한글로 된 데이터를 크롤링하면 오류가 뜨거나 읽을 수 없는 문자로 나타나는 경우가 종종 있습니다. 이는 한글 인코딩 때문에 발생하는 문제이며, 이러한 현상을 흔히 ’인코딩이 깨졌다’라고 표현합니다. 인코딩이란 사람이 사용하는 언어를 컴퓨터가 사용하는 0과 1로 변환하는 과정을 말하며, 이와 반대의 과정을 디코딩이라고 합니다.</p>
+<p>이렇듯 사람과 컴퓨터 간의 언어를 번역하기 위해 최초로 사용된 방식이 아스키(ASCII: American Standard Code for Information Interchange)입니다. 0부터 127까지 총 128개 바이트에 알파벳과 숫자, 자주 사용되는 특수문자 값을 부여하고, 문자가 입력되면 이에 대응되는 바이트가 저장됩니다. 그러나 아스키의 ’American’이라는 이름에서 알 수 있듯이 이는 영어의 알파벳이 아닌 다른 문자를 표현하는 데 한계가 있으며, 이를 보완하기 위한 여러 방법이 나오게 되었습니다.</p>
+</section>
+<section id="한글-인코딩-방식의-종류" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="한글-인코딩-방식의-종류"><span class="header-section-number">6.2</span> 한글 인코딩 방식의 종류</h2>
+<p>인코딩에 대한 전문적인 내용은 이 책의 범위를 넘어가며, 크롤링을 위해서는 한글을 인코딩하는 데 쓰이는 EUC-KR과 CP949, UTF-8 정도만 이해해도 충분합니다. 만일 ’알’이라는 단어를 인코딩한다면 어떤 방법이 있을까요? 먼저 ’알’이라는 문자 자체에 해당하는 코드를 부여해 나타내는 방법이 있습니다. 아니면 이를 구성하는 모음과 자음을 나누어 ㅇ, ㅏ, ㄹ 각각에 해당하는 코드를 부여하고 이를 조합할 수도 있습니다. 전자와 같이 완성된 문자 자체로 나타내는 방법을 완성형, 후자와 같이 각 자모로 나타내는 방법을 조합형이라고 합니다.</p>
+<p>한글 인코딩 중 완성형으로 가장 대표적인 방법은 EUC-KR입니다. EUC-KR은 현대 한글에서 많이 쓰이는 문자 2,350개에 번호를 붙인 방법입니다. 그러나 2,350개 문자로 모든 한글 자모의 조합을 표현하기 부족해, 이를 보완하고자 마이크로소프트가 도입한 방법이 CP949입니다. CP949는 11,720개 한글 문자에 번호를 붙인 방법으로 기존 EUC-KR보다 나타낼 수 있는 한글의 개수가 훨씬 많아졌습니다. 윈도우의 경우 기본 인코딩이 CP949로 되어 있습니다.</p>
+<p>조합형의 대표적 방법인 UTF-8은 모음과 자음 각각에 코드를 부여한 후 조합해 한글을 나타냅니다. 조합형은 한글뿐만 아니라 다양한 언어에 적용할 수 있다는 장점이 있어 전 세계 웹페이지의 대부분이 UTF-8로 만들어지고 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/encoding_ratio.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/api/encoding_ratio.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="웹의-동작-방식" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="웹의-동작-방식"><span class="header-section-number">6.3</span> 웹의 동작 방식</h2>
+<p>크롤링은 웹사이트의 정보를 수집하는 과정입니다. 따라서 웹이 어떻게 동작하는지 이해할 필요가 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/web_str.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/api/web_str.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>먼저 클라이언트란 여러분의 데스크톱이나 휴대폰과 같은 장치와 크롬이나 파이어폭스와 같은 소프트웨어를 의미합니다. 서버는 웹사이트와 앱을 저장하는 컴퓨터를 의미합니다. 클라이언트가 특정 정보를 요구하는 과정을 ’요청’이라고 하며, 서버가 해당 정보를 제공하는 과정을 ’응답’이라고 합니다. 그러나 클라이언트와 서버가 연결되어 있지 않다면 둘 사이에 정보를 주고받을 수 없으며, 이를 연결하는 공간이 바로 인터넷입니다. 또한 건물에도 고유의 주소가 있는 것처럼, 각 서버에도 고유의 주소가 있는데 이것이 인터넷 주소 혹은 URL입니다.</p>
+<p>여러분이 네이버에서 경제 기사를 클릭하는 경우를 생각해봅시다. 클라이언트는 사용자인 여러분이고, 서버는 네이버이며, URL은 www.naver.com 이 됩니다. 경제 기사를 클릭하는 과정이 요청이며, 클릭 후 해당 페이지를 보여주는 과정이 응답입니다.</p>
+<section id="http" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="http"><span class="header-section-number">6.3.1</span> HTTP</h3>
+<p>클라이언트가 각기 다른 방법으로 데이터를 요청한다면, 서버는 해당 요청을 알아듣지 못할 것입니다. 이를 방지하기 위해 규정된 약속이나 표준에 맞추어 데이터를 요청해야 합니다. 이러한 약속을 HTTP(HyperText Transfer Protocol)라고 합니다.</p>
+<p>클라이언트가 서버에게 요청의 목적이나 종류를 알리는 방법을 HTTP 요청 방식(HTTP Request Method)이라고 합니다. HTTP 요청 방식은 크게 GET, POST, PUT, DELETE라는 네 가지로 나눌 수 있지만 크롤링에는 GET과 POST 방식이 대부분 사용되므로 이 두 가지만 알아도 충분합니다.</p>
+<p>인터넷을 사용하다 보면 한 번쯤 ‘이 페이지를 볼 수 있는 권한이 없음(HTTP 오류 403 - 사용할 수 없음)’ 혹은 ’페이지를 찾을 수 없음(HTTP 오류 404 - 파일을 찾을 수 없음)’이라는 오류를 본 적이 있을 겁니다. 여기서 403과 404라는 숫자는 클라이언트의 요청에 대한 서버의 응답 상태를 나타내는 HTTP 상태 코드입니다.</p>
+<p>HTTP 상태 코드는 100번대부터 500번대까지 있으며, 성공적으로 응답을 받을 시 200번 코드를 받게 됩니다. 각 코드에 대한 내용은 HTTP 상태 코드를 검색하면 확인할 수 있으며, 크롤링 과정에서 오류가 발생할 시 해당 코드를 통해 어떤 부분에서 오류가 발생했는지 확인이 가능합니다.</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 31%">
+<col style="width: 44%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>코드</th>
+<th>내용</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1xx</td>
+<td>Informational (조건부 응답)</td>
+<td>리퀘스트를 받고, 처리 중에 있음</td>
+</tr>
+<tr class="even">
+<td>2xx</td>
+<td>Success (성공)</td>
+<td>리퀘스트를 정상적으로 처리함</td>
+</tr>
+<tr class="odd">
+<td>3xx</td>
+<td>Redirection (리디렉션)</td>
+<td>리퀘스트 완료를 위해 추가 동작이 필요함</td>
+</tr>
+<tr class="even">
+<td>4xx</td>
+<td>Client Error (클라이언트 오류)</td>
+<td>클라이언트 요청을 처리할 수 없어 오류 발생</td>
+</tr>
+<tr class="odd">
+<td>5xx</td>
+<td>Server Error (서버 오류)</td>
+<td>서버에서 처리를 하지 못하여 오류 발생</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="html과-css" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="html과-css"><span class="header-section-number">6.4</span> HTML과 CSS</h2>
+<p>클라이언트와 서버가 데이터를 주고받을 때는 디자인이라는 개념이 필요하지 않습니다. 그러나 응답받은 정보를 사람이 확인하려면 보기 편한 방식으로 바꾸어줄 필요가 있는데 웹페이지가 그러한 역할을 합니다. 웹페이지의 제목, 단락, 목록 등 레이아웃을 잡아주는 데 쓰이는 대표적인 마크업 언어가 HTML(HyperText Markup Language)입니다. HTML을 통해 잡혀진 뼈대에 글자의 색상이나 폰트, 배경색, 배치 등 화면을 꾸며주는 역할을 하는 것이 CSS(Cascading Style Sheets)입니다.</p>
+<p>우리의 목적은 웹페이지를 만드는 것이 아니므로 HTML과 CSS에 대해 자세히 알 필요는 없습니다. 그러나 크롤링하고자 하는 데이터가 웹페이지의 어떤 태그 내에 위치하고 있는지, 어떻게 크롤링하면 될지 파악하기 위해서는 HTML과 CSS에 대한 기본적인 지식은 알아야 합니다.</p>
+<p>HTML과 CSS의 실습은 아래 페이지에서 해볼 수 있습니다.</p>
+<pre><code>https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro</code></pre>
+<section id="html-기본-구조" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="html-기본-구조"><span class="header-section-number">6.4.1</span> HTML 기본 구조</h3>
+<p>HTML은 크게 메타 데이터를 나타내는 head와 본문을 나타내는 body로 나누어집니다. head에서 title은 웹페이지에서 나타나는 제목을 나타내며 body 내에는 본문에 들어갈 각종 내용들이 포함되어 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;title&gt;</span>Page Title<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span> This is page heading <span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span> THis is first paragraph text <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="images/api/html_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>&lt;head&gt; 부분에 입력한 내역은 실습 페이지 구조 상 확인되지 않지만, &lt;body&gt; 부분에 입력한 글자들은 우측 결과물 페이지에서 확인이 가능합니다. &lt;h2&gt;와 &lt;p&gt; 등의 태그가 하는 역할들에 대해서 더욱 자세히 알아보도록 하겠습니다.</p>
+</section>
+<section id="태그와-속성" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="태그와-속성"><span class="header-section-number">6.4.2</span> 태그와 속성</h3>
+<p>HTML 코드는 태그와 속성, 내용으로 이루어져 있습니다. 크롤링한 데이터에서 특정 태그의 데이터만을 찾는 방법, 특정 속성의 데이터만을 찾는 방법, 뽑은 자료에서 내용만을 찾는 방법 등 내용을 찾는 방법이 모두 다르기 때문에 태그와 속성에 대해 좀 더 자세히 살펴보겠습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_tag.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="images/api/html_tag.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>꺾쇠(&lt;&gt;)로 감싸져 있는 부분을 태그라고 하며, 여는 태그 &lt;&gt;가 있으면 반드시 이를 닫는 태그인 &lt;/&gt;가 쌍으로 있어야 합니다. 속성은 해당 태그에 대한 추가적인 정보를 제공해주는 것으로, 뒤에 속성값이 따라와야 합니다. 내용은 우리가 눈으로 보는 텍스트 부분을 의미합니다. 앞의 HTML 코드는 문단을 나타내는</p>
+<p>
+, 정렬을 나타내는 align 속성과 center를 통해 가운데 정렬을 지정하며, 내용에는 ’퀀트 투자 Cookbook’을 나타내고,
+</p>
+<p>태그를 통해 태그를 마쳤습니다.</p>
+</section>
+<section id="h-태그와-p-태그" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="h-태그와-p-태그"><span class="header-section-number">6.4.3</span> h 태그와 p 태그</h3>
+<p>h 태그는 폰트의 크기를 나타내는 태그이며, p 태그는 문단을 나타내는 태그입니다. 이를 사용한 간단한 예제는 다음과 같습니다. h 태그의 숫자가 작을수록 텍스트 크기는 커지는 것이 확인되며, 숫자는 1에서 6까지 지원됩니다. p 태그를 사용하면 각각의 문단이 만들어지는 것이 확인됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1&gt;</span>Page heading: size 1<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>Page heading: size 2<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h3&gt;</span>Page heading: size 3<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>Quant Cookbook<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>By Henry<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="images/api/html_2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>h 태그의 숫자가 작을수록 텍스트 크기는 커지며, 숫자는 1에서 6까지 지원됩니다. 또한 p 태그를 사용하면 각각의 문단이 만들어집니다.</p>
+</section>
+<section id="리스트를-나타내는-ul-태그와-ol-태그" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="리스트를-나타내는-ul-태그와-ol-태그"><span class="header-section-number">6.4.4</span> 리스트를 나타내는 ul 태그와 ol 태그</h3>
+<p>ul과 ol 태그는 리스트(글머리 기호)를 만들 때 사용됩니다. ul은 순서가 없는 리스트(unordered list), ol은 순서가 있는 리스트(ordered list)를 만듭니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span> Unordered List<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List 1<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List 2<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List 3<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span>  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span> Ordered List<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ol&gt;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List A<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List B<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List C<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;li&gt;</span>List D<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a> <span class="kw">&lt;/ol&gt;</span> </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/api/html_3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>ul 태그로 감싼 부분은 글머리 기호가 순서가 없는 •으로 표현되며, ol 태그로 감싼 부분은 숫자가 순서대로 표현됩니다. 각각의 리스트는 li를 통해 생성됩니다.</p>
+</section>
+<section id="table-태그" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="table-태그"><span class="header-section-number">6.4.5</span> table 태그</h3>
+<p>table 태그는 표를 만드는 태그입니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>Sample Table<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;table&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Column 1<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Column 2<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Column 3<span class="kw">&lt;/th&gt;</span>    </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>1<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>2<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>3<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>A<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>B<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>C<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>a<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>b<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>c<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/table&gt;</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="images/api/html_4.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>table 태그 내의 tr 태그는 각 행을 의미하며, 각 셀의 구분은 th 혹은 td 태그를 통해 구분할 수 있습니다. th 태그는 진하게 표현되므로 주로 테이블의 제목에 사용되고, td 태그는 테이블의 내용에 사용됩니다.</p>
+</section>
+<section id="a-태그와-img-태그-및-속성" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="a-태그와-img-태그-및-속성"><span class="header-section-number">6.4.6</span> a 태그와 img 태그 및 속성</h3>
+<p>a 태그와 img 태그는 다른 태그와는 다르게, 혼자 쓰이기보다는 속성과 결합해 사용됩니다. a 태그는 href 속성과 결합해 다른 페이지의 링크를 걸 수 있습니다. img 태그는 src 속성과 결합해 이미지를 불러옵니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>a tag <span class="er">&amp;</span> href attribute<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>HTML links are defined with the a tag.</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>The link address is specified in the href attribute:<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;a</span> <span class="er">href</span><span class="ot">=</span><span class="st">"https://blog.naver.com/leebisu"</span><span class="kw">&gt;</span>Henry's Quantopia<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>img tag <span class="er">&amp;</span> src attribute<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>HTML images are defined with the img tag,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>and the filename of the image source is</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>specified in the src attribute:<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">"https://www.python.org/static/img/python-logo.png"</span><span class="er">,</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ot">width=</span><span class="st">"200"</span><span class="er">,height</span><span class="ot">=</span><span class="st">"100"</span><span class="kw">&gt;</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_5.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="images/api/html_5.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>a 태그 뒤 href 속성에 연결하려는 웹페이지 주소를 속성값(<a href="https://blog.naver.com/leebisu">https://blog.naver.com/leebisu)으로</a>으로){.uri} 입력한 후 내용(Henry’s Quantopia)을 입력하면, 내용 텍스트에 웹페이지의 링크가 추가됩니다. img 태그 뒤 src 속성의 속성값에는 불러오려는 이미지 주소를 입력하며, width 속성과 height 속성을 통해 이미지의 가로 세로 길이를 조절할 수도 있습니다. 페이지 내에서 링크된 주소를 모두 찾거나, 모든 이미지를 저장하려고 할 때 속성값을 찾으면 손쉽게 원하는 작업을 할 수 있습니다.</p>
+</section>
+<section id="div-태그" class="level3" data-number="6.4.7">
+<h3 data-number="6.4.7" class="anchored" data-anchor-id="div-태그"><span class="header-section-number">6.4.7</span> div 태그</h3>
+<p>div 태그는 화면의 전체적인 틀(레이아웃)을 만들 때 주로 사용하는 태그입니다. 단독으로도 사용될 수 있으며, 꾸밈을 담당하는 style 속성과 결합되어 사용되기도 합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">style</span><span class="ot">=</span><span class="st">"background-color:black;color:white"</span><span class="kw">&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h5&gt;</span>First Div<span class="kw">&lt;/h5&gt;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Black backgrond, White Color<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">style</span><span class="ot">=</span><span class="st">"background-color:yellow;color:red"</span><span class="kw">&gt;</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h5&gt;</span>Second Div<span class="kw">&lt;/h5&gt;</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Yellow backgrond, Red Color<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span> </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">style</span><span class="ot">=</span><span class="st">"background-color:blue;color:grey"</span><span class="kw">&gt;</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;h5&gt;</span>Second Div<span class="kw">&lt;/h5&gt;</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>Blue backgrond, Grey Color<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span> </span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_6.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="images/api/html_6.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>div 태그를 통해 총 세 개의 레이아웃으로 나누어진 것을 알 수 있습니다. style 속성 중 background-color는 배경 색상을, color는 글자 색상을 의미하며, 각 레이아웃마다 다른 스타일이 적용되었습니다.</p>
+</section>
+<section id="css" class="level3" data-number="6.4.8">
+<h3 data-number="6.4.8" class="anchored" data-anchor-id="css"><span class="header-section-number">6.4.8</span> CSS</h3>
+<p>CSS는 앞서 설명했듯이 웹페이지를 꾸며주는 역할을 합니다. head에서 각 태그에 CSS 효과를 입력하면 본문의 모든 해당 태그에 CSS 효과가 적용됩니다. 이처럼 웹페이지를 꾸미기 위해 특정 요소에 접근하는 것을 셀렉터(Selector)라고 합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>body {<span class="kw">background-color</span>: <span class="cn">powderblue</span><span class="op">;</span>}</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>h4   {<span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span>}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h4&gt;</span>This is a heading<span class="kw">&lt;/h4&gt;</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>This is a first paragraph.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>This is a second paragraph.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_7.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="images/api/html_7.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>head의 style 태그에서 여러 CSS 효과가 정의되었습니다. 먼저 body의 전체 배경 색상을 powderblue로 설정했으며, h4 태그의 글자 색상은 파란색(blue)으로 설정했습니다. body 태그 내에서 style에 태그를 주지 않더라도, head에서 정의한 CSS 효과가 모두 적용됩니다.</p>
+</section>
+<section id="클래스와-id" class="level3" data-number="6.4.9">
+<h3 data-number="6.4.9" class="anchored" data-anchor-id="클래스와-id"><span class="header-section-number">6.4.9</span> 클래스와 id</h3>
+<p>위의 예제에서 클래스 속성을 이용하면 특정 이름을 가진 클래스에 동일한 효과를 적용할 수 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.language</span> {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">tomato</span><span class="op">;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">.desc</span> {</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">moccasin</span><span class="op">;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">black</span><span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2</span> <span class="er">class</span><span class="ot">=</span><span class="st">"language"</span><span class="kw">&gt;</span>Python<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">"desc"</span><span class="kw">&gt;</span> Python is a high-level, general-purpose programming language.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>SQL<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p&gt;</span>SQL is a domain-specific language used in programming and designed for managing data held in a RDBMS, or for stream processing in a RDBMS. <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2</span> <span class="er">class</span><span class="ot">=</span><span class="st">"language"</span><span class="kw">&gt;</span>R<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">"desc"</span><span class="kw">&gt;</span>R is a free software environment for statistical computing and graphics.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div&gt;</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_8.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="images/api/html_8.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>셀렉터를 클래스에 적용할 때는 클래스명 앞에 마침표(.)를 붙여 표현합니다다. 위 예제에서 language 클래스는 배경 색상이 tomato, 글자 색상은 흰색, 여백은 10px로 정의됩니다. desc 클래스는 배경 색상이 moccasin, 글자 색상은 검은색, 여백은 10px로 정의되었습니다. 본문의 첫 번째(Python)와 세 번째(R) 레이아웃의 h2 태그 뒤에는 language 클래스를, p 태그 뒤에는 desc 클래스를 속성으로 입력했습니다. 따라서 해당 레이아웃에만 CSS 효과가 적용되며, 클래스 값이 없는 두 번째 레이아웃에는 효과가 적용되지 않습니다.</p>
+<p>id 또한 이와 비슷한 역할을 합니다. HTML 내에서 클래스는 여러 개가 정의될 수 있는 반면, id는 단 하나만 사용하기를 권장합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#myHeader</span> {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-color</span>: <span class="cn">lightblue</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span>: <span class="cn">black</span><span class="op">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1</span> <span class="er">id</span><span class="ot">=</span><span class="st">"myHeader"</span><span class="kw">&gt;</span>My Header<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/html_9.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img src="images/api/html_9.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>셀렉터를 id에 적용할 때는 id명 앞에 샵(#)를 붙여 표현하며, 페이지에서 한 번만 사용된다는 점을 제외하면 클래스와 사용 방법이 거의 동일합니다. <strong>클래스나 id 값을 통해 원하는 내용을 크롤링하는 경우도 많으므로, 각각의 이름 앞에 마침표(.)와 샵(#) 을 붙여야 한다는 점을 꼭 기억해야 합니다.</strong></p>
+</section>
+</section>
+<section id="크롤링-이해하기" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 크롤링 이해하기</h1>
+<section id="get과-post-방식-이해하기" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="get과-post-방식-이해하기"><span class="header-section-number">7.1</span> GET과 POST 방식 이해하기</h2>
+<p>우리가 인터넷에 접속해 서버에 파일을 요청하면, 서버는 이에 해당하는 파일을 우리에게 보내줍니다. 크롬과 같은 웹 브라우저는 이러한 과정을 사람이 수행하기 편하고 시각적으로 보기 편하도록 만들어진 것이며, 인터넷 주소는 서버의 주소를 기억하기 쉽게 만든 것입니다. 우리가 서버에 데이터를 요청하는 형태는 다양하지만 크롤링에서는 주로 GET과 POST 방식을 사용합니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/crawl_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/api/crawl_flow.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<section id="get-방식" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="get-방식"><span class="header-section-number">7.1.1</span> GET 방식</h3>
+<p>GET 방식은 인터넷 주소를 기준으로 이에 해당하는 데이터나 파일을 요청하는 것입니다. 주로 클라이언트가 요청하는 쿼리를 앰퍼샌드(&amp;) 혹은 물음표(?) 형식으로 결합해 서버에 전달합니다.</p>
+<p>네이버 홈페이지에 접속한 후 [퀀트]를 검색하면, 주소 끝부분에 [&amp;query=퀀트]가 추가되며 이에 해당하는 페이지의 내용을 보여줍니다. 즉, 해당 페이지는 GET 방식을 사용하고 있으며 입력 종류는 query, 입력값은 [퀀트]임을 알 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/naver_search_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="images/api/naver_search_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>[헤지펀드]를 다시 검색하면, 주소 끝부분이 [&amp;query=헤지펀드&amp;oquery=퀀트…]로 변경됩니다. 현재 입력값은 헤지펀드, 기존 입력값은 퀀트이며 이러한 과정을 통해 연관검색어가 생성됨도 유추해볼 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/naver_search_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img src="images/api/naver_search_2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="post-방식" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="post-방식"><span class="header-section-number">7.1.2</span> POST 방식</h3>
+<p>POST 방식은 사용자가 필요한 값을 추가해서 요청하는 방법입니다. GET 방식과 달리 클라이언트가 요청하는 쿼리를 body에 넣어서 전송하므로 요청 내역을 직접 볼 수 없습니다. 동행복권 홈페이지에 접속해 [당첨결과] 메뉴를 확인해봅시다.</p>
+<ul>
+<li><a href="https://www.dhlottery.co.kr/gameResult.do?method=byWin" class="uri">https://www.dhlottery.co.kr/gameResult.do?method=byWin</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="images/api/lotto.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>이번엔 회차 바로가기를 변경한 후 [조회]를 클릭합니다. 페이지의 내용은 선택일 기준으로 변경되었지만, 주소는 변경되지 않고 그대로 남아 있습니다. GET 방식에서는 입력 항목에 따라 웹페이지 주소가 변경되었지만, POST 방식을 사용해 서버에 데이터를 요청하는 해당 웹사이트는 그렇지 않은 것을 알 수 있습니다.</p>
+<p>POST 방식의 데이터 요청 과정을 살펴보려면 개발자도구를 이용해야 하며, 크롬에서는 [F12]키를 눌러 개발자도구 화면을 열 수 있습니다. 개발자도구 화면을 연 상태에서 다시 한번 [조회]를 클릭해봅시다. [Network] 탭을 클릭하면, [조회]을 클릭함과 동시에 브라우저와 서버 간의 통신 과정을 살펴볼 수 있습니다. 이 중 상단의 gameResult.do?method=byWin 이라는 항목이 POST 형태임을 알 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto_post.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="images/api/lotto_post.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>해당 메뉴를 클릭하면 통신 과정을 좀 더 자세히 알 수 있습니다. [Payload] 탭의 [Form Data]에는 서버에 데이터를 요청하는 내역이 있습니다. drwNo와 dwrNoList에는 선택한 회차의 숫자가 들어가 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto_query.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="images/api/lotto_query.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>이처럼 POST 방식은 요청하는 데이터에 대한 쿼리가 GET 방식처럼 URL을 통해 전송되는 것이 아닌 body를 통해 전송되므로, 이에 대한 정보는 웹 브라우저를 통해 확인할 수 없으며, 개발자도구 화면을 통해 확인해야 합니다.</p>
+</section>
+</section>
+</section>
+<section id="크롤링-예제" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 크롤링 예제</h1>
+<p>일반적으로 크롤링은 다음의 과정을 따릅니다. 먼저, httr 패키지의 <code>GET()</code> 혹은 <code>POST()</code> 함수를 이용해 데이터를 다운로드한 후 rvest 패키지의 함수들을 이용해 원하는 데이터를 찾는 과정으로 이루어집니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/api/flowchart.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<section id="명언-크롤링하기" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="명언-크롤링하기"><span class="header-section-number">8.1</span> 명언 크롤링하기</h2>
+<p>크롤링의 간단한 예제로 ‘Quotes to Scrape’ 사이트에 있는 명언을 수집힙니다.</p>
+<ul>
+<li><a href="https://quotes.toscrape.com/" class="uri">https://quotes.toscrape.com/</a></li>
+</ul>
+<p>먼저 해당사이트에 접속한 후, 명언에 해당하는 부분에 마우스 커서를 올려둔 후 마우스 오른쪽 버튼을 클릭하고 [검사]를 선택하면 개발자 도구 화면이 나타납니다. 여기서 해당 글자가 HTML 내에서 어떤 부분에 위치하는지 확인할 수 있습니다. 각 네모에 해당하는 부분은 [div 태그의 quote 클래스]에 위치하고 있으며, 명언은 [div 태그 → span 태그의 text 클래스]에, 명언가는 [div 태그 → span 태그 → small 태그의 author 클래스]에 위치하고 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/quote.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="images/api/quote.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>먼저 해당 페이지의 내용을 불러옵니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">'https://quotes.toscrape.com/'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>quote <span class="ot">=</span> <span class="fu">GET</span>(url)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Response [https://quotes.toscrape.com/]
+  Date: 2023-01-19 02:15
+  Status: 200
+  Content-Type: text/html; charset=utf-8
+  Size: 11.1 kB
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Quotes to Scrape&lt;/title&gt;
+    &lt;link rel="stylesheet" href="/static/bootstrap.min.css"&gt;
+    &lt;link rel="stylesheet" href="/static/main.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+...</code></pre>
+</div>
+</div>
+<p>url에 해당 주소를 입력한 후 <code>GET()</code> 함수를 이용해 해당 페이지의 내용을 받아온다. Response 부분을 확인해보면 Status가 200, 즉 데이터가 이상 없이 받아졌음이 확인됩니다.</p>
+<p>이제 rvest 패키지를 이용해 html 정보를 불러오도록 합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>quote_html <span class="ot">=</span> <span class="fu">read_html</span>(quote)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote_html)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{html_document}
+&lt;html lang="en"&gt;
+[1] &lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8 ...
+[2] &lt;body&gt;\n    &lt;div class="container"&gt;\n        &lt;div class="row header-box"&gt; ...</code></pre>
+</div>
+</div>
+<p><code>read_html()</code> 함수는 받아온 페이지 내용을 html 정보로 변환합니다. 이를 확인해보면 head 부분과 body 부분이 존재합니다.</p>
+<p>우리는 개발자 도구 화면에서 명언에 해당하는 부분이 [div 태그의 quote 클래스 → span 태그의 text 클래스]에 위치하고 있음을 살펴보았습니다. 이를 활용해 명언만을 추출하는 방법은 다음과 같습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>quote_div <span class="ot">=</span> quote_html <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'div.quote'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'span.text'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote_div)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (10)}
+ [1] &lt;span class="text" itemprop="text"&gt;“The world as we have created it is a ...
+ [2] &lt;span class="text" itemprop="text"&gt;“It is our choices, Harry, that show  ...
+ [3] &lt;span class="text" itemprop="text"&gt;“There are only two ways to live your ...
+ [4] &lt;span class="text" itemprop="text"&gt;“The person, be it gentleman or lady, ...
+ [5] &lt;span class="text" itemprop="text"&gt;“Imperfection is beauty, madness is g ...
+ [6] &lt;span class="text" itemprop="text"&gt;“Try not to become a man of success.  ...
+ [7] &lt;span class="text" itemprop="text"&gt;“It is better to be hated for what yo ...
+ [8] &lt;span class="text" itemprop="text"&gt;“I have not failed. I've just found 1 ...
+ [9] &lt;span class="text" itemprop="text"&gt;“A woman is like a tea bag; you never ...
+[10] &lt;span class="text" itemprop="text"&gt;“A day without sunshine is like, you  ...</code></pre>
+</div>
+</div>
+<ol type="1">
+<li><code>html_nodes()</code> 함수는 태그, id, 클래스, xpath 등의 정보를 이용해 해당하는 데이터를 추출합니다. div 태그에서 클래스에 해당하는 quote 클래스에 해당하는 데이터를 찾으며, 클래스의 경우 앞에 콤마(.)를 붙입니다(id의 경우 앞에 샵(#)을 붙입니다). <code>html_node()</code> 함수는 해당하는 정보 중 가장 첫번째 데이터만을 추출하며, <code>html_nodes()</code> 함수는 모든 데이터를 추출하는 차이가 있습니다.</li>
+<li>span 태그 중 text 클래스를 찾습니다.</li>
+</ol>
+<p>결과를 확인하면 개발자 도구 화면과 거의 일치합니다. 이제 텍스트에 해당하는 부분만 추출합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>quote_text <span class="ot">=</span> quote_div <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”"                
+ [2] "“It is our choices, Harry, that show what we truly are, far more than our abilities.”"                                              
+ [3] "“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”"
+ [4] "“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”"                           
+ [5] "“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”"                    
+ [6] "“Try not to become a man of success. Rather become a man of value.”"                                                                
+ [7] "“It is better to be hated for what you are than to be loved for what you are not.”"                                                 
+ [8] "“I have not failed. I've just found 10,000 ways that won't work.”"                                                                  
+ [9] "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”"                                              
+[10] "“A day without sunshine is like, you know, night.”"                                                                                 </code></pre>
+</div>
+</div>
+<p><code>html_text()</code> 함수를 이용하면 html 에서 텍스트 정보만을 추출할 수 있습니다.</p>
+<p>이번에는 명언을 말한 사람에 해당하는 정보만 수집합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>quote_who <span class="ot">=</span> quote_html <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'div.quote'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'span'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'small.author'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote_who)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Albert Einstein"   "J.K. Rowling"      "Albert Einstein"  
+ [4] "Jane Austen"       "Marilyn Monroe"    "Albert Einstein"  
+ [7] "André Gide"        "Thomas A. Edison"  "Eleanor Roosevelt"
+[10] "Steve Martin"     </code></pre>
+</div>
+</div>
+<p>파이프 오퍼레이터(%&gt;%)를 통해 html에서 원하는 부분만 추출하는 작업을 단계별로 진행할 수 있습니다.</p>
+<p>마지막으로 명언가 정보에 해당하는 링크(about)를 불러오도록 합니다. 이는 [quote 클래스 → span 태그 → a 태그 내에서 href 속성]에 위치하고 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>quote_link <span class="ot">=</span> quote_html <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'div.quote'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'span'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'a'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_attr</span>(<span class="st">'href'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote_link)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "/author/Albert-Einstein"   "/author/J-K-Rowling"      
+ [3] "/author/Albert-Einstein"   "/author/Jane-Austen"      
+ [5] "/author/Marilyn-Monroe"    "/author/Albert-Einstein"  
+ [7] "/author/Andre-Gide"        "/author/Thomas-A-Edison"  
+ [9] "/author/Eleanor-Roosevelt" "/author/Steve-Martin"     </code></pre>
+</div>
+</div>
+<p><code>html_attr()</code> 함수는 속성값을 찾아주는 함수이며, href 속성에 해당하는 값을 찾아줍니다.</p>
+<p>기본 url(<a href="https://quotes.toscrape.com">https://quotes.toscrape.com)에</a>에){.uri} 해당하는 정보가 없으므로 이를 추가적으로 붙여줍니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>quote_link <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">'https://quotes.toscrape.com'</span>, quote_link)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>quote_link</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "https://quotes.toscrape.com/author/Albert-Einstein"  
+ [2] "https://quotes.toscrape.com/author/J-K-Rowling"      
+ [3] "https://quotes.toscrape.com/author/Albert-Einstein"  
+ [4] "https://quotes.toscrape.com/author/Jane-Austen"      
+ [5] "https://quotes.toscrape.com/author/Marilyn-Monroe"   
+ [6] "https://quotes.toscrape.com/author/Albert-Einstein"  
+ [7] "https://quotes.toscrape.com/author/Andre-Gide"       
+ [8] "https://quotes.toscrape.com/author/Thomas-A-Edison"  
+ [9] "https://quotes.toscrape.com/author/Eleanor-Roosevelt"
+[10] "https://quotes.toscrape.com/author/Steve-Martin"     </code></pre>
+</div>
+</div>
+<p>세 개의 데이터를 하나의 데이터프레임으로 묶어 정리합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>quote_df <span class="ot">=</span> <span class="fu">data.frame</span>(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">'quote'</span> <span class="ot">=</span> quote_text,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">'author'</span> <span class="ot">=</span> quote_who,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">'link'</span> <span class="ot">=</span> quote_link</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>quote_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                   quote
+1                  “The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”
+2                                                “It is our choices, Harry, that show what we truly are, far more than our abilities.”
+3  “There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”
+4                             “The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”
+5                      “Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”
+6                                                                  “Try not to become a man of success. Rather become a man of value.”
+7                                                   “It is better to be hated for what you are than to be loved for what you are not.”
+8                                                                    “I have not failed. I've just found 10,000 ways that won't work.”
+9                                                “A woman is like a tea bag; you never know how strong it is until it's in hot water.”
+10                                                                                  “A day without sunshine is like, you know, night.”
+              author                                                 link
+1    Albert Einstein   https://quotes.toscrape.com/author/Albert-Einstein
+2       J.K. Rowling       https://quotes.toscrape.com/author/J-K-Rowling
+3    Albert Einstein   https://quotes.toscrape.com/author/Albert-Einstein
+4        Jane Austen       https://quotes.toscrape.com/author/Jane-Austen
+5     Marilyn Monroe    https://quotes.toscrape.com/author/Marilyn-Monroe
+6    Albert Einstein   https://quotes.toscrape.com/author/Albert-Einstein
+7         André Gide        https://quotes.toscrape.com/author/Andre-Gide
+8   Thomas A. Edison   https://quotes.toscrape.com/author/Thomas-A-Edison
+9  Eleanor Roosevelt https://quotes.toscrape.com/author/Eleanor-Roosevelt
+10      Steve Martin      https://quotes.toscrape.com/author/Steve-Martin</code></pre>
+</div>
+</div>
+</section>
+<section id="xpath를-이용해-원하는-지점만-찾기" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="xpath를-이용해-원하는-지점만-찾기"><span class="header-section-number">8.2</span> xpath를 이용해 원하는 지점만 찾기</h2>
+<p>xpath란 HTML의 위치를 나타내는 형태입니다. 만일 웹페이지에서 한 지점의 데이터만 추출해야 할 경우, 번거롭게 html의 구조를 모두 발라내기 보다는 xpath를 이용하는 것이 훨씬 효율적입니다.</p>
+<p>예제로 yes24의 판매지수를 크롤링 하도록 하겠습니다. 해당 지수는 책의 출간일 그리고 판매량에 따라 매일 바뀝니다.</p>
+<p><a href="http://www.yes24.com/Product/Goods/108408162" class="uri">http://www.yes24.com/Product/Goods/108408162</a></p>
+<p>이 중 개발자도구 화면에서 판매지수에 해당하는 부분을 찾은 후, 우클릭 해 [Copy → Copy xpath]를 선택하면 해당 내역이 복사됩니다. 이는 다음과 같습니다.</p>
+<pre><code>//*[@id="yDetailTopWrap"]/div[2]/div[1]/span[3]/span[3]</code></pre>
+<p>이를 이용해 크롤링 하는 법은 다음과 같습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">'http://www.yes24.com/Product/Goods/108408162'</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">GET</span>(url)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>data_sales <span class="ot">=</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="at">xpath =</span> <span class="st">'//*[@id="yDetailTopWrap"]/div[2]/div[1]/span[3]/span[3]'</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data_sales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{xml_nodeset (1)}
+[1] &lt;span class="gd_sellNum"&gt;\r\n                &lt;em class="divi"&gt;|&lt;/em&gt;\r\n  ...</code></pre>
+</div>
+</div>
+<p>xpath를 통해 해당 부분만 손쉽게 추출할 수 있습니다. 이제 판매지수에 해당하는 숫자만 선택하도록 하면 됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data_sales <span class="sc">%&gt;%</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(<span class="st">'(</span><span class="sc">\\</span><span class="st">d)+'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  .[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_c</span>(., <span class="at">collapse =</span> <span class="st">''</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4155</code></pre>
+</div>
+</div>
+<p>먼저 정규표현식을 이용해 숫자부분만 추출할 수 있습니다.</p>
+<ol type="1">
+<li><code>html_text()</code> 함수를 통해 텍스트 데이터만 불러옵니다.</li>
+<li><code>str_extract_all()</code> 함수 내에 정규표현식을 이용해 숫자에 해당하는 데이터만 추출합니다.</li>
+<li>첫번째 원소를 선택한다.</li>
+<li><code>str_c()</code> 함수를 통해 모든 텍스트를 붙입니다.</li>
+<li><code>as.numeric()</code> 함수를 이용해 숫자 형태로 변경합니다.</li>
+</ol>
+<p>그러나 정규표현식은 꽤나 복잡합니다. 다행히 패키지 내 함수를 사용하면 위 과정을 매우 간단하게 수행할 수 있습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_sales <span class="sc">%&gt;%</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  readr<span class="sc">::</span><span class="fu">parse_number</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4155</code></pre>
+</div>
+</div>
+<p>readr 패키지의 <code>parse_number()</code> 함수는 여러 텍스트 중 숫자 형태만 추출해주는 매우 유용한 함수입니다.</p>
+</section>
+<section id="표-크롤링" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="표-크롤링"><span class="header-section-number">8.3</span> 표 크롤링</h2>
+<p>표는 html 중 td와 th 태그로 구성되어 있으며, 이를 일일이 추출하며 다시 표 형태로 만드는 것은 사실상 불가능에 가깝습니다. 다행히 R의 크롤링 패키지에는 표 형태만 간단하게 추출할 수 있는 함수 역시 존재합니다.</p>
+<p>예제로써 UFC의 역대 챔피언 리스트를 크롤링 해보도록 합시다.</p>
+<p><a href="https://en.wikipedia.org/wiki/List_of_UFC_champions" class="uri">https://en.wikipedia.org/wiki/List_of_UFC_champions</a></p>
+<p>위 페이지에는 각 체급별 챔피언의 역사가 표 형태로 정리되어 있습니다. 이 중 표만 가져오는 법은 다음과 같습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">'https://en.wikipedia.org/wiki/List_of_UFC_champions'</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>data_ufc <span class="ot">=</span> <span class="fu">GET</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>data_ufc <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>html_table()</code> 함수는 테이블 형태의 데이터만 추출하는 함수입니다. 그러나 윈도우의 경우 다음과 같은 오류가 뜹니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">type.convert.default</span>(x, <span class="at">as.is =</span> <span class="cn">TRUE</span>, <span class="at">dec =</span> dec, <span class="at">na.strings =</span> na.strings) <span class="sc">:</span> </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  invalid multibyte string at <span class="st">'&lt;e2&gt;&lt;94&gt;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>이는 웹페이지와 컴퓨터의 인코딩이 달라 발생하는 오류이며, 잠시 로케일 언어를 영어로 변경하여 크롤링 하면 오류가 발생하지 않습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_ALL"</span>, <span class="st">"English"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in Sys.setlocale("LC_ALL", "English"): using locale code page other than
+65001 ("UTF-8") may cause problems</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "LC_COLLATE=English_United States.1252;LC_CTYPE=English_United States.1252;LC_MONETARY=English_United States.1252;LC_NUMERIC=C;LC_TIME=English_United States.1252"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>champion_list <span class="ot">=</span> data_ufc <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_table</span>()</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setlocale</span>(<span class="st">"LC_ALL"</span>, <span class="st">"Korean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in Sys.setlocale("LC_ALL", "Korean"): using locale code page other than
+65001 ("UTF-8") may cause problems</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "LC_COLLATE=Korean_Korea.949;LC_CTYPE=Korean_Korea.949;LC_MONETARY=Korean_Korea.949;LC_NUMERIC=C;LC_TIME=Korean_Korea.949"</code></pre>
+</div>
+</div>
+<p>champion_list는 44개 원소로 이루어진 리스트이며, 각 원소에는 웹페이지의 테이블 정보가 들어가 있습니다. 이 중 원하는 표만 선택하면 됩니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>champion_list[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 x 4
+  Division          Champion                 Since        Defenses
+  &lt;chr&gt;             &lt;chr&gt;                    &lt;chr&gt;        &lt;chr&gt;   
+1 Heavyweight       Vacant                   Jan 14, 2023 &lt;U+2014&gt;       
+2 Light Heavyweight Vacant                   Nov 23, 2022 &lt;U+2014&gt;       
+3 Middleweight      Alex Pereira             Nov 12, 2022 0       
+4 Welterweight      Leon Edwards             Aug 20, 2022 0       
+5 Lightweight       Islam Makhachev          Oct 22, 2022 0       
+6 Featherweight     Alexander Volkanovski    Dec 14, 2019 4       
+7 Bantamweight      Aljamain Sterling        Mar 6, 2021  2       
+8 Flyweight         Deiveson Figueiredo      Jan 22, 2022 0       
+9 Flyweight         Brandon Moreno (interim) Jul 30, 2022 0       </code></pre>
+</div>
+</div>
+</section>
+<section id="post-방식-크롤링" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="post-방식-크롤링"><span class="header-section-number">8.4</span> POST 방식 크롤링</h2>
+<p>GET 방식은 요청 쿼리가 url에 포함되어 있으므로 매우 손쉽게 페이지 내역을 받을 수 있었습니다. 그러나 POST 방식은 요청 쿼리가 숨겨져 있으므로 이를 직접 입력해야 합니다. 앞서 살펴본 로또 당첨번호를 크롤링 해보도록 하겠습니다.</p>
+<p><a href="https://www.dhlottery.co.kr/gameResult.do?method=byWin" class="uri">https://www.dhlottery.co.kr/gameResult.do?method=byWin</a></p>
+<p>개발자도구 화면을 연 상태에서 조회를 누른 후 [gameResult.do?…] 부분을 클릭합니다. [Headers] 탭의 General 에서 Request URL은 데이터를 요청하는 서버 주소를 의미합니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21"><img src="images/api/lotto_1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>Payload 탭의 [Form Data] 에는 요청하는 쿼리가 나타나 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img src="images/api/lotto_2.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>또한 당첨번호에 해당하는 부분의 html 위치를 확인해보면, num win 클래스에 위치하고 있음을 알 수 있습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/lotto_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-23"><img src="images/api/lotto_3.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>위의 정보를 이용해 POST 형태로 데이터를 받아보도록 하겠습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">'https://www.dhlottery.co.kr/gameResult.do?method=byWin'</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>data_lotto <span class="ot">=</span> <span class="fu">POST</span>(</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  url, </span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">body =</span> <span class="fu">list</span>(</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">drwNo =</span> <span class="st">"1009"</span>,</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">dwrNoList =</span> <span class="st">"1009"</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>data_lotto_html <span class="ot">=</span> data_lotto <span class="sc">%&gt;%</span> <span class="fu">read_html</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>url에는 서버 주소를 입력하며, 쿼리값은 body 내에 리스트 형태로 입력한다. 요청한 쿼리, 즉 1009회 당첨결과에 해당하는 데이터가 받아집니다. 만일 다른 회차의 값이 궁금하면 1009 숫자를 다른 숫자로 입력하면 됩니다.</li>
+<li><code>read_html()</code> 함수를 통해 html 내용을 추출합니다.</li>
+</ol>
+<p>이제 당첨번호에 해당하는 데이터만을 뽑아내도록 합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>data_lotto_html <span class="sc">%&gt;%</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'.num.win'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>결과를 확인해보면 당첨번호와 함께 , 같은 문자들이 보입니다. 이는 띄어쓰기, 줄바꿈 등에 해당하는 태그입니다. 우리에게 남은 일은 숫자에 해당하는 부분만 뽑아내는 것이며, 클렌징 방법은 매우 많습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>data_lotto_html <span class="sc">%&gt;%</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'.num.win'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract_all</span>(<span class="st">'(</span><span class="sc">\\</span><span class="st">d)+'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>data_lotto_html <span class="sc">%&gt;%</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_nodes</span>(<span class="st">'.num.win'</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_replace_all</span>(<span class="st">"[</span><span class="sc">\r\n\t</span><span class="st">]"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_split</span>(<span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>  .[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="셀레니움을-이용한-동적-크롤링" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 셀레니움을 이용한 동적 크롤링</h1>
+<p>일반적인 크롤링으로는 정적인 데이터, 즉 변하지 않는 데이터만을 수집할 수 있습니다. 한 페이지 안에서 원하는 정보가 모두 드러나는 것을 정적 데이터라 합니다. 반면 입력, 클릭, 로그인 등을 통해 데이터가 바뀌는 것을 동적 데이터라 합니다. 예를 들어 네이버 지도에서 매장을 검색을 한 후 좌측에서 원하는 선택할 때 마다 이에 해당하는 내용이 뜹니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/twosome.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="images/api/twosome.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>이는 웹페이지에서 사용자가 클릭 등과 같은 조작을 하면 AJAX 호출이 발생하여 그 결과가 페이지의 일부분에만 반영되어 변경되기 때문입니다. 즉 매장을 클릭하면 웹브라우저가 연결된 자바스크립트 코드를 실행하여 해당 매장의 상세 정보가 동일한 페이지에 동적으로 표시됩니다. 정적 페이지와 동적 페이지의 작동 방식 차이는 다음과 같습니다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/api/compare.png" class="lightbox" data-gallery="quarto-lightbox-gallery-25"><img src="images/api/compare.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>셀레니움을 이용한 경우 정적 페이지와 동적 페이지를 모두 크롤링 할 수 있다는 강력함이 있지만, 상대적으로 속도가 느립니다. 따라서 정적 페이지는 기존의 방법을 이용한 크롤링을, 동적 페이지는 셀레니움을 이용한 크롤링을 하는 것이 일반적입니다.</p>
+<section id="셀레니움-실습하기" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="셀레니움-실습하기"><span class="header-section-number">9.1</span> 셀레니움 실습하기</h2>
+<p>셀레니움의 경우 R에서 세팅하기는 지나치게 번거로우므로, 파이썬에서 하는 것을 권장합니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>from selenium import webdriver</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>from selenium.webdriver.chrome.service import Service</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>from webdriver_manager.chrome import ChromeDriverManager</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>from selenium.webdriver.common.by import By</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>from selenium.webdriver.common.keys import Keys</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>import time</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>from bs4 import BeautifulSoup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-1955958055.png" class="lightbox" data-gallery="quarto-lightbox-gallery-26"><img src="images/image-1955958055.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p><code>webdriver.Chrome(service=Service(ChromeDriverManager().install()))</code> 코드를 실행하면 크롬 브라우저의 버전을 탐색한 다음, 버전에 맞는 웹드라이버를 다운로드하여 해당 경로를 셀레니움에 전달해준다. 또한 크롬 창이 열리며, 좌측 상단에 'Chrome이 자동화된 테스트 소프트웨어에 의해 제어되고 있습니다.'라는 문구가 뜬다. 이제 파이썬 코드를 이용해 해당 페이지를 조작할 수 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">=</span> <span class="st">'https://www.naver.com/'</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.get</span>(url)</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>driver.page_source[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-369258103.png" class="lightbox" data-gallery="quarto-lightbox-gallery-27"><img src="images/image-369258103.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p><code>driver.get()</code> 내에 URL 주소를 입력하면 해당 주소로 이동한다. 또한 <code>driver.page_source</code>를 통해 열려있는 창의 HTML 코드를 확인할 수도 있다. 이제 네이버 메인에서 [뉴스]버튼을 누르는 동작을 실행해보자. 개발자도구 화면을 통해 확인해보면 [뉴스] 탭은 아래 HTML에 위치하고 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>a href<span class="ot">=</span><span class="st">"https://news.naver.com/"</span> class<span class="ot">=</span><span class="st">"nav"</span> data<span class="sc">-</span>clk<span class="ot">=</span><span class="st">"svc.news"</span><span class="sc">&gt;</span>뉴스<span class="sc">&lt;</span><span class="er">/</span>a<span class="sc">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-426322423.png" class="lightbox" data-gallery="quarto-lightbox-gallery-28"><img src="images/image-426322423.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.LINK_TEXT , <span class="at">value =</span> <span class="st">'뉴스'</span>)<span class="fu">.click</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-173764874.png" class="lightbox" data-gallery="quarto-lightbox-gallery-29"><img src="images/image-173764874.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>브라우저 상에서 보이는 버튼, 검색창, 사진, 테이블, 동영상 등을 엘레먼트(element, 요소)라고 한다. <code>find_element()</code>는 다양한 방법으로 엘레먼트에 접근하게 해주며, <code>By.*</code> 를 통해 어떠한 방법으로 엘레먼트에 접근할지 선언한다. LINK_TEXT의 경우 링크가 달려 있는 텍스트로 접근하며, <code>value = '뉴스'</code>, 즉 뉴스라는 단어가 있는 엘레먼트로 접근한다. <code>click()</code> 함수는 마우스 클릭을 실행하며 결과 적으로 뉴스 탭을 클릭한 후 페이지가 이동되는 것을 확인할 수 있다. <code>find_element()</code> 내 접근방법 및 셀레니움의 각종 동작 제어 방법에 대해서는 나중에 다시 정리하도록 한다.</p>
+<p>이제 뒤로가기를 실행해보도록 하자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.back</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>back()</code>은 뒤로가기를 의미하며, 기존 페이지인 네이버 메인으로 이동한다.</p>
+<p>이제 특정 검색어를 검색하는 방법에 대해 알아보자. 먼저 검색창의 위치가 어디에 있는지 확인해보면 query라는 id와 input_text라는 class에 위치하고 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-455207951.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img src="images/image-455207951.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'input_text'</span>)<span class="fu">.send_keys</span>(<span class="st">'퀀트 투자 포트폴리오 만들기'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-534260765.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img src="images/image-534260765.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p><code>find_element()</code> 내에 By.CLASS_NAME을 입력하면 클래스 명에 해당하는 엘레먼트에 접근하며, 여기서는 검색창에 접근한다. 그 후 <code>send_keys()</code> 내에 텍스트를 입력하면 해당 내용이 웹페이지에 입력된다. 이제 웹페이지에서 검색 버튼 해당하는 돋보기 모양을 클릭하거나 엔터키를 누르면 검색이 실행된다. 먼저 돋보기 모양의 위치를 확인해보면 search_btn id와 btn_submit 클래스에 위치하고 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-1441930913.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img src="images/image-1441930913.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'btn_submit'</span>)<span class="fu">.send_keys</span>(Keys.ENTER)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-794484426.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img src="images/image-794484426.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p><code>find_element(By.CLASS_NAME, value = 'btn_submit')</code>를 통해 검색 버튼에 접근한다. 그 후 <code>send_keys(Keys.ENTER)</code>를 입력하면 엔터키를 누르는 동작이 실행된다. 페이지를 확인해보면 검색이 실행된 후 결과를 확인할 수 있다.</p>
+<p>이번에는 다른 단어를 검색해보도록 하자. 웹에서 기존 검색어 내용을 지운 후, 검색어를 입력하고, 버튼을 클릭해야 한다. 이를 위해 검색어 박스와 검색 버튼의 위치를 찾아보면 다음과 같다.</p>
+<ul>
+<li><p>검색어 박스: box_window 클래스</p></li>
+<li><p>검색 버튼: bt_search 클래스</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-918183575.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img src="images/image-918183575.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'box_window'</span>)<span class="fu">.clear</span>()</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'box_window'</span>)<span class="fu">.send_keys</span>(<span class="st">'이현열 퀀트'</span>)</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'bt_search'</span>)<span class="fu">.click</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>검색어 박스(box_window)에 접근한 후, <code>clear()</code>를 실행하면 모든 텍스트가 지워진다.</li>
+<li><code>send_keys('이현열 퀀트')</code>를 실행하여 새로운 검색어를 입력한다.</li>
+<li>검색 버튼(bt_search)에 접근한 후, <code>click()</code>을 실행하여 해당 버튼을 클릭한다.</li>
+</ol>
+<p>이번에는 [VIEW] 버튼을 클릭하는 동작을 실행해보도록 한다. 기존처럼 링크나 클래스명을 통해 엘레먼트에 접근할 수도 있지만, 이번에는 XPATH를 이용해 접근해보도록 하자. XPATH란 XML 중 특정 값의 태그나 속성을 찾기 쉽게 만든 주소다. 예를 들어 윈도우 탐색기에서는 특정 폴더의 위치가 '<strong>C:\Program Files</strong>'과 같이 주소처럼 보이며 이는 윈도우의 PATH 문법이다. XML 역시 이와 동일한 개념의 XPATH가 있다. 웹페이지에서 XPATH를 찾는 법은 다음과 같다.</p>
+<ol type="1">
+<li><p>개발자도구 화면에서 위치를 찾고 싶은 부분에서 마우스 우클릭을 한다.</p></li>
+<li><p>[Copy → Copy Xpath]를 선택한다.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-612665465.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img src="images/image-612665465.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>위 과정을 통해 XPATH가 복사된다. 메모장을 확인해보면 VEW 부분의 XPATH는 다음과 같다.</p>
+<pre><code>//*[@id="lnb"]/div[1]/div/ul/li[2]/a</code></pre>
+<p>이를 이용해 해당 부분을 클릭하는 동작을 실행해보자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.XPATH, <span class="at">value =</span> <span class="st">'//*[@id="lnb"]/div[1]/div/ul/li[2]/a'</span>)<span class="fu">.click</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-680361541.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img src="images/image-680361541.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>탭이 [통합] 검색이 아닌 [VIEW]로 변경되었다. 이번에는 [옵션]을 클릭한 후 정렬을 [최신순]으로 하는 동작을 실행해보자. 둘의 위치는 다음과 같다.</p>
+<ul>
+<li><p>옵션 버튼: option_filter (클래스)</p></li>
+<li><p>최신순 버튼: //*[@id="snb"]/div[2]/ul/li[2]/div/div/a[2] (Xpath)</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-1181031060.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="images/image-1181031060.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>코드 실행에 앞서 옵션 창이 열려있다면 [X] 버튼을 눌러 닫아주도록 한다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-1830765063.png" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img src="images/image-1830765063.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>옵션 창을 닫은 후 아래의 코드를 실행하도록 한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.CLASS_NAME, <span class="at">value =</span> <span class="st">'option_filter'</span>)<span class="fu">.click</span>()</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.find_element</span>(By.XPATH, <span class="at">value =</span> <span class="st">'//*[@id="snb"]/div[2]/ul/li[2]/div/div/a[2]'</span>)<span class="fu">.click</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/image-808293174.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img src="images/image-808293174.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+<p>옵션 클릭 후 최신순 버튼을 클릭하는 동작을 수행하여 검색어가 최신순으로 정렬되었다. 이제 page down 기능을 수행해보도록 하자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.execute_script</span>(<span class="st">'window.scrollTo(0, document.body.scrollHeight);'</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co"># driver.find_element(By.TAG_NAME, value = 'body').send_keys(Keys.PAGE_DOWN)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>먼저 <code>document.body.scrollHeight</code>는 웹페이지의 높이를 나타내는 것으로써, <code>window.scrollTo(0, document.body.scrollHeight);</code>는 웹페이지의 가장 하단까지 스크롤을 내리라는 자바스크립트 명령어다. <code>driver.execute_script()</code>를 통해 해당 명령어를 실행하면 웹페이지가 아래로 스크롤이 이동된다. <code>send_keys(Keys.PAGE_DOWN)</code> 는 키보드의 페이지다운(PgDn) 버튼을 누르는 동작이며 이 역시 페이지가 아래로 이동시킨다.</p>
+<p>그러나 결과를 살펴보면 스크롤이 끝까지 내려간 후 얼마간의 로딩이 있은 후에 새로운 데이터가 생성된다. 이처럼 유튜브나 인스타그램, 페이스북 등 많은 검색결과를 보여줘야 하는 경우 웹페이지 상에서 한 번에 모든 데이터를 보여주기 보다는 스크롤을 가장 아래로 위치하면 로딩을 거쳐 추가적인 결과를 보여준다. 따라서 스크롤을 한 번만 내리는 것이 아닌 모든 결과가 나올 때까지 내리는 동작을 실행해야 한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>prev_height <span class="ot">=</span> <span class="fu">driver.execute_script</span>(<span class="st">'return document.body.scrollHeight'</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> True<span class="sc">:</span></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">driver.execute_script</span>(<span class="st">'window.scrollTo(0, document.body.scrollHeight);'</span>)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">time.sleep</span>(<span class="dv">2</span>)</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>    curr_height <span class="ot">=</span> <span class="fu">driver.execute_script</span>(<span class="st">'return document.body.scrollHeight'</span>)</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> curr_height <span class="sc">==</span> prev_height<span class="sc">:</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>    prev_height <span class="ot">=</span> curr_height</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><code>return document.body.scrollHeight</code>은 현재의 창 높이는 반환하는 자바스크립트 명령어이며, 이를 prev_height에 저장한다.</li>
+<li>while문을 통해 반복문을 실행한다.</li>
+<li>셀레니움을 통해 페이지의 최하단으로 스크롤을 내린다.</li>
+<li>페이지가 로딩되는 시간을 기다리기 위해 2초간 슬립을 준다.</li>
+<li>curr_height에 현재 창 높이를 저장한다.</li>
+<li>curr_height와 prev_height가 동일하다는 의미는 페이지가 끝까지 내려왔다는 의미이다. 따라서 이 경우 <code>break</code>를 통해 while문을 멈추며, 그렇지 않을 경우 다시 스크롤을 내리는 동작을 반복한다.</li>
+<li>prev_height에 새로운 창 높이를 입력한다.</li>
+</ol>
+<p>이제 모든 검색 결과가 나타났으면 이전 장에서 살펴보았던 정적 크롤링을 통해 데이터 수집이 가능하다. 제목 부분을 확인해보면 <strong>api_txt_lines total_tit _cross_trigger</strong> 클래스에 위치하고 있으며, 이를 통해 모든 제목을 크롤링해보자.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>html <span class="ot">=</span> <span class="fu">BeautifulSoup</span>(driver.page_source, <span class="st">'lxml'</span>)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>txt <span class="ot">=</span> <span class="fu">html.find_all</span>(<span class="at">class_ =</span> <span class="st">'api_txt_lines total_tit _cross_trigger'</span>)</span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>txt_list <span class="ot">=</span> [<span class="fu">i.get_text</span>() <span class="cf">for</span> i <span class="cf">in</span> txt]</span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>txt_list[<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p><code>driver.page_source</code>를 통해 현재 웹페이지의 HTML 정보를 가져올 수 있으며, 이를 BeautifulSoup 객체로 만들어준다.</p></li>
+<li><p><code>find_all()</code> 함수를 통해 제목 부분에 위치하는 데이터를 모두 불러온다.</p></li>
+<li><p>for문을 통해 텍스트만 추출한다.</p></li>
+</ol>
+<p>이처럼 동적 페이지의 경우도 셀레니움을 통해 웹페이지를 제어한 후 <code>BeautifulSoup</code> 패키지를 사용해 원하는 부분을 추출하면 얼마든지 크롤링이 가능하다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">driver.quit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./api.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./portfolio.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","descPosition":"bottom","loop":true,"openEffect":"zoom","closeEffect":"zoom"});</script>
+
+
+
+</body></html>

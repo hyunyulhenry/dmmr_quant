@@ -45,3 +45,6 @@ test.*
 backup.R
 
 한태경노트/*
+/.quarto/
+/old/
+/.git/

@@ -1,0 +1,233 @@
+---
+title: "R과 SQL 연결하기"
+---
+
+R 내에서 SQL을 직접 연결하여 사용이 가능하며, 이를 통해 훨씬 효율적인 작업이 가능합니다. 즉, R을 이용하여 SQL DB에 접속해 데이터를 읽어온 후 가공하고, 이를 토대로 결과물을 얻거나 다시 SQL에 가공한 데이터를 DB에 저장하는 것이 가능합니다.
+
+먼저 SQL에서 아래의 쿼리를 실행하여 MySQL의 사용자 password를 갱신합니다. (본 예제에서는 1234로 설정하였습니다.)
+
+```{r eval = FALSE}
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '신규비밀번호';
+```
+
+## R에서 SQL DB에 접속하기
+
+`DBI` 패키지를 이용하면 R 내에서 SQL DB에 접속 및 작업이 가능합니다. 먼저 DB 인스턴스에 연결을 합니다.
+
+```{r eval = FALSE}
+library(DBI)
+library(RMySQL)
+
+con = dbConnect(
+  drv = MySQL(),
+  user = 'root',
+  password = '1234', # 위에서 설정한 root 비밀번호
+  host = '127.0.0.1',
+  dbname = 'shop' # 사용하고자 하는 스키마
+)
+```
+
+-   drv: MySQL을 사용하므로 MySQL()을 입력합니다.
+-   user: 관리자 계정에 해당하는 root를 입력합니다.
+-   password: 위에서 설정한 root 관리자 계정의 비밀번호를 입력합니다.
+-   host: 로컬 주소를 입력합니다. (일반적으로 **127.0.0.1**로 셋팅되어 있습니다.)
+-   dbname: 사용하고자 하는 데이터베이스(스키마) 이름을 입력합니다.
+
+이제 R과 SQL DB가 연결 되었습니다. `dbListTables()` 함수를 통해 데이터베이스 내의 테이블의 리스트를 확인할 수 있습니다.
+
+```{r eval = FALSE}
+dbListTables(con)
+```
+
+이제 R 내에서 SQL DB의 데이터를 불러와보겠습니다. `dbGetQuery()` 함수는 DB에 쿼리를 전송한 후 결과를 받아오는 함수이며, goods 테이블을 조회하는 쿼리를 전송해보겠습니다.
+
+```{r eval = FALSE}
+goods = dbGetQuery(con, 'select * from goods;')
+```
+
+이처럼 SQL DB의 데이터를 R로 가져올 수 있으며, 얼마든지 복잡한 형태의 쿼리 전송도 가능합니다.
+
+```{r eval = FALSE}
+dbGetQuery(con, 'select goods_classify, count(*) as cnt
+           from goods
+           group by goods_classify
+           order by cnt desc;')
+```
+
+## 테이블 생성하기
+
+예제로 내장 데이터셋인 **economics**를 저장할 테이블을 만들어 보겠습니다. SQL에서는 `CREATE TABLE` 쿼리를 이용해 테이블을 만들수 있습니다. 그러나 R에서 SQL로 쿼리를 전송하여 테이블을 만들수도 있습니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+ "CREATE TABLE economics(
+  date Date PRIMARY KEY,
+  pce double,
+  pop double,
+  psavert double,
+  uempmed double,
+  unemploy double
+)"
+)
+```
+
+같은 날짜가 중복에서 입력되면 안되는 유일한 값이므로 date는 PRIMARY KEY로 설정해 줍니다. `dbSendQuery()` 함수는 `dbGetQuery()` 함수와는 다르게 단순히 쿼리를 전송하는 역할만 합니다. Workbench를 열어 해당 테이블이 제대로 만들어 졌는지 확인해보도록 하겟습니다.
+
+![](images/image-648811309.png)
+
+스키마 부분에서 새로고침을 눌러보면, \*\*economics\*\*\*\*\* 테이블이 제대로 만들어졌으며, date 컬럼은 Primary Key를 나타내는 PK가 표시됩니다.
+
+## 데이터 저장하기
+
+R의 데이터를 SQL DB에 저장하기 위해서는 추가적인 다음과 같은 설정이 필요합니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+  "SET GLOBAL local_infile = TRUE;"
+)
+```
+
+위 쿼리를 통해 **local_infile**를 TRUE로 설정하면, R의 데이터를 SQL DB에 직접 저장이 가능합니다. 이제 economics 데이터셋을 불러오도록 합니다.
+
+먼저 economics 데이터셋을 불러오도록 합니다.
+
+```{r eval = FALSE}
+economics = ggplot2::economics
+economics = data.frame(economics)
+```
+
+economics 데이터는 ggplot2 패키지에 존재하며, **spec_tbl_df** 형태이므로 `data.frame()` 함수를 통해 데이터프레임 형태로 변경합니다. 해당 데이터를 SQL DB에 저장해보도록 하겠으며, 해당 작업에는 `dbWriteTable()` 함수가 이용됩니다.
+
+```{r eval = FALSE}
+dbWriteTable(con, "economics", economics[1:300, ],
+             overwrite = TRUE, row.names = FALSE)
+```
+
+`dbWriteTable()` 함수를 이용해 economics 데이터의 1행부터 300행 까지의 데이터를 저장합니다. overwrite 인자를 TRUE로 설정하면 이미 존재하는 테이블에 새로운 데이터를 덮어쓰게 됩니다. row.names는 행 이름을 새로운 열로 추가할지 여부이므로 FALSE로 설정합니다.
+
+Workbench에서 확인을 해보면 economics 테이블에 해당 데이터가 저장되어 있습니다.
+
+![](images/image-438320908.png)
+
+나머지에 해당하는 301행부터 574행 까지의 데이터도 저장해보도록 하겠습니다.
+
+```{r eval = FALSE}
+dbWriteTable(con, "economics", economics[301:574, ],
+             append = TRUE, row.names = FALSE)
+```
+
+이번에는 overwrite 인자 대신 append 인자를 TRUE로 설정합니다. 만약 `overwrite = TRUE`를 입력한다면 기존의 데이터가 모두 지워지고 새로운 데이터가 저장되는 반면, `append = TRUE`를 입력하면 기존의 데이터가 유지된 상태에서 새로운 데이터가 추가적으로 저장됩니다.
+
+이처럼 R 내에서 작업한 결과물을 SQL DB에 손쉽게 저장할 수 있습니다.
+
+## 데이터 추가하기
+
+기본 데이터에는 2015년 4월 1일까지의 데이터만 존재합니다. 만일 새로운 데이터를 구해 기존 DB에 추가하고자 할 경우 SQL에서는 `INSERT INTO` 쿼리가 사용됩니다.
+
+```{r eval = FALSE}
+INSERT INTO [테이블] (열1, 열2, ...)
+VALUE (값1, 값2 , ….);
+```
+
+위 쿼리를 이용해 가상의 2015년 5월 1일 데이터를 추가해주도록 합니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+  "INSERT INTO economics (date, pce, pop, psavert, uempmed, unemploy)
+  VALUES ('2015-05-01', '12300', '321000', '8', '12', '8600');"
+)
+```
+
+Workbench에서 확인을 해보면 economics 테이블의 가장 하단에 2015-05-01 데이터가 추가되었습니다.
+
+![](images/image-299987546.png)
+
+## 데이터 수정하기
+
+만일 DB의 데이터를 수정해야 할 경우 SQL에서는 `UPDATE` 쿼리가 사용됩니다.
+
+```{r eval = FALSE}
+UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
+```
+
+2015년 5월 1일 데이터 중 psavert는 7.9로, uempmed를 14로 수정해보도록 하겠습니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+  "UPDATE economics
+  SET psavert = '7.9', uempmed = '14'
+  WHERE DATE = '2015-05-01';"
+)
+```
+
+데이터를 확인을 해보면 2015-05-01의 데이터가 수정되었습니다.
+
+![](images/image-291696437.png)
+
+## 데이터 삭제하기
+
+만일 특정 데이터를 삭제해야 할 경우 SQL에서는 `DELETE FROM` 쿼리가 사용됩니다.
+
+```{r eval = FALSE}
+DELETE FROM [테이블]
+WHERE [조건]
+```
+
+이번에는 2015년 5월 1일 데이터를 삭제해보도록 하겠습니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+  "DELETE FROM economics
+  WHERE DATE = '2015-05-01';"
+)
+```
+
+데이터를 확인을 해보면 2015-05-01의 데이터가 삭제되었습니다.
+
+![](images/image-2039860721.png)
+
+## 테이블 삭제하기
+
+만일 테이블 전체를 삭제해야 할 경우 SQL에서는 `DROP TABLE` 쿼리가 사용됩니다.
+
+```{r eval = FALSE}
+DROP TABLE [테이블]
+```
+
+우리가 작업했던 **economics** 테이블을 삭제해보겠습니다.
+
+```{r eval = FALSE}
+dbSendQuery(con,
+  "DROP TABLE economics;"
+)
+```
+
+Workbench의 스키마 부분에서 새로고침을 눌러보면, data 스키마 내에서 economics 테이블이 삭제되었습니다.
+
+## 스키마 생성하기 및 삭제
+
+처음에 `dbConnect()` 함수 내에 dbname을 통해 data 스키마를 사용하겠다고 선언했습니다. 만일 새로운 스키마를 생성하고자 할 경우의 쿼리는 `CREATE DATABASE [스키마]` 이며, R에서도 쿼리 전송을 통해 명령을 수행할 수 있습니다.
+
+```{r eval = FALSE}
+dbSendQuery(con, "CREATE DATABASE new_db;")
+```
+
+Workbench의 스키마 부분에서 새로고침을 눌러보면, **new_db** 스키마가 새롭게 생성됩니다.
+
+![](images/image-420638947.png)
+
+반대로 이를 삭제하는 쿼리는 `DROP DATABASE [스키마]` 입니다.
+
+```{r eval = FALSE}
+dbSendQuery(con, "DROP DATABASE new_db;")
+```
+
+## 연결 해제하기
+
+R에서 SQL을 이용한 모든 작업이 완료되면 반드시 R의 DB 접속을 종료해주어야 합니다. 만일 접속을 종료하지 않고 R을 닫을 경우, 향후 접속문제가 발생할 수도 있습니다.
+
+```{r eval = FALSE}
+dbDisconnect(con)
+```
+
+`dbDisconnect()` 함수를 통해 R의 DB 연결을 해제할 수 있습니다. 다시 DB를 사용하려면 `dbConnect()` 함수를 이용해 재접속을 하면 됩니다.
