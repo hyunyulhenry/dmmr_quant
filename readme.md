@@ -1,9 +1,3 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # 두물머리 데이터 기반 퀀트 투자 전문가
 
 두물머리에서 제공하는 '퀀트 투자 전문가' 과정 강의록 입니다.
