@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>퀀트 투자 전문가 과정 - 1&nbsp; 데이터 분석 프로세스</title>
+<title>데이터 분석 프로세스</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,14 +24,11 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sql.html" rel="next">
-<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,122 +64,20 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">퀀트 투자 전문가 과정</a> 
-    </div>
-      </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#데이터-불러오기" id="toc-데이터-불러오기" class="nav-link active" data-scroll-target="#데이터-불러오기"><span class="toc-section-number">1.1</span>  데이터 불러오기</a>
-  <ul class="collapse">
-  <li><a href="#데이터-수집-및-저장" id="toc-데이터-수집-및-저장" class="nav-link" data-scroll-target="#데이터-수집-및-저장"><span class="toc-section-number">1.1.1</span>  데이터 수집 및 저장</a></li>
-  <li><a href="#데이터-서버-접속-및-불러오기" id="toc-데이터-서버-접속-및-불러오기" class="nav-link" data-scroll-target="#데이터-서버-접속-및-불러오기"><span class="toc-section-number">1.1.2</span>  데이터 서버 접속 및 불러오기</a></li>
-  </ul></li>
-  <li><a href="#데이터-정리하기-tidy" id="toc-데이터-정리하기-tidy" class="nav-link" data-scroll-target="#데이터-정리하기-tidy"><span class="toc-section-number">1.2</span>  데이터 정리하기 (tidy)</a></li>
-  <li><a href="#데이터-분석하기-explore" id="toc-데이터-분석하기-explore" class="nav-link" data-scroll-target="#데이터-분석하기-explore"><span class="toc-section-number">1.3</span>  데이터 분석하기 (Explore)</a>
-  <ul class="collapse">
-  <li><a href="#데이터-변형" id="toc-데이터-변형" class="nav-link" data-scroll-target="#데이터-변형"><span class="toc-section-number">1.3.1</span>  데이터 변형</a></li>
-  <li><a href="#데이터-시각화" id="toc-데이터-시각화" class="nav-link" data-scroll-target="#데이터-시각화"><span class="toc-section-number">1.3.2</span>  데이터 시각화</a></li>
-  </ul></li>
-  <li><a href="#모델링" id="toc-모델링" class="nav-link" data-scroll-target="#모델링"><span class="toc-section-number">1.4</span>  모델링</a></li>
-  <li><a href="#소통-communicate" id="toc-소통-communicate" class="nav-link" data-scroll-target="#소통-communicate"><span class="toc-section-number">1.5</span>  소통 (communicate)</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="toc-section-number">1.5.1</span>  Quarto</a></li>
-  <li><a href="#quarto-book" id="toc-quarto-book" class="nav-link" data-scroll-target="#quarto-book"><span class="toc-section-number">1.5.2</span>  Quarto Book</a></li>
-  <li><a href="#shiny" id="toc-shiny" class="nav-link" data-scroll-target="#shiny"><span class="toc-section-number">1.5.3</span>  Shiny</a></li>
-  </ul></li>
-  <li><a href="#배포" id="toc-배포" class="nav-link" data-scroll-target="#배포"><span class="toc-section-number">1.6</span>  배포</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></h1>
+<h1 class="title">데이터 분석 프로세스</h1>
 </div>
 
 
@@ -202,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/ds/ds_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="데이터분석 프로세스"><img src="images/ds/ds_flow.png" class="img-fluid figure-img"></a></p>
+<p><a href="images/ds/ds_flow.png" class="lightbox" title="데이터분석 프로세스" data-gallery="quarto-lightbox-gallery-1"><img src="images/ds/ds_flow.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">데이터분석 프로세스</figcaption><p></p>
 </figure>
 </div>
@@ -217,17 +112,17 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/ds/tidyverse.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="tidyverse"><img src="images/ds/tidyverse.png" class="img-fluid figure-img"></a></p>
+<p><a href="images/ds/tidyverse.png" class="lightbox" title="tidyverse" data-gallery="quarto-lightbox-gallery-2"><img src="images/ds/tidyverse.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">tidyverse</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="데이터-불러오기" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="데이터-불러오기"><span class="header-section-number">1.1</span> 데이터 불러오기</h2>
+<section id="데이터-불러오기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-불러오기">데이터 불러오기</h2>
 <p>회사의 서버에 저장된 데이터를 불러와야 데이터 분석을 할 수 있습니다. 그러나 실무에서는 그보다 먼저 데이터의 수집 및 어떤 플랫폼에 저장할 지 제대로 정의해야, 수월한 데이터 분석을 수행할 수 있습니다.</p>
-<section id="데이터-수집-및-저장" class="level3" data-number="1.1.1">
-<h3 data-number="1.1.1" class="anchored" data-anchor-id="데이터-수집-및-저장"><span class="header-section-number">1.1.1</span> 데이터 수집 및 저장</h3>
+<section id="데이터-수집-및-저장" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-수집-및-저장">데이터 수집 및 저장</h3>
 <p>제대로 된 데이터가 있어야 제대로 된 분석을 할 수 있습니다. 데이터 구매를 위해 비싼 비용을 사용하지만, 대부분의 데이터가 완벽하다고 말할 수는 없습니다. 해외 금융회사의 경우 여러 벤더로부터 데이터를 구매한 후 크로스체크를 통해 오류가 있는 데이터를 찾아내며, 주니어 퀀트의 경우 데이터 오류 검증을 하는 업무부터 시작해 나갑니다.</p>
 <p>또한 분석을 하기 편한 플랫폼에 저장되어 있어야 빠른 데이터 분석이 가능합니다. 예를 들어 raw data가 엑셀 형태로 되어있다면 관리도 쉽지 않고, 분석 하기에도 불편합니다.</p>
 <p>대부분 금융 데이터의 경우 주가, 재무제표 등 정형 데이터이므로, 데이터 저장에 RDBMS을 이용하는 것이 효율적입니다. sql을 이용할 경우 원하는 데이터를 수초 내에 조회가 가능합니다.</p>
@@ -235,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/ds/rdbms.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="RDBMS"><img src="images/ds/rdbms.png" class="img-fluid figure-img"></a></p>
+<p><a href="images/ds/rdbms.png" class="lightbox" title="RDBMS" data-gallery="quarto-lightbox-gallery-3"><img src="images/ds/rdbms.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">RDBMS</figcaption><p></p>
 </figure>
 </div>
@@ -245,8 +140,8 @@ ul.task-list li input[type="checkbox"] {
 <p>이러한 빅데이터의 분석을 위해서는 RDBMS 보다는 하둡이나 스파크, 카프카 등을 이용하는 것이 좋습니다. 예를 들어 스파크의 경우 기존 sql과 비교해 월등히 빠른 속도와, 분석가들이 익숙한 R, Python, sql 문법을 그대로 사용할 수 있는 장점이 있습니다.</p>
 <p>만일 RDBMS로도 원하는 데이터를 ‘참을 만한 시간’ 내에 조회가 가능하다면 그대로 사용을, 도저히 감당이 안될 정도이면 빅데이터 플랫폼으로 변경할 것을 추천하며, 이러한 플랫폼의 차이는 분석가의 업무가 아니긴 하지만 어느 정도는 알고는 있는 것이 좋습니다.</p>
 </section>
-<section id="데이터-서버-접속-및-불러오기" class="level3" data-number="1.1.2">
-<h3 data-number="1.1.2" class="anchored" data-anchor-id="데이터-서버-접속-및-불러오기"><span class="header-section-number">1.1.2</span> 데이터 서버 접속 및 불러오기</h3>
+<section id="데이터-서버-접속-및-불러오기" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-서버-접속-및-불러오기">데이터 서버 접속 및 불러오기</h3>
 <p>데이터 서버가 구축되어 있다고, 무작정 R/Python을 이용해 서버에 접속하여 데이터를 내려받아 분석을 하는 것은 좋지 않습니다. 데이터의 용량이 클 경우 내려받는데만 수 시간이 걸릴 수 있으며, 제대로 처리하지 못할 수도 있습니다. 따라서 서버 내에서 최대한 원하는 형태까지 데이터를 가공한 후(기본 클랜징, 그룹핑, 원하는 기간과 컬럼만 선택 등) R/Python을 이용해 분석을 하는 편이 효율적입니다.</p>
 <p>그러나 이를 위해 데이터를 담당하는 사람에게 일일이 요청할 수는 없습니다. 일부 회사에서 원하는 형태로 데이터를 요청할 때 마다 부서 비용이 지출되기도 하고, 원하는 형태가 아닐 경우 재요청을 해야합니다. 이 과정에서 비용 뿐만 아니라 며칠이 소요됩니다. 따라서 데이터를 분석하는 사람이라면 차라리 직접 서버에 접속해 원하는 데이터를 최대한 가공한 후, R/Python로 서버에 접속하여 데이터를 내려받는 것이 이상적입니다. 이를 위해 기본적인 sql 문법도 알고 있어야 하며, 다행히도 dplyr 패키지를 공부하면 sql 문법도 자연스럽게 공부가 됩니다.</p>
 <p>R의 경우 RJDBC, RODBC, ROrcacle 등의 패키지를 이용해 DB에 직접 연결할 수 있습니다. R과 서버를 연결시키면, R 내에서 직접 sql 쿼리를 날린 후 결과를 받을 수 있습니다.</p>
@@ -261,8 +156,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="데이터-정리하기-tidy" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="데이터-정리하기-tidy"><span class="header-section-number">1.2</span> 데이터 정리하기 (tidy)</h2>
+<section id="데이터-정리하기-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-정리하기-tidy">데이터 정리하기 (tidy)</h2>
 <p>데이터 분석의 단계에서 가장 많은 시간을 할애하는 것이 데이터 정리하기, 즉 클랜징 단계입니다. 데이터가 제대로 클랜징 처리가 되어야 분석이나 모델링을 하는 것이 가능합니다. 다행히 금융 데이터는 데이터가 지저분한 형태로 들어오는 경우가 거의 없지만, 그래도 완벽하게 원하는 형태는 아닙니다. 더구나 비정형 데이터의 경우 클랜징 처리를 어떻게 하느냐에 따라 전혀 다른 결과가 나오기도 합니다. 클랜징이 필요한 예를 들어봅시다.</p>
 <ul>
 <li>Date가 yyyymmdd 형태로 들어올 경우, yyyy-mm-dd 형태로 변경</li>
@@ -281,17 +176,17 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>물론 간단한 클랜징 처리는 R/Python이 아닌 sql 내에서 사전에 처리하는 것이 속도 측면에서 이득입니다.</p>
 </section>
-<section id="데이터-분석하기-explore" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="데이터-분석하기-explore"><span class="header-section-number">1.3</span> 데이터 분석하기 (Explore)</h2>
+<section id="데이터-분석하기-explore" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-분석하기-explore">데이터 분석하기 (Explore)</h2>
 <p>원하는 데이터가 준비되었으면, 본격적으로 데이터를 분석해야 한다. 이 단계는 크게 변형, 시각화, 모델링으로 구분됩니다.</p>
-<section id="데이터-변형" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="데이터-변형"><span class="header-section-number">1.3.1</span> 데이터 변형</h3>
+<section id="데이터-변형" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-변형">데이터 변형</h3>
 <p>먼저 각종 테이블을 하나로 합칠 필요가 있으며, 이 때는 <code>*_join()</code> 구문이 사용됩니다.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/ds/join.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="join"><img src="images/ds/join.png" class="img-fluid figure-img"></a></p>
+<p><a href="images/ds/join.png" class="lightbox" title="join" data-gallery="quarto-lightbox-gallery-4"><img src="images/ds/join.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">join</figcaption><p></p>
 </figure>
 </div>
@@ -306,8 +201,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>이 외에도 dplyr 패키지에는 데이터 분석을 위한 대부분의 함수가 포함되어 있습니다.</p>
 </section>
-<section id="데이터-시각화" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="데이터-시각화"><span class="header-section-number">1.3.2</span> 데이터 시각화</h3>
+<section id="데이터-시각화" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-시각화">데이터 시각화</h3>
 <p>R의 가장 큰 강점은 데이터 시각화라고 말하는 사람도 있습니다. 그만큼 ggplot2 패키지를 이용해 데이터를 직관적으로 표현할 수 있다. 해당 패키지는 릴랜드 윌킨스(Leland Wilkinson)의 책 The Grammar of Graphics를 기본 철학으로 만들어졌습니다.</p>
 <p>ggplot의 경우 인터넷에도 다양한 예제가 있으므로, 원하는 형태의 그림이 있을 시 얼마든지 검색이 가능합니다.</p>
 <ul>
@@ -316,14 +211,14 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="모델링" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="모델링"><span class="header-section-number">1.4</span> 모델링</h2>
+<section id="모델링" class="level2">
+<h2 class="anchored" data-anchor-id="모델링">모델링</h2>
 <p>기존의 R 내에 머신러닝 관련 패키지는 너무 분산되어 있었습니다. 그러나 Rstudio에서 통계분석, 머신러닝을 위한 tidymodel 세계관 구축 중입니다.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/ds/tidymodel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="tidymodel"><img src="images/ds/tidymodel.png" class="img-fluid figure-img"></a></p>
+<p><a href="images/ds/tidymodel.png" class="lightbox" title="tidymodel" data-gallery="quarto-lightbox-gallery-5"><img src="images/ds/tidymodel.png" class="img-fluid figure-img"></a></p>
 <p></p><figcaption class="figure-caption">tidymodel</figcaption><p></p>
 </figure>
 </div>
@@ -337,11 +232,11 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://www.tmwr.org/" class="uri">https://www.tmwr.org/</a></li>
 </ul>
 </section>
-<section id="소통-communicate" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="소통-communicate"><span class="header-section-number">1.5</span> 소통 (communicate)</h2>
+<section id="소통-communicate" class="level2">
+<h2 class="anchored" data-anchor-id="소통-communicate">소통 (communicate)</h2>
 <p>혼자 일을 하지 않는 이상 결국 업무의 마무리는 문서화와 보고입니다. 하지만 사내에서만 보는 문서를 굳이 한글이나 워드로 작성하는 것은 매우 비효율적입니다. 코딩으로 나온 값을 다시 csv로 저장한 다음, 엑셀에서 가공하고, 그걸 다시 워드로 옮기고, 생각만 해도 숨막히는 작업입니다. R에서 코딩으로 데이터 분석을 했다면, 결과물 역시 코딩으로 하는 것이 훨씬 효율적입니다.</p>
-<section id="quarto" class="level3" data-number="1.5.1">
-<h3 data-number="1.5.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">1.5.1</span> Quarto</h3>
+<section id="quarto" class="level3">
+<h3 class="anchored" data-anchor-id="quarto">Quarto</h3>
 <p>Quarto는 문서 내에서 코드(R, 파이썬 등)와 텍스트를 동시에 사용가능하여 효율적으로 문서를 작성할 수 있게 해줍니다. 만일 양식이 동일한 문서에서 기초 데이터만 매번 바뀌는 상황이라면, 기존의 환경에서는 매번 기초 데이터를 뽑아 문서로 작성해야 합니다. 그러나 Quarto를 이용한다면 데이터를 받는 것부터 문서화까지 코드로 만들어 두어 100% 자동화가 가능합니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -364,15 +259,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>실무적으로는 이러한 것들을 몰라도 Qmd 작성 테크닉만 알고 있다면, 작성 후 Render 버튼을 누르기만 하면 문서가 만들어집니다. 대부분의 경우 편하게 볼 수 있는 HTML 형태로 결과물을 생성하지만, 만일 보고용이라면 PDF로 결과물을 생성한 후, 프린트를 해도 됩니다.</p>
 </section>
-<section id="quarto-book" class="level3" data-number="1.5.2">
-<h3 data-number="1.5.2" class="anchored" data-anchor-id="quarto-book"><span class="header-section-number">1.5.2</span> Quarto Book</h3>
+<section id="quarto-book" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-book">Quarto Book</h3>
 <p>Quarto Book(Bookdown)은 Quarto를 이용해 만들 수 있으며, 웹북을 만들어 줍니다. 사내에서 업무 프로세스처럼 목차가 있는 문서를 만들어야 할 경우, 대부분 이파일 저파일 덕지덕지 저장해놓기 마련이며 관리도 되지 않습니다. 만일 이러한 것들을 웹북 형태로 만들어 둔다면 통합적으로 관리하기 용이하며, 인덱싱이 되므로 검색하기도 편합니다.</p>
 <ul>
 <li><a href="https://hyunyulhenry.github.io/quant_cookbook/" class="uri">https://hyunyulhenry.github.io/quant_cookbook/</a></li>
 </ul>
 </section>
-<section id="shiny" class="level3" data-number="1.5.3">
-<h3 data-number="1.5.3" class="anchored" data-anchor-id="shiny"><span class="header-section-number">1.5.3</span> Shiny</h3>
+<section id="shiny" class="level3">
+<h3 class="anchored" data-anchor-id="shiny">Shiny</h3>
 <p>Quarto를 이용한 문서도 결과적으로 일차원적인 문서, 즉 보고자가 작성한 문서라는 한계가 있습니다. 그러나 보고를 받는 사람이 추가적인 데이터를 보고 싶을 경우, 예를 들어 운용중인 100개 펀드 리스트 중 원하는 펀드를 선택한 후, 원하는 날짜의 보유 종목을 확인하고자 할 경우, 매번 보고자가 해당 데이터를 뽑은 후 문서화를 해야 한다.</p>
 <p>그러나 R의 Shiny를 이용할 경우 간편하게 앱을 만들 수 있으며, 이 모든 과정이 가능합니다. 또한 Quarto와 마찬가지로 DB 서버에 연결하는 코드까지 짜둘 경우, DB가 업데이트 됨에 따라 앱의 결과물 역시 최신 데이터를 보여줍니다. 사내에 샤이니를 제대로 만들 줄 아는 사람 한명만 있어도, 굳이 비싼 돈을 주고 tableau를 구매하지 않아도 되고, 확장성도 훨씬 넓습니다.</p>
 <ul>
@@ -380,8 +275,8 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 </section>
-<section id="배포" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="배포"><span class="header-section-number">1.6</span> 배포</h2>
+<section id="배포" class="level2">
+<h2 class="anchored" data-anchor-id="배포">배포</h2>
 <p>코드를 저장하고, 완성된 문서를 배포하는 것 역시 중요합니다. 먼저 코드 저장의 경우 Rstudio와 Github를 연동해두면, 매우 쉽게 Github로 코드를 업로드할 수 있습니다. 만일 사내에서 Gitlab을 사용한다면, 이 또한 좋은 저장 수단입니다.</p>
 <p>Github을 이용한다면 Quarto로 생성된 문서 역시 자동으로 url이 생성되므로, 문서를 공유하기 보다는 해당 url을 공유하는 것이 훨씬 좋습니다. 만일 데이터를 새로 분석하거나 양식이 바뀔 경우 파일을 공유하면 이래저래 꼬일 가능성이 있지만, url을 접속하면 최신 버젼의 파일이 자동으로 업데이트 되기 때문입니다.</p>
 <p>Shiny의 경우도 Rstudio를 통해 shinyapps.io에 업로드하여 url을 생성할 수 있습니다. 그러나 보안 등의 이슈로 사내에서만 봐야하는 결과물이라면, 사내에 Shiny server를 설치하여 사내전용 url을 생성하는 것 역시 가능합니다. 또한 특정 부서만 접근이 가능하게 하려면 shinymanager 패키지를 통해 ID/PW를 부여할 수도 있습니다.</p>
@@ -524,20 +419,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./sql.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
 
 
 

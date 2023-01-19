@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>퀀트 투자 전문가 과정 - 5&nbsp; API를 이용한 데이터 수집</title>
+<title>API를 이용한 데이터 수집</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,14 +87,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./crawl.html" rel="next">
-<link href="./r_sql.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,114 +127,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">퀀트 투자 전문가 과정</a> 
-    </div>
-      </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./api.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#야후-파이낸스-이용하기" id="toc-야후-파이낸스-이용하기" class="nav-link active" data-scroll-target="#야후-파이낸스-이용하기"><span class="toc-section-number">6</span>  야후 파이낸스 이용하기</a>
-  <ul class="collapse">
-  <li><a href="#주가-다운로드" id="toc-주가-다운로드" class="nav-link" data-scroll-target="#주가-다운로드"><span class="toc-section-number">6.1</span>  주가 다운로드</a></li>
-  <li><a href="#국내-종목-주가-다운로드" id="toc-국내-종목-주가-다운로드" class="nav-link" data-scroll-target="#국내-종목-주가-다운로드"><span class="toc-section-number">6.2</span>  국내 종목 주가 다운로드</a></li>
-  <li><a href="#sql에-데이터-저장하기" id="toc-sql에-데이터-저장하기" class="nav-link" data-scroll-target="#sql에-데이터-저장하기"><span class="toc-section-number">6.3</span>  SQL에 데이터 저장하기</a></li>
-  </ul></li>
-  <li><a href="#유료-데이터-벤더-이용하기" id="toc-유료-데이터-벤더-이용하기" class="nav-link" data-scroll-target="#유료-데이터-벤더-이용하기"><span class="toc-section-number">7</span>  유료 데이터 벤더 이용하기</a>
-  <ul class="collapse">
-  <li><a href="#가입-및-api-token-받기" id="toc-가입-및-api-token-받기" class="nav-link" data-scroll-target="#가입-및-api-token-받기"><span class="toc-section-number">7.1</span>  가입 및 API token 받기</a></li>
-  <li><a href="#데이터-다운로드" id="toc-데이터-다운로드" class="nav-link" data-scroll-target="#데이터-다운로드"><span class="toc-section-number">7.2</span>  데이터 다운로드</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></h1>
+<h1 class="title">API를 이용한 데이터 수집</h1>
 </div>
 
 
@@ -259,11 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>API는 API 주소만 가지고 있다면 데이터를 언제, 어디서, 누구나 쉽게 이용할 수 있다는 장점이 있습니다. 또한 대부분의 경우 사용자가 필요한 데이터만을 가지고 있으므로 접속 속도가 빠르며, 데이터를 가공하는 번거로움도 줄어듭니다. 해외에는 금융 데이터를 API의 형태로 제공하는 업체가 많으므로, 이를 잘만 활용한다면 매우 손쉽게 퀀트 투자에 필요한 데이터를 수집할 수 있습니다.</p>
-<section id="야후-파이낸스-이용하기" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 야후 파이낸스 이용하기</h1>
+<section id="야후-파이낸스-이용하기" class="level1">
+<h1>야후 파이낸스 이용하기</h1>
 <p>야후 파이낸스에서는 주가 데이터를 무료로 제공하며, quantmod 패키지의 <code>getSymbols()</code> 함수는 해당 API에 접속해 데이터를 다운로드합니다.</p>
-<section id="주가-다운로드" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="주가-다운로드"><span class="header-section-number">6.1</span> 주가 다운로드</h2>
+<section id="주가-다운로드" class="level2">
+<h2 class="anchored" data-anchor-id="주가-다운로드">주가 다운로드</h2>
 <p><code>getSymbols()</code> 함수의 기본적인 사용법은 매우 간단합니다. 괄호 안에 다운로드하려는 종목의 티커를 입력하면 됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
@@ -276,10 +179,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(AAPL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           AAPL.Open AAPL.High AAPL.Low AAPL.Close AAPL.Volume AAPL.Adjusted
-2007-01-03  3.081786  3.092143 2.925000   2.992857  1238319600      2.551164
+2007-01-03  3.081786  3.092143 2.925000   2.992857  1238319600      2.551165
 2007-01-04  3.001786  3.069643 2.993571   3.059286   847260400      2.607790
-2007-01-05  3.063214  3.078571 3.014286   3.037500   834741600      2.589219
-2007-01-08  3.070000  3.090357 3.045714   3.052500   797106800      2.602006
+2007-01-05  3.063214  3.078571 3.014286   3.037500   834741600      2.589220
+2007-01-08  3.070000  3.090357 3.045714   3.052500   797106800      2.602005
 2007-01-09  3.087500  3.320714 3.041071   3.306071  3349298400      2.818154
 2007-01-10  3.383929  3.492857 3.337500   3.464286  2952880000      2.953019</code></pre>
 </div>
@@ -337,18 +240,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(NVDA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           NVDA.Open NVDA.High NVDA.Low NVDA.Close NVDA.Volume NVDA.Adjusted
-2007-01-03  6.178333  6.253333 5.798333   6.013333   115482000      5.518749
-2007-01-04  5.991667  6.013333 5.838333   5.985000    79729800      5.492748
+2007-01-03  6.178333  6.253333 5.798333   6.013333   115482000      5.518750
+2007-01-04  5.991667  6.013333 5.838333   5.985000    79729800      5.492747
 2007-01-05  5.843333  5.866667 5.570000   5.610000   124334400      5.148589
-2007-01-08  5.630000  5.760000 5.533333   5.651667    65727000      5.186831
-2007-01-09  5.660000  5.698333 5.535000   5.541667    76416600      5.085878
-2007-01-10  5.483333  5.866667 5.400000   5.815000   110874600      5.336729</code></pre>
+2007-01-08  5.630000  5.760000 5.533333   5.651667    65727000      5.186829
+2007-01-09  5.660000  5.698333 5.535000   5.541667    76416600      5.085876
+2007-01-10  5.483333  5.866667 5.400000   5.815000   110874600      5.336730</code></pre>
 </div>
 </div>
 <p>한 번에 여러 종목의 주가를 다운로드할 수도 있습니다. 위 예제와 같이 메타와 엔비디아의 티커인 META와 NVDA를 ticker 변수에 입력하고 <code>getSymbols()</code> 함수에 티커를 입력한 변수를 넣으면 두 종목의 주가가 순차적으로 다운로드됩니다.</p>
 </section>
-<section id="국내-종목-주가-다운로드" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="국내-종목-주가-다운로드"><span class="header-section-number">6.2</span> 국내 종목 주가 다운로드</h2>
+<section id="국내-종목-주가-다운로드" class="level2">
+<h2 class="anchored" data-anchor-id="국내-종목-주가-다운로드">국내 종목 주가 다운로드</h2>
 <p><code>getSymbols()</code> 함수를 이용하면 미국뿐 아니라 국내 종목의 주가도 다운로드할 수 있습니다. 국내 종목의 티커는 총 6자리로 구성되어 있으며, 해당 함수에 입력되는 티커는 코스피 상장 종목의 경우 <strong>티커.KS</strong>, 코스닥 상장 종목의 경우 <strong>티커.KQ</strong>의 형태로 입력해야 합니다.</p>
 <p>다음은 코스피 상장 종목인 삼성전자 데이터의 다운로드 예시입니다.</p>
 <div class="cell">
@@ -366,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 2023-01-16              61100
 2023-01-17              61000
 2023-01-18              60400
-2023-01-19              60600</code></pre>
+2023-01-19              61000</code></pre>
 </div>
 </div>
 <p><code>Cl()</code> 함수는 Close, 즉 종가만을 선택하며, 사용 방법은 <code>Ad()</code> 함수와 동일합니다. 비록 배당을 고려할 수는 없지만, 전반적으로 오류가 없는 데이터를 사용할 수 있습니다.</p>
@@ -386,12 +289,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 2023-01-16              NA
 2023-01-17              NA
 2023-01-18              NA
-2023-01-19           65300</code></pre>
+2023-01-19           65700</code></pre>
 </div>
 </div>
 </section>
-<section id="sql에-데이터-저장하기" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="sql에-데이터-저장하기"><span class="header-section-number">6.3</span> SQL에 데이터 저장하기</h2>
+<section id="sql에-데이터-저장하기" class="level2">
+<h2 class="anchored" data-anchor-id="sql에-데이터-저장하기">SQL에 데이터 저장하기</h2>
 <p>API나 크롤링을 통해 수집한 데이털르 SQL에 저장해보도록 하겠다. 먼저 SQL에서 다음과 같이 데이터베이스와 주가가 들어갈 테이블을 만든다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>create database stock_db;</span>
@@ -456,8 +359,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>SQL을 확인해보면 주가 데이터가 저장되어 있습니다.</p>
 </section>
 </section>
-<section id="유료-데이터-벤더-이용하기" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> 유료 데이터 벤더 이용하기</h1>
+<section id="유료-데이터-벤더-이용하기" class="level1">
+<h1>유료 데이터 벤더 이용하기</h1>
 <p>미국 시장의 데이터만 필요할 경우 유료 데이터 벤더를 이용하는 것도 좋은 방법입니다. 미국에는 금융 데이터를 API로 제공하는 수많은 업체가 있으며, tiingo의 경우는 월 $10만 지불하면 미국과 중국의 4만여개 종목에 대한 데이터를 API 형태로 받을 수 있습니다. 이는 상장폐지된 종목을 커버할 뿐만 아니라, API를 이용하므로 크롤링과는 비교할 수 없는 속도로 데이터를 받을 수 있다는 장점이 있습니다. 이 외에도 Alpha Vantage, Quandl, Polygon 등 수많은 데이터 벤더가 존재합니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -475,8 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="images/api/token1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="images/api/token1.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<section id="가입-및-api-token-받기" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="가입-및-api-token-받기"><span class="header-section-number">7.1</span> 가입 및 API token 받기</h2>
+<section id="가입-및-api-token-받기" class="level2">
+<h2 class="anchored" data-anchor-id="가입-및-api-token-받기">가입 및 API token 받기</h2>
 <p>먼저 <a href="https://api.tiingo.com/" class="uri">https://api.tiingo.com/</a> 사이트에 접속하여 우측 상단의 [Sign-up]을 클릭해 회원가입을 합니다. 그 후 로그인을 한 후 우측 상단에서 본인의 ID를 클릭한 후 [Account]를 선택, 좌측 메뉴의 [API] 부분에서 [Token]을 클릭하면 본인의 API token을 확인할 수 있습니다.</p>
 <p>다음으로 발급받은 API Key를 .Renviron 파일에 추가하도록 합니다. 해당 파일에는 여러 패스워드를 추가해 안전하게 관리할 수 있습니다.</p>
 <div class="cell">
@@ -492,8 +395,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>RIINGO_TOKEN <span class="ot">=</span> <span class="fu">Sys.getenv</span>(<span class="st">"RIINGO_TOKEN"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="데이터-다운로드" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="데이터-다운로드"><span class="header-section-number">7.2</span> 데이터 다운로드</h2>
+<section id="데이터-다운로드" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-다운로드">데이터 다운로드</h2>
 <p>R에서 tiingo를 사용할 수 있게 해주는 riingo 패키지를 이용해 데이터를 받아보도록 하겠습니다. 먼저 tiingo에서 제공하는 종목은 어떠한 것이 있는지 티커 정보들을 확인해봅니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("riingo")</span></span>
@@ -777,20 +680,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./r_sql.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./crawl.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":true,"closeEffect":"zoom","selector":".lightbox","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":true,"openEffect":"zoom"});</script>
 
 
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>퀀트 투자 전문가 과정 - 8&nbsp; 백테스트 실습하기</title>
+<title>백테스트 실습하기</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,14 +87,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./performance.html" rel="next">
-<link href="./portfolio.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -136,111 +133,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">퀀트 투자 전문가 과정</a> 
-    </div>
-      </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backtest.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#return.portfolio-함수" id="toc-return.portfolio-함수" class="nav-link active" data-scroll-target="#return.portfolio-함수"><span class="toc-section-number">8.1</span>  <code>Return.Portfolio()</code> 함수</a>
-  <ul class="collapse">
-  <li><a href="#인자-목록-살펴보기" id="toc-인자-목록-살펴보기" class="nav-link" data-scroll-target="#인자-목록-살펴보기"><span class="toc-section-number">8.1.1</span>  인자 목록 살펴보기</a></li>
-  <li><a href="#출력값-살펴보기" id="toc-출력값-살펴보기" class="nav-link" data-scroll-target="#출력값-살펴보기"><span class="toc-section-number">8.1.2</span>  출력값 살펴보기</a></li>
-  </ul></li>
-  <li><a href="#전통적인-60대-40-포트폴리오-백테스트" id="toc-전통적인-60대-40-포트폴리오-백테스트" class="nav-link" data-scroll-target="#전통적인-60대-40-포트폴리오-백테스트"><span class="toc-section-number">8.2</span>  전통적인 60대 40 포트폴리오 백테스트</a></li>
-  <li><a href="#마켓-타이밍-전략-백테스트" id="toc-마켓-타이밍-전략-백테스트" class="nav-link" data-scroll-target="#마켓-타이밍-전략-백테스트"><span class="toc-section-number">8.3</span>  마켓 타이밍 전략 백테스트</a></li>
-  <li><a href="#동적-자산배분-백테스트" id="toc-동적-자산배분-백테스트" class="nav-link" data-scroll-target="#동적-자산배분-백테스트"><span class="toc-section-number">8.4</span>  동적 자산배분 백테스트</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></h1>
+<h1 class="title">백테스트 실습하기</h1>
 </div>
 
 
@@ -258,12 +164,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>백테스트란 현재 생각하는 전략을 과거부터 실행했을 때 어떠한 성과가 발생하는지 테스트해보는 과정입니다. 과거의 데이터를 기반으로 전략을 실행하는 퀀트 투자에 있어서 이는 핵심 단계이기도 합니다. 백테스트 결과를 통해 해당 전략의 손익뿐만 아니라 각종 위험을 대략적으로 판단할 수 있으며, 어떤 구간에서 전략이 좋았는지 혹은 나빴는지에 대한 이해도 키울 수 있습니다. 이러한 이해를 바탕으로 퀀트 투자를 지속한다면 단기적으로 수익이 나쁜 구간에서도 그 이유에 대한 객관적인 안목을 키울 수 있으며, 확신을 가지고 전략을 지속할 수 있습니다.</p>
 <p>그러나 백테스트를 아무리 보수적으로 혹은 엄밀하게 진행하더라도 이미 일어난 결과를 대상으로 한다는 사실은 변하지 않습니다. 백테스트 수익률만을 보고 투자에 대해 판단하거나, 혹은 동일한 수익률이 미래에도 반복될 것이라고 믿는다면 이는 백미러만 보고 운전하는 것처럼 매우 위험한 결과를 초래할 수도 있습니다.</p>
 <p>R에서 백테스트는 포트폴리오의 경우 PerformanceAnalytics 패키지의 <code>Return.portfolio()</code> 함수를 사용하면 쉽게 할 수 있습니다.</p>
-<section id="return.portfolio-함수" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="return.portfolio-함수"><span class="header-section-number">8.1</span> <code>Return.Portfolio()</code> 함수</h2>
+<section id="return.portfolio-함수" class="level2">
+<h2 class="anchored" data-anchor-id="return.portfolio-함수"><code>Return.Portfolio()</code> 함수</h2>
 <p>프로그래밍을 이용해 백테스트할 때 전략이 단순하다면 단 몇 줄만으로도 테스트가 가능합니다. 그러나 전략이 복잡해지거나 적용해야 할 요소가 많아질 경우, 패키지를 이용하는 것이 효율적인 방법입니다.</p>
 <p>PerformanceAnalytics 패키지의 <code>Return.portfolio()</code> 함수는 백테스트를 수행하는데 가장 대중적으로 사용되는 함수입니다. 해당 함수의 가장 큰 장점은 각 자산의 수익률과 리밸런싱 비중만 있으면 백테스트 수익률, 회전율 등을 쉽게 계산할 수 있으며, 리밸런싱 시점과 수익률의 시점이 일치하지 않아도 된다는 점입니다. 즉, 수익률 데이터는 일간, 리밸런싱 시점은 분기 혹은 연간으로 된 경우에도 매우 쉽게 백테스트를 수행할 수 있습니다.</p>
-<section id="인자-목록-살펴보기" class="level3" data-number="8.1.1">
-<h3 data-number="8.1.1" class="anchored" data-anchor-id="인자-목록-살펴보기"><span class="header-section-number">8.1.1</span> 인자 목록 살펴보기</h3>
+<section id="인자-목록-살펴보기" class="level3">
+<h3 class="anchored" data-anchor-id="인자-목록-살펴보기">인자 목록 살펴보기</h3>
 <p>먼저 <code>Return.portfolio()</code> 함수는 다음과 같은 형태로 구성되어 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Return.portfolio</span>(R, <span class="at">weights =</span> <span class="cn">NULL</span>, <span class="at">wealth.index =</span> <span class="cn">FALSE</span>,</span>
@@ -274,8 +180,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <table class="table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 89%">
+<col style="width: 23%">
+<col style="width: 76%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -286,37 +192,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tbody>
 <tr class="odd">
 <td>R</td>
-<td></td>
+<td>각 자산 수익률 데이터</td>
 </tr>
 <tr class="even">
-<td>각 자산 수익률 데이터</td>
-<td></td>
-</tr>
-<tr class="odd">
 <td>weights</td>
 <td>리밸런싱 시기의 자산별 목표 비중. 미 입력시 동일비중 포트폴리오를 가정해 백테스트가 이루어짐</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>wealth.index</td>
 <td>포트폴리오 시작점이 1인 wealth index에 대한 생성 여부이며, 디폴트는 FALSE로 설정</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>contribution</td>
 <td>포트폴리오 내에서 자산별 성과기여를 나타내는지에 대한 여부이며, 디폴트는 FALSE로 설정</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>geometric</td>
 <td>포트폴리오 수익률 계산시 복리(기하)수익률 적용 여부이며, 디폴트는 TRUE로서 복리수익률을 계산</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>rebalance_on</td>
 <td>weight 값이 미입력 혹은 매번 같은 비중일 경우, 리밸런싱 주기를 선택할 수 있음</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>value</td>
 <td>초기 포트폴리오 가치를 의미하며, 디폴트는 1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>verbose</td>
 <td>부가적인 결과를 표시할지에 대한 여부. 디폴트인 FALSE를 입력하면 포트폴리오 수익률만이 시계열 형태로 계산되며, TRUE를 입력하면 수익률 외에 자산 별 성과기여, 비중, 성과 등이 리스트 형태로 계산됨</td>
 </tr>
@@ -331,13 +233,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>weights에 값을 입력하지 않을 경우 동일비중 포트폴리오를 구성하며, 포트폴리오 리밸런싱은 하지 않습니다.</p>
 </section>
-<section id="출력값-살펴보기" class="level3" data-number="8.1.2">
-<h3 data-number="8.1.2" class="anchored" data-anchor-id="출력값-살펴보기"><span class="header-section-number">8.1.2</span> 출력값 살펴보기</h3>
+<section id="출력값-살펴보기" class="level3">
+<h3 class="anchored" data-anchor-id="출력값-살펴보기">출력값 살펴보기</h3>
 <p>해당 함수는 verbose 인자를 TRUE로 설정하면 다양한 결괏값을 리스트 형태로 반환합니다.</p>
 <table class="table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 87%">
+<col style="width: 23%">
+<col style="width: 76%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -374,8 +276,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </section>
 </section>
-<section id="전통적인-60대-40-포트폴리오-백테스트" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="전통적인-60대-40-포트폴리오-백테스트"><span class="header-section-number">8.2</span> 전통적인 60대 40 포트폴리오 백테스트</h2>
+<section id="전통적인-60대-40-포트폴리오-백테스트" class="level2">
+<h2 class="anchored" data-anchor-id="전통적인-60대-40-포트폴리오-백테스트">전통적인 60대 40 포트폴리오 백테스트</h2>
 <p><code>Return.portfolio()</code> 함수의 가장 간단한 예제로서 전통적인 60대 40 포트폴리오를 백테스트합니다. 해당 포트폴리오는 주식과 채권에 각각 60%와 40%를 투자하며, 특정 시점마다 해당 비중을 맞춰주기 위해 리밸런싱을 수행합니다. 매해 말 리밸런싱을 가정하는 예제를 살펴보겠습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quantmod)</span>
@@ -610,8 +512,8 @@ TLT.Adjusted   -0.3731717    1.0000000</code></pre>
 <p>전일 종료시점의 비중인 EOP.Weight를 <code>lag()</code> 함수를 이용해 한 단계씩 내린 후 시작시점의 비중인 BOP.Weight와의 차이의 절댓값을 더해주면 해당 시점에서의 회전율이 계산됩니다. <code>lag()</code> 함수의 경우 dplyr 패키지에도 동일한 이름의 함수가 있으므로, 충돌을 방지하기 위해 timeSeries 패키지의 함수임을 선언해줍니다. 이를 <code>xts()</code> 함수를 이용해 시계열 형태로 만든 후 <code>chart.TimeSeries()</code> 함수를 이용해 그래프로 나타내줍니다.</p>
 <p>리밸런싱 시점에 해당하는 매해 첫 영업일에 회전율이 발생하며, 그렇지 않은 날은 매수 혹은 매도가 없으므로 회전율 역시 0을 기록합니다. 2008년에는 주식과 채권의 등락폭이 심했으므로 이듬해엔 2009년 리밸런싱으로 인한 회전율이 심하지만, 이를 제외한 해는 회전율이 그리 심하지 않습니다.</p>
 </section>
-<section id="마켓-타이밍-전략-백테스트" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="마켓-타이밍-전략-백테스트"><span class="header-section-number">8.3</span> 마켓 타이밍 전략 백테스트</h2>
+<section id="마켓-타이밍-전략-백테스트" class="level2">
+<h2 class="anchored" data-anchor-id="마켓-타이밍-전략-백테스트">마켓 타이밍 전략 백테스트</h2>
 <p>이전 테스트가 리밸런싱 시점별 비중이 60%와 40%로 고정되어 있었다면, 이번에는 시점별 비중이 다른 형태의 예제를 살펴보겠습니다.</p>
 <p>메브 파버(Meb Faber)는 본인의 논문을 통해, 시점 선택(Market Timing) 전략을 사용할 경우 단순 매수 후 보유 대비 극심한 하락장에서 낙폭을 줄일 수 있으며, 이로 인해 위험 대비 수익률을 올릴 수 있다고 설명합니다. 논문에서 말하는 시점 선택의 투자 규칙은 다음과 같습니다.</p>
 <p><span class="math display">\[주가 &gt; 10개월\,이동평균 \to 매수\]</span> <span class="math display">\[주가 &lt; 10개월\,이동평균 \to 매도\,및\,현금\,보유\]</span></p>
@@ -658,12 +560,12 @@ TLT.Adjusted   -0.3731717    1.0000000</code></pre>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>rets[ep] <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            SPY.Adjusted  SHY.Adjusted
-2007-01-31  0.0067236486  0.0011246135
-2007-02-28  0.0102514789 -0.0007453530
-2007-03-30  0.0002115764  0.0000000000
-2007-04-30 -0.0082925917  0.0007468093
-2007-05-31 -0.0010424323 -0.0006236709
-2007-06-29  0.0003326170  0.0020005636</code></pre>
+2007-01-31  0.0067230635  0.0011249703
+2007-02-28  0.0102510363 -0.0007464134
+2007-03-30  0.0002114229  0.0000000000
+2007-04-30 -0.0082921858  0.0007469322
+2007-05-31 -0.0010418912 -0.0006241438
+2007-06-29  0.0003326802  0.0019998630</code></pre>
 </div>
 </div>
 <p>이를 이용해 월말 지점만 뽑을 수도 있습니다.</p>
@@ -702,9 +604,9 @@ TLT.Adjusted   -0.3731717    1.0000000</code></pre>
 </ol>
 <table class="table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 42%">
-<col style="width: 44%">
+<col style="width: 24%">
+<col style="width: 36%">
+<col style="width: 38%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -784,8 +686,8 @@ TLT.Adjusted   -0.3731717    1.0000000</code></pre>
 </div>
 <p>해당 전략의 회전율을 확인해보면, 몇 년간 매매가 없는 경우도 있습니다. 그러나 매매가 발생할 시 매수와 매도 포지션 양쪽의 매매로 인해 200%의 회전율이 발생하게 됩니다.</p>
 </section>
-<section id="동적-자산배분-백테스트" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="동적-자산배분-백테스트"><span class="header-section-number">8.4</span> 동적 자산배분 백테스트</h2>
+<section id="동적-자산배분-백테스트" class="level2">
+<h2 class="anchored" data-anchor-id="동적-자산배분-백테스트">동적 자산배분 백테스트</h2>
 <p>마지막으로 기존에 배웠던 것들을 응용해 동적 자산배분의 백테스트를 수행하겠습니다. 일반적인 자산배분이 주식과 채권, 대체자산에 투자비중을 사전에 정해놓고 약간의 비율만 수정하는 정적 자산배분인 반면, 동적 자산배분이란 투자비중에 대한 제한이 없이 동적으로 포트폴리오를 구성하는 방법입니다.</p>
 <p>동적 자산배분을 이용한 포트폴리오는 다음과 같이 구성됩니다.</p>
 <ol type="1">
@@ -1078,20 +980,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./portfolio.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./performance.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","openEffect":"zoom","loop":true,"closeEffect":"zoom","selector":".lightbox"});</script>
 
 
 

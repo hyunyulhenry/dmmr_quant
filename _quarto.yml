@@ -1,5 +1,6 @@
 project:
-  type: book
+  type: website
+  output-dir: docs
 
 book:
   title: "퀀트 투자 전문가 과정"

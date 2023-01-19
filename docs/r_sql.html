@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>퀀트 투자 전문가 과정 - 4&nbsp; R과 SQL 연결하기</title>
+<title>R과 SQL 연결하기</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,14 +87,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./api.html" rel="next">
-<link href="./r_basic.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,112 +127,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">퀀트 투자 전문가 과정</a> 
-    </div>
-      </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_sql.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#r에서-sql-db에-접속하기" id="toc-r에서-sql-db에-접속하기" class="nav-link active" data-scroll-target="#r에서-sql-db에-접속하기"><span class="toc-section-number">4.1</span>  R에서 SQL DB에 접속하기</a></li>
-  <li><a href="#테이블-생성하기" id="toc-테이블-생성하기" class="nav-link" data-scroll-target="#테이블-생성하기"><span class="toc-section-number">4.2</span>  테이블 생성하기</a></li>
-  <li><a href="#데이터-저장하기" id="toc-데이터-저장하기" class="nav-link" data-scroll-target="#데이터-저장하기"><span class="toc-section-number">4.3</span>  데이터 저장하기</a></li>
-  <li><a href="#데이터-추가하기" id="toc-데이터-추가하기" class="nav-link" data-scroll-target="#데이터-추가하기"><span class="toc-section-number">4.4</span>  데이터 추가하기</a></li>
-  <li><a href="#데이터-수정하기" id="toc-데이터-수정하기" class="nav-link" data-scroll-target="#데이터-수정하기"><span class="toc-section-number">4.5</span>  데이터 수정하기</a></li>
-  <li><a href="#데이터-삭제하기" id="toc-데이터-삭제하기" class="nav-link" data-scroll-target="#데이터-삭제하기"><span class="toc-section-number">4.6</span>  데이터 삭제하기</a></li>
-  <li><a href="#테이블-삭제하기" id="toc-테이블-삭제하기" class="nav-link" data-scroll-target="#테이블-삭제하기"><span class="toc-section-number">4.7</span>  테이블 삭제하기</a></li>
-  <li><a href="#스키마-생성하기-및-삭제" id="toc-스키마-생성하기-및-삭제" class="nav-link" data-scroll-target="#스키마-생성하기-및-삭제"><span class="toc-section-number">4.8</span>  스키마 생성하기 및 삭제</a></li>
-  <li><a href="#연결-해제하기" id="toc-연결-해제하기" class="nav-link" data-scroll-target="#연결-해제하기"><span class="toc-section-number">4.9</span>  연결 해제하기</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></h1>
+<h1 class="title">R과 SQL 연결하기</h1>
 </div>
 
 
@@ -255,8 +160,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ALTER USER <span class="st">'root'</span><span class="sc">@</span><span class="st">'localhost'</span> IDENTIFIED WITH mysql_native_password BY <span class="st">'신규비밀번호'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="r에서-sql-db에-접속하기" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="r에서-sql-db에-접속하기"><span class="header-section-number">4.1</span> R에서 SQL DB에 접속하기</h2>
+<section id="r에서-sql-db에-접속하기" class="level2">
+<h2 class="anchored" data-anchor-id="r에서-sql-db에-접속하기">R에서 SQL DB에 접속하기</h2>
 <p><code>DBI</code> 패키지를 이용하면 R 내에서 SQL DB에 접속 및 작업이 가능합니다. 먼저 DB 인스턴스에 연결을 합니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
@@ -293,8 +198,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">           order by cnt desc;'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="테이블-생성하기" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="테이블-생성하기"><span class="header-section-number">4.2</span> 테이블 생성하기</h2>
+<section id="테이블-생성하기" class="level2">
+<h2 class="anchored" data-anchor-id="테이블-생성하기">테이블 생성하기</h2>
 <p>예제로 내장 데이터셋인 <strong>economics</strong>를 저장할 테이블을 만들어 보겠습니다. SQL에서는 <code>CREATE TABLE</code> 쿼리를 이용해 테이블을 만들수 있습니다. 그러나 R에서 SQL로 쿼리를 전송하여 테이블을 만들수도 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,</span>
@@ -316,8 +221,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>스키마 부분에서 새로고침을 눌러보면, **economics***** 테이블이 제대로 만들어졌으며, date 컬럼은 Primary Key를 나타내는 PK가 표시됩니다.</p>
 </section>
-<section id="데이터-저장하기" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="데이터-저장하기"><span class="header-section-number">4.3</span> 데이터 저장하기</h2>
+<section id="데이터-저장하기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-저장하기">데이터 저장하기</h2>
 <p>R의 데이터를 SQL DB에 저장하기 위해서는 추가적인 다음과 같은 설정이 필요합니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con,</span>
@@ -350,8 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>이번에는 overwrite 인자 대신 append 인자를 TRUE로 설정합니다. 만약 <code>overwrite = TRUE</code>를 입력한다면 기존의 데이터가 모두 지워지고 새로운 데이터가 저장되는 반면, <code>append = TRUE</code>를 입력하면 기존의 데이터가 유지된 상태에서 새로운 데이터가 추가적으로 저장됩니다.</p>
 <p>이처럼 R 내에서 작업한 결과물을 SQL DB에 손쉽게 저장할 수 있습니다.</p>
 </section>
-<section id="데이터-추가하기" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="데이터-추가하기"><span class="header-section-number">4.4</span> 데이터 추가하기</h2>
+<section id="데이터-추가하기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-추가하기">데이터 추가하기</h2>
 <p>기본 데이터에는 2015년 4월 1일까지의 데이터만 존재합니다. 만일 새로운 데이터를 구해 기존 DB에 추가하고자 할 경우 SQL에서는 <code>INSERT INTO</code> 쿼리가 사용됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>INSERT INTO [테이블] (열1, 열2, ...)</span>
@@ -371,8 +276,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="데이터-수정하기" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="데이터-수정하기"><span class="header-section-number">4.5</span> 데이터 수정하기</h2>
+<section id="데이터-수정하기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-수정하기">데이터 수정하기</h2>
 <p>만일 DB의 데이터를 수정해야 할 경우 SQL에서는 <code>UPDATE</code> 쿼리가 사용됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>UPDATE [테이블] SET [열] <span class="ot">=</span> <span class="st">'변경할값'</span> WHERE [조건]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -392,8 +297,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="데이터-삭제하기" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="데이터-삭제하기"><span class="header-section-number">4.6</span> 데이터 삭제하기</h2>
+<section id="데이터-삭제하기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-삭제하기">데이터 삭제하기</h2>
 <p>만일 특정 데이터를 삭제해야 할 경우 SQL에서는 <code>DELETE FROM</code> 쿼리가 사용됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DELETE FROM [테이블]</span>
@@ -413,8 +318,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="테이블-삭제하기" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="테이블-삭제하기"><span class="header-section-number">4.7</span> 테이블 삭제하기</h2>
+<section id="테이블-삭제하기" class="level2">
+<h2 class="anchored" data-anchor-id="테이블-삭제하기">테이블 삭제하기</h2>
 <p>만일 테이블 전체를 삭제해야 할 경우 SQL에서는 <code>DROP TABLE</code> 쿼리가 사용됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>DROP TABLE [테이블]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -427,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Workbench의 스키마 부분에서 새로고침을 눌러보면, data 스키마 내에서 economics 테이블이 삭제되었습니다.</p>
 </section>
-<section id="스키마-생성하기-및-삭제" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="스키마-생성하기-및-삭제"><span class="header-section-number">4.8</span> 스키마 생성하기 및 삭제</h2>
+<section id="스키마-생성하기-및-삭제" class="level2">
+<h2 class="anchored" data-anchor-id="스키마-생성하기-및-삭제">스키마 생성하기 및 삭제</h2>
 <p>처음에 <code>dbConnect()</code> 함수 내에 dbname을 통해 data 스키마를 사용하겠다고 선언했습니다. 만일 새로운 스키마를 생성하고자 할 경우의 쿼리는 <code>CREATE DATABASE [스키마]</code> 이며, R에서도 쿼리 전송을 통해 명령을 수행할 수 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con, <span class="st">"CREATE DATABASE new_db;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -444,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(con, <span class="st">"DROP DATABASE new_db;"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="연결-해제하기" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="연결-해제하기"><span class="header-section-number">4.9</span> 연결 해제하기</h2>
+<section id="연결-해제하기" class="level2">
+<h2 class="anchored" data-anchor-id="연결-해제하기">연결 해제하기</h2>
 <p>R에서 SQL을 이용한 모든 작업이 완료되면 반드시 R의 DB 접속을 종료해주어야 합니다. 만일 접속을 종료하지 않고 R을 닫을 경우, 향후 접속문제가 발생할 수도 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -589,20 +494,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./r_basic.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./api.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","loop":true,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});</script>
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","loop":true,"openEffect":"zoom","selector":".lightbox"});</script>
 
 
 

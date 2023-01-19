@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>퀀트 투자 전문가 과정 - 2&nbsp; SQL 기초</title>
+<title>SQL 기초</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,14 +87,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./r_basic.html" rel="next">
-<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -130,157 +127,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </div>
-  </nav>
-</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">퀀트 투자 전문가 과정</a> 
-    </div>
-      </div>
-      <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-      </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./sql.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crawl.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#데이터베이스의-구성-요소" id="toc-데이터베이스의-구성-요소" class="nav-link active" data-scroll-target="#데이터베이스의-구성-요소"><span class="toc-section-number">2.1</span>  데이터베이스의 구성 요소</a></li>
-  <li><a href="#데이터베이스와-테이블-만들기" id="toc-데이터베이스와-테이블-만들기" class="nav-link" data-scroll-target="#데이터베이스와-테이블-만들기"><span class="toc-section-number">2.2</span>  데이터베이스와 테이블 만들기</a>
-  <ul class="collapse">
-  <li><a href="#테이블-정의-변경하기" id="toc-테이블-정의-변경하기" class="nav-link" data-scroll-target="#테이블-정의-변경하기"><span class="toc-section-number">2.2.1</span>  테이블 정의 변경하기</a></li>
-  <li><a href="#테이블에-데이터-등록하기" id="toc-테이블에-데이터-등록하기" class="nav-link" data-scroll-target="#테이블에-데이터-등록하기"><span class="toc-section-number">2.2.2</span>  테이블에 데이터 등록하기</a></li>
-  </ul></li>
-  <li><a href="#sql-기초구문-익히기" id="toc-sql-기초구문-익히기" class="nav-link" data-scroll-target="#sql-기초구문-익히기"><span class="toc-section-number">2.3</span>  SQL 기초구문 익히기</a>
-  <ul class="collapse">
-  <li><a href="#select-열-선택하기" id="toc-select-열-선택하기" class="nav-link" data-scroll-target="#select-열-선택하기"><span class="toc-section-number">2.3.1</span>  select: 열 선택하기</a></li>
-  <li><a href="#distinct-중복-제거하기" id="toc-distinct-중복-제거하기" class="nav-link" data-scroll-target="#distinct-중복-제거하기"><span class="toc-section-number">2.3.2</span>  distinct: 중복 제거하기</a></li>
-  <li><a href="#where-원하는-행-선택하기" id="toc-where-원하는-행-선택하기" class="nav-link" data-scroll-target="#where-원하는-행-선택하기"><span class="toc-section-number">2.3.3</span>  where: 원하는 행 선택하기</a></li>
-  </ul></li>
-  <li><a href="#연산자" id="toc-연산자" class="nav-link" data-scroll-target="#연산자"><span class="toc-section-number">2.4</span>  연산자</a>
-  <ul class="collapse">
-  <li><a href="#산술-연산자" id="toc-산술-연산자" class="nav-link" data-scroll-target="#산술-연산자"><span class="toc-section-number">2.4.1</span>  산술 연산자</a></li>
-  <li><a href="#비교-연산자" id="toc-비교-연산자" class="nav-link" data-scroll-target="#비교-연산자"><span class="toc-section-number">2.4.2</span>  비교 연산자</a></li>
-  <li><a href="#논리-연산자" id="toc-논리-연산자" class="nav-link" data-scroll-target="#논리-연산자"><span class="toc-section-number">2.4.3</span>  논리 연산자</a></li>
-  </ul></li>
-  <li><a href="#집약-함수" id="toc-집약-함수" class="nav-link" data-scroll-target="#집약-함수"><span class="toc-section-number">2.5</span>  집약 함수</a>
-  <ul class="collapse">
-  <li><a href="#count-행-숫자를-계산" id="toc-count-행-숫자를-계산" class="nav-link" data-scroll-target="#count-행-숫자를-계산"><span class="toc-section-number">2.5.1</span>  <code>count</code>: 행 숫자를 계산</a></li>
-  <li><a href="#sum-합계를-계산" id="toc-sum-합계를-계산" class="nav-link" data-scroll-target="#sum-합계를-계산"><span class="toc-section-number">2.5.2</span>  <code>sum</code>: 합계를 계산</a></li>
-  <li><a href="#avg-산술평균을-계산" id="toc-avg-산술평균을-계산" class="nav-link" data-scroll-target="#avg-산술평균을-계산"><span class="toc-section-number">2.5.3</span>  <code>avg</code>: 산술평균을 계산</a></li>
-  <li><a href="#중복값-제외-후-집약함수-사용하기" id="toc-중복값-제외-후-집약함수-사용하기" class="nav-link" data-scroll-target="#중복값-제외-후-집약함수-사용하기"><span class="toc-section-number">2.5.4</span>  중복값 제외 후 집약함수 사용하기</a></li>
-  </ul></li>
-  <li><a href="#그룹화와-정렬" id="toc-그룹화와-정렬" class="nav-link" data-scroll-target="#그룹화와-정렬"><span class="toc-section-number">2.6</span>  그룹화와 정렬</a>
-  <ul class="collapse">
-  <li><a href="#그룹-나누기" id="toc-그룹-나누기" class="nav-link" data-scroll-target="#그룹-나누기"><span class="toc-section-number">2.6.1</span>  그룹 나누기</a></li>
-  <li><a href="#검색-결과-정렬하기" id="toc-검색-결과-정렬하기" class="nav-link" data-scroll-target="#검색-결과-정렬하기"><span class="toc-section-number">2.6.2</span>  검색 결과 정렬하기</a></li>
-  </ul></li>
-  <li><a href="#뷰와-서브쿼리" id="toc-뷰와-서브쿼리" class="nav-link" data-scroll-target="#뷰와-서브쿼리"><span class="toc-section-number">2.7</span>  뷰와 서브쿼리</a>
-  <ul class="collapse">
-  <li><a href="#뷰-만들기" id="toc-뷰-만들기" class="nav-link" data-scroll-target="#뷰-만들기"><span class="toc-section-number">2.7.1</span>  뷰 만들기</a></li>
-  <li><a href="#뷰-삭제하기" id="toc-뷰-삭제하기" class="nav-link" data-scroll-target="#뷰-삭제하기"><span class="toc-section-number">2.7.2</span>  뷰 삭제하기</a></li>
-  <li><a href="#서브쿼리" id="toc-서브쿼리" class="nav-link" data-scroll-target="#서브쿼리"><span class="toc-section-number">2.7.3</span>  서브쿼리</a></li>
-  <li><a href="#스칼라-서브쿼리" id="toc-스칼라-서브쿼리" class="nav-link" data-scroll-target="#스칼라-서브쿼리"><span class="toc-section-number">2.7.4</span>  스칼라 서브쿼리</a></li>
-  </ul></li>
-  <li><a href="#함수-술어와-case-식" id="toc-함수-술어와-case-식" class="nav-link" data-scroll-target="#함수-술어와-case-식"><span class="toc-section-number">2.8</span>  함수, 술어와 case 식</a>
-  <ul class="collapse">
-  <li><a href="#산술-함수" id="toc-산술-함수" class="nav-link" data-scroll-target="#산술-함수"><span class="toc-section-number">2.8.1</span>  산술 함수</a></li>
-  <li><a href="#round-반올림-하기" id="toc-round-반올림-하기" class="nav-link" data-scroll-target="#round-반올림-하기"><span class="toc-section-number">2.8.2</span>  <code>round</code>: 반올림 하기</a></li>
-  <li><a href="#문자열-함수" id="toc-문자열-함수" class="nav-link" data-scroll-target="#문자열-함수"><span class="toc-section-number">2.8.3</span>  문자열 함수</a></li>
-  <li><a href="#날짜-함수" id="toc-날짜-함수" class="nav-link" data-scroll-target="#날짜-함수"><span class="toc-section-number">2.8.4</span>  날짜 함수</a></li>
-  <li><a href="#술어" id="toc-술어" class="nav-link" data-scroll-target="#술어"><span class="toc-section-number">2.8.5</span>  술어</a></li>
-  <li><a href="#case-식" id="toc-case-식" class="nav-link" data-scroll-target="#case-식"><span class="toc-section-number">2.8.6</span>  <code>case</code> 식</a></li>
-  </ul></li>
-  <li><a href="#테이블의-집합과-결합" id="toc-테이블의-집합과-결합" class="nav-link" data-scroll-target="#테이블의-집합과-결합"><span class="toc-section-number">2.9</span>  테이블의 집합과 결합</a>
-  <ul class="collapse">
-  <li><a href="#테이블-결합" id="toc-테이블-결합" class="nav-link" data-scroll-target="#테이블-결합"><span class="toc-section-number">2.9.1</span>  테이블 결합</a></li>
-  </ul></li>
-  <li><a href="#sql-고급-처리" id="toc-sql-고급-처리" class="nav-link" data-scroll-target="#sql-고급-처리"><span class="toc-section-number">2.10</span>  SQL 고급 처리</a>
-  <ul class="collapse">
-  <li><a href="#윈도우-함수" id="toc-윈도우-함수" class="nav-link" data-scroll-target="#윈도우-함수"><span class="toc-section-number">2.10.1</span>  윈도우 함수</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></h1>
+<h1 class="title">SQL 기초</h1>
 </div>
 
 
@@ -303,8 +163,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>DBMS 중 가장 일반적으로 사용되는 것이 관계형 데이터베이스(Relational Database)다. 이는 엑셀 시트처럼 열과 행으로 이루어진 2차원 표 형식으로써 데이터를 관리하거나 이해하기 쉽다. 또한 SQL이라는 전용 언어를 사용해서 데이터를 처리할 수 있다. 이러한 관계형 데이터베이스 관리 시스템 중 대표적으로 사용되는 것으로는 오라클 RDBMS, MS SQL Server, Postgre SQL, MySQL 등이 있으며 본 강의에서는 무료로 사용 가능한 MySQL을 살펴보도록 하겠다.</p>
-<section id="데이터베이스의-구성-요소" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="데이터베이스의-구성-요소"><span class="header-section-number">2.1</span> 데이터베이스의 구성 요소</h2>
+<section id="데이터베이스의-구성-요소" class="level2">
+<h2 class="anchored" data-anchor-id="데이터베이스의-구성-요소">데이터베이스의 구성 요소</h2>
 <p>데이터베이스는 각각의 테이블로 이루어져 있으며, 테이블의 구성요소는 크게 다음과 같다.</p>
 <ul>
 <li>열(컬럼): 테이블에 보관하는 데이터 항목이다.</li>
@@ -317,8 +177,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="데이터베이스와-테이블-만들기" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="데이터베이스와-테이블-만들기"><span class="header-section-number">2.2</span> 데이터베이스와 테이블 만들기</h2>
+<section id="데이터베이스와-테이블-만들기" class="level2">
+<h2 class="anchored" data-anchor-id="데이터베이스와-테이블-만들기">데이터베이스와 테이블 만들기</h2>
 <p>먼저 각각의 테이블이 저장될 데이터베이스(스키마)를 만들어 보도록 하자. MySQL Workbench를 열어 아래의 쿼리를 입력한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>create database shop;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -389,8 +249,8 @@ Note
 </ul>
 </div>
 </div>
-<section id="테이블-정의-변경하기" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="테이블-정의-변경하기"><span class="header-section-number">2.2.1</span> 테이블 정의 변경하기</h3>
+<section id="테이블-정의-변경하기" class="level3">
+<h3 class="anchored" data-anchor-id="테이블-정의-변경하기">테이블 정의 변경하기</h3>
 <p>테이블에 열을 추가로 만들거나 삭제를 해야하는 등 테이블의 정의를 변경해야 하는 경우 <code>ALTER TABLE</code> 문을 사용하면 된다. 먼저 열을 추가하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>alter table <span class="sc">&lt;</span>테이블명<span class="sc">&gt;</span> add column <span class="sc">&lt;</span>열 이름<span class="sc">&gt;</span> <span class="er">&lt;</span>열 정의<span class="sc">&gt;</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -415,8 +275,8 @@ Note
 </div>
 <p>쿼리 실행후 SCHEMAS 부분에서 새로고침을 누르면 goods 테이블에서 해당 열이 삭제된 것을 확인할 수 있다.</p>
 </section>
-<section id="테이블에-데이터-등록하기" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="테이블에-데이터-등록하기"><span class="header-section-number">2.2.2</span> 테이블에 데이터 등록하기</h3>
+<section id="테이블에-데이터-등록하기" class="level3">
+<h3 class="anchored" data-anchor-id="테이블에-데이터-등록하기">테이블에 데이터 등록하기</h3>
 <p>현재 goods 테이블은 아무런 데이터가 없는 빈 테이블 상태이므로, 데이터를 등록해주어야 한다. SQL에서 데이터를 등록하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>insert into <span class="sc">&lt;</span>테이블명<span class="sc">&gt;</span> <span class="fu">values</span> (값);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -445,11 +305,11 @@ Note
 <p>이 외에도 발생하는 오류들은 하단의 Output 부분에 그 원인이 있으므로, 당황하지 말고 해당 메세지를 살펴보고 수정하면 된다.</p>
 </section>
 </section>
-<section id="sql-기초구문-익히기" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="sql-기초구문-익히기"><span class="header-section-number">2.3</span> SQL 기초구문 익히기</h2>
+<section id="sql-기초구문-익히기" class="level2">
+<h2 class="anchored" data-anchor-id="sql-기초구문-익히기">SQL 기초구문 익히기</h2>
 <p>위에서 만든 테이블을 바탕으로 SQL에서 자주 사용되는 기초 구문들을 실습해보겠다.</p>
-<section id="select-열-선택하기" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="select-열-선택하기"><span class="header-section-number">2.3.1</span> select: 열 선택하기</h3>
+<section id="select-열-선택하기" class="level3">
+<h3 class="anchored" data-anchor-id="select-열-선택하기">select: 열 선택하기</h3>
 <p>테이블에서 원하는 열을 선택할 때는 <code>select</code> 문을 사용하며, 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">&lt;</span>열 이름 <span class="dv">1</span><span class="sc">&gt;</span> , <span class="sc">&lt;</span>열 이름 <span class="dv">2</span><span class="sc">&gt;</span>, … <span class="sc">&lt;</span>열 이름 n<span class="sc">&gt;</span></span>
@@ -508,8 +368,8 @@ Note
 </div>
 <p>category, num, date 열에는 각각 상품, 38, 2022-01-01이라는 상수가 입력된다. 또한 <code>sell_price - buy_price</code>를 통해 두 열의 차이를 계산할 수 있으며, as 키워드를 통해 해당 열을 profit 으로 출력한다. 만일 별명을 부여하지 않을 경우 해당 열 이름은 계산식인 [sell_price - buy_price]가 그대로 출력된다.</p>
 </section>
-<section id="distinct-중복-제거하기" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="distinct-중복-제거하기"><span class="header-section-number">2.3.2</span> distinct: 중복 제거하기</h3>
+<section id="distinct-중복-제거하기" class="level3">
+<h3 class="anchored" data-anchor-id="distinct-중복-제거하기">distinct: 중복 제거하기</h3>
 <p>중복된 데이터가 있는 경우 중복되는 값을 제거하고 고유한 값만 확인하고 싶을 때는 distinct 키워드를 사용하며, 사용법은 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>select distinct <span class="sc">&lt;</span>열 이름<span class="sc">&gt;</span></span>
@@ -527,8 +387,8 @@ Note
 </div>
 <p>상품 분류 중 고유한 값인 의류, 사무용품, 주방용품만이 출력된다.</p>
 </section>
-<section id="where-원하는-행-선택하기" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="where-원하는-행-선택하기"><span class="header-section-number">2.3.3</span> where: 원하는 행 선택하기</h3>
+<section id="where-원하는-행-선택하기" class="level3">
+<h3 class="anchored" data-anchor-id="where-원하는-행-선택하기">where: 원하는 행 선택하기</h3>
 <p>여러 데이터 중 조건에 부합하는 행만 선택할 때는 where 구를 사용하면 된다. 이는 엑셀에서 필터 기능과도 비슷하다. where 구는 from 구 바로 뒤에 사용해야 작동한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">&lt;</span>열 이름<span class="sc">&gt;</span>, …</span>
@@ -549,16 +409,16 @@ Note
 <p>여러 데이터 중 goods_classify가 의류인 데이터 2개(티셔츠, 와이셔츠)만 선택되었다.</p>
 </section>
 </section>
-<section id="연산자" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="연산자"><span class="header-section-number">2.4</span> 연산자</h2>
+<section id="연산자" class="level2">
+<h2 class="anchored" data-anchor-id="연산자">연산자</h2>
 <p>연산자는 SQL 문에서 연산을 수행하기 위해 사용되는 사전에 예약된 단어 또는 문자로써 일반적으로 where 구 안에서 사용된다. 흔히 사용되는 연산자는 다음과 같다.</p>
 <ul>
 <li>산술 연산자</li>
 <li>비교 연산자</li>
 <li>논리 연산자</li>
 </ul>
-<section id="산술-연산자" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="산술-연산자"><span class="header-section-number">2.4.1</span> 산술 연산자</h3>
+<section id="산술-연산자" class="level3">
+<h3 class="anchored" data-anchor-id="산술-연산자">산술 연산자</h3>
 <p>산술 연산자는 더하기, 빼기, 곱하기, 나누기 등 계산을 할 때 사용되는 연산자이다. 만일 판매가에서 구매가를 뺀 이익이 500 이상인 데이터만 선택하려면 다음과 같은 쿼리를 실행한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">*</span>, sell_price <span class="sc">-</span> buy_price as profit</span>
@@ -572,8 +432,8 @@ Note
 </div>
 <p>where 구문 내애 [sell_price - buy_price]를 계산하여 이익이 500 이상인 조건에 만족하는 데이터만을 선택하였다.</p>
 </section>
-<section id="비교-연산자" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="비교-연산자"><span class="header-section-number">2.4.2</span> 비교 연산자</h3>
+<section id="비교-연산자" class="level3">
+<h3 class="anchored" data-anchor-id="비교-연산자">비교 연산자</h3>
 <p>비교 연산자는 데이터의 크기를 비교할 때 사용되는 연산자이며, 종류는 다음과 같다.</p>
 <table class="table">
 <thead>
@@ -632,8 +492,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="논리-연산자" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="논리-연산자"><span class="header-section-number">2.4.3</span> 논리 연산자</h3>
+<section id="논리-연산자" class="level3">
+<h3 class="anchored" data-anchor-id="논리-연산자">논리 연산자</h3>
 <p>where 구 내에 <code>and</code> 연산자와 <code>or</code> 연산자와 같은 논리 연산자를 사용하면 복수의 검색 조건을 조합할 수 있다. 예를 들어 상품 분류가 주방용품이고 판매가가 3000 이상인 데이터를 조회하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>select goods_name, goods_classify, sell_price</span>
@@ -660,8 +520,8 @@ Note
 </div>
 </section>
 </section>
-<section id="집약-함수" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="집약-함수"><span class="header-section-number">2.5</span> 집약 함수</h2>
+<section id="집약-함수" class="level2">
+<h2 class="anchored" data-anchor-id="집약-함수">집약 함수</h2>
 <p>집약 함수란 여러 개의 레코드를 하나로 집약시키는 기능으로써, 대표적으로 사용되는 집약 함수는 다음과 같다.</p>
 <table class="table">
 <thead>
@@ -693,8 +553,8 @@ Note
 </tr>
 </tbody>
 </table>
-<section id="count-행-숫자를-계산" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="count-행-숫자를-계산"><span class="header-section-number">2.5.1</span> <code>count</code>: 행 숫자를 계산</h3>
+<section id="count-행-숫자를-계산" class="level3">
+<h3 class="anchored" data-anchor-id="count-행-숫자를-계산"><code>count</code>: 행 숫자를 계산</h3>
 <p><code>count</code> 함수는 행의 숫자를 계산한다. goods 테이블에 몇 개의 행이 있는 확인하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">count</span>(<span class="sc">*</span>)</span>
@@ -717,8 +577,8 @@ Note
 </div>
 <p>‘buy_price’ 열의 8개 데이터 중에는 총 2개의 null값이 있다. 따라서 count 함수를 실행하면 null을 제외한 6개의 행이 있음이 확인된다. 즉 count(*)는 null을 포함한 행의 갯수를, count(열 이름)은 null을 제외한 행 수를 계산한다.</p>
 </section>
-<section id="sum-합계를-계산" class="level3" data-number="2.5.2">
-<h3 data-number="2.5.2" class="anchored" data-anchor-id="sum-합계를-계산"><span class="header-section-number">2.5.2</span> <code>sum</code>: 합계를 계산</h3>
+<section id="sum-합계를-계산" class="level3">
+<h3 class="anchored" data-anchor-id="sum-합계를-계산"><code>sum</code>: 합계를 계산</h3>
 <p><code>sum</code> 함수는 특정 열의 합계를 계산하며, null 값은 무시하고 계산이 된다. sell_price와 buy_price 열의 합계를 구하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">sum</span>(sell_price), <span class="fu">sum</span>(buy_price)</span>
@@ -730,8 +590,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="avg-산술평균을-계산" class="level3" data-number="2.5.3">
-<h3 data-number="2.5.3" class="anchored" data-anchor-id="avg-산술평균을-계산"><span class="header-section-number">2.5.3</span> <code>avg</code>: 산술평균을 계산</h3>
+<section id="avg-산술평균을-계산" class="level3">
+<h3 class="anchored" data-anchor-id="avg-산술평균을-계산"><code>avg</code>: 산술평균을 계산</h3>
 <p><code>avg</code> 함수는 산술평균을 구하며, 사용법은 <code>sum</code>과 동일하다. sell_price 열의 평균을 구하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">avg</span>(sell_price)</span>
@@ -743,8 +603,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="중복값-제외-후-집약함수-사용하기" class="level3" data-number="2.5.4">
-<h3 data-number="2.5.4" class="anchored" data-anchor-id="중복값-제외-후-집약함수-사용하기"><span class="header-section-number">2.5.4</span> 중복값 제외 후 집약함수 사용하기</h3>
+<section id="중복값-제외-후-집약함수-사용하기" class="level3">
+<h3 class="anchored" data-anchor-id="중복값-제외-후-집약함수-사용하기">중복값 제외 후 집약함수 사용하기</h3>
 <p>만일 상품 분류가 몇 개가 있는지 확인하고 싶을 때는 어떻게 하면 될까? <code>count</code> 함수의 인자에 <code>distict</code> 키워드를 사용해 중복되지 않은 데이터의 갯수를 계산할 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">count</span>(distinct goods_classify) </span>
@@ -758,11 +618,11 @@ Note
 <p>goods_classify 에는 의류, 사무용품, 주방용품 3개가 있으므로 이에 해당하는 값이 계산되었다. 이는 count 뿐만 아니라 <code>sum(distinct 열 이름)</code>과 같이 다른 집약함수에도 동일하게 적용이 가능하다.</p>
 </section>
 </section>
-<section id="그룹화와-정렬" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="그룹화와-정렬"><span class="header-section-number">2.6</span> 그룹화와 정렬</h2>
+<section id="그룹화와-정렬" class="level2">
+<h2 class="anchored" data-anchor-id="그룹화와-정렬">그룹화와 정렬</h2>
 <p>데이터를 특정 기준으로 그룹을 나누어 값을 계산해야 하는 경우가 많다. 예를 들어 상품 분류 별 혹은 등록일 별 그룹을 나누어 손익을 계산한다고 생각해 보자. 이러한 경우 SQL에서는 <code>group by</code> 구를 사용하여 데이터를 그룹화할 수 있다. 또한 검색 결과를 특정 기준으로 정렬할 필요가 있을 경우 <code>order by</code> 구를 사용하면 된다.</p>
-<section id="그룹-나누기" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="그룹-나누기"><span class="header-section-number">2.6.1</span> 그룹 나누기</h3>
+<section id="그룹-나누기" class="level3">
+<h3 class="anchored" data-anchor-id="그룹-나누기">그룹 나누기</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/image-407258548.png" class="lightbox" data-gallery="quarto-lightbox-gallery-24"><img src="images/image-407258548.png" class="img-fluid figure-img"></a></p>
@@ -824,8 +684,8 @@ Note
 </div>
 <p>요약하자면 <code>where</code>는 <code>group by</code> 계산 이전, <code>having</code>은 <code>group by</code> 계산 이후 적용된다.</p>
 </section>
-<section id="검색-결과-정렬하기" class="level3" data-number="2.6.2">
-<h3 data-number="2.6.2" class="anchored" data-anchor-id="검색-결과-정렬하기"><span class="header-section-number">2.6.2</span> 검색 결과 정렬하기</h3>
+<section id="검색-결과-정렬하기" class="level3">
+<h3 class="anchored" data-anchor-id="검색-결과-정렬하기">검색 결과 정렬하기</h3>
 <p>SQL에서는 결과가 무작위로 정렬되므로 쿼리를 실행할 때 마다 결과가 변한다. 오름차순이나 내림차순으로 결과를 정렬하고자 할 경우에는 <code>order by</code> 구를 사용한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">&lt;</span>열 이름 <span class="dv">1</span><span class="sc">&gt;</span>, <span class="sc">&lt;</span>열 이름 <span class="dv">2</span><span class="sc">&gt;</span>, …</span>
@@ -856,11 +716,11 @@ Note
 </div>
 </section>
 </section>
-<section id="뷰와-서브쿼리" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="뷰와-서브쿼리"><span class="header-section-number">2.7</span> 뷰와 서브쿼리</h2>
+<section id="뷰와-서브쿼리" class="level2">
+<h2 class="anchored" data-anchor-id="뷰와-서브쿼리">뷰와 서브쿼리</h2>
 <p>기초구문 만으로는 복잡한 형태의 데이터분석을 하는게 한계가 있으며, 뷰와 서브쿼리를 이용하면 이러한 작업을 쉽게 할 수 있다.</p>
-<section id="뷰-만들기" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="뷰-만들기"><span class="header-section-number">2.7.1</span> 뷰 만들기</h3>
+<section id="뷰-만들기" class="level3">
+<h3 class="anchored" data-anchor-id="뷰-만들기">뷰 만들기</h3>
 <p>뷰는 기본적으로 테이블과 거의 동일하다. 그러나 테이블과의 차이는 실제 데이터를 저장하고 있지 않다는 점이다. 뷰는 데이터를 저장하지 않고 있으며, 뷰에서 데이터를 꺼내려고 할 때 내부적으로 쿼리를 실행하여 일시적인 가상 테이블을 만든다. 즉, 데이터가 아닌 쿼리를 저장하고 있다고 보면 된다. 이러한 뷰가 가진 장점은 다음과 같다.</p>
 <ol type="1">
 <li><p>데이터를 저장하지 않기 때문에 기억 장치 용량을 절약할 수 있다.</p></li>
@@ -896,8 +756,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="뷰-삭제하기" class="level3" data-number="2.7.2">
-<h3 data-number="2.7.2" class="anchored" data-anchor-id="뷰-삭제하기"><span class="header-section-number">2.7.2</span> 뷰 삭제하기</h3>
+<section id="뷰-삭제하기" class="level3">
+<h3 class="anchored" data-anchor-id="뷰-삭제하기">뷰 삭제하기</h3>
 <p>뷰를 삭제하려면 <code>drop view 뷰명</code> 문을 사용한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>drop view GoodSum;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -909,8 +769,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="서브쿼리" class="level3" data-number="2.7.3">
-<h3 data-number="2.7.3" class="anchored" data-anchor-id="서브쿼리"><span class="header-section-number">2.7.3</span> 서브쿼리</h3>
+<section id="서브쿼리" class="level3">
+<h3 class="anchored" data-anchor-id="서브쿼리">서브쿼리</h3>
 <p>서브쿼리란 쿼리 내의 쿼리이며, 일회용 뷰를 의미한다. 즉, 뷰를 정의하는 구문을 그대로 다른 구 안에 삽입하는 것이다. 먼저 뷰를 만든 후 이를 확인하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>create view <span class="fu">GoodSum</span> (goods_classify, cnt_goods)</span>
@@ -932,8 +792,8 @@ Note
 </div>
 <p>from 구 뒤의 괄호안에 해당하는 부분은 뷰를 만들 때 사용하던 코드와 동일하다. 즉, ① from 구 안의 select 문(서브쿼리)가 실행되고, ② 이 결과를 바탕으로 바깥쪽 select 문이 실행된다.</p>
 </section>
-<section id="스칼라-서브쿼리" class="level3" data-number="2.7.4">
-<h3 data-number="2.7.4" class="anchored" data-anchor-id="스칼라-서브쿼리"><span class="header-section-number">2.7.4</span> 스칼라 서브쿼리</h3>
+<section id="스칼라-서브쿼리" class="level3">
+<h3 class="anchored" data-anchor-id="스칼라-서브쿼리">스칼라 서브쿼리</h3>
 <p>스칼라 서브쿼리란 단이 값이 반환되는 서브쿼리다. 이를 통해 =, &lt;, &gt; 등 비교 연산자의 입력값으로 사용할 수 있다. 예를 들어 판매단가가 전체 평균 판매단가보다 높은 상품만을 검색하려면 어떻게 해야할까? 먼저 평균 단가를 계산해야 한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">avg</span>(sell_price)</span>
@@ -982,11 +842,11 @@ Note
 <p>먼저 <code>group by</code> 구문을 이용해 상품 분류 별 평균 판매가격을 계산한다. 그 후 having 구문 내에 전체 평균 판매가격을 계산하는 서브쿼리인 <code>select avg(sell_price) from goods</code> 를 입력하여 2097.5 라는 값을 계산하고, 그룹별 평균 판매가격이 이 값보다 큰 데이터만을 선택하게 된다.</p>
 </section>
 </section>
-<section id="함수-술어와-case-식" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="함수-술어와-case-식"><span class="header-section-number">2.8</span> 함수, 술어와 case 식</h2>
+<section id="함수-술어와-case-식" class="level2">
+<h2 class="anchored" data-anchor-id="함수-술어와-case-식">함수, 술어와 case 식</h2>
 <p>SQL에서도 함수를 이용해 다양한 연산을 할 수 있으며, 다음과 같은 함수가 존재한다. 본 책에서는 수치 계산을 위한 ‘산술 함수’, 문자열 처리를 위한 ‘문자열 함수’, 날짜 처리를 위한 ’날짜 함수’에 대해 대해 알아보겠다. 또한 함수의 변형 형태인 술어는 반환 값이 진리값(TRUE/FALSE/UNKNOWN)인 함수라 볼 수 있다. 마지막으로 <code>case</code> 식 역시 함수의 일종으로써, SQL 내에서의 if문 이라고도 볼 수 있다. <code>case</code>는 조건에 해당하는 목록을 평가하고 가능한 여러 결과 식 중 하나를 반환한다.</p>
-<section id="산술-함수" class="level3" data-number="2.8.1">
-<h3 data-number="2.8.1" class="anchored" data-anchor-id="산술-함수"><span class="header-section-number">2.8.1</span> 산술 함수</h3>
+<section id="산술-함수" class="level3">
+<h3 class="anchored" data-anchor-id="산술-함수">산술 함수</h3>
 <p>산술 함수는 숫자형 데이터의 절대값, 올림, 내림, 반올림 등을 계산할 수 있게 해준다. 먼저 m, n, p 3개 열로 구성된 테이블(SampleMath)을 만들어 주도록 한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>create table SampleMath</span>
@@ -1011,8 +871,8 @@ Note
 <p><a href="images/image-291790077.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img src="images/image-291790077.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<section id="abs-절대값-계산하기" class="level4" data-number="2.8.1.1">
-<h4 data-number="2.8.1.1" class="anchored" data-anchor-id="abs-절대값-계산하기"><span class="header-section-number">2.8.1.1</span> <code>abs</code>: 절대값 계산하기</h4>
+<section id="abs-절대값-계산하기" class="level4">
+<h4 class="anchored" data-anchor-id="abs-절대값-계산하기"><code>abs</code>: 절대값 계산하기</h4>
 <p><code>abs</code> 함수는 해당 열에 있는 값들의 절대값을 구해준다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>select m, <span class="fu">abs</span>(m) as abs_m</span>
@@ -1025,8 +885,8 @@ Note
 </div>
 <p>abs_m은 m열의 절대값을 계산한 것이며, 두번째 행을 보면 -180의 절대값에 해당하는 180이 계산되었다.</p>
 </section>
-<section id="mod-나눗셈의-나머지-구하기" class="level4" data-number="2.8.1.2">
-<h4 data-number="2.8.1.2" class="anchored" data-anchor-id="mod-나눗셈의-나머지-구하기"><span class="header-section-number">2.8.1.2</span> <code>mod</code>: 나눗셈의 나머지 구하기</h4>
+<section id="mod-나눗셈의-나머지-구하기" class="level4">
+<h4 class="anchored" data-anchor-id="mod-나눗셈의-나머지-구하기"><code>mod</code>: 나눗셈의 나머지 구하기</h4>
 <p>7 나누기 3의 몫은 2이며 나머지는 1이다. <code>mod</code> 함수는 이 나머지에 해당하는 값을 구해준다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>select n, p, <span class="fu">mod</span>(n, p) as mod_col</span>
@@ -1040,8 +900,8 @@ Note
 <p><code>mod(n, p)</code>를 통해 n/p의 나머지를 구한다. 즉 7/3의 나머지인 1, 5/2의 나머지인 1이 계산되며, null은 계산이 불가한 데이터이므로 결과 역시 null로 나온다.</p>
 </section>
 </section>
-<section id="round-반올림-하기" class="level3" data-number="2.8.2">
-<h3 data-number="2.8.2" class="anchored" data-anchor-id="round-반올림-하기"><span class="header-section-number">2.8.2</span> <code>round</code>: 반올림 하기</h3>
+<section id="round-반올림-하기" class="level3">
+<h3 class="anchored" data-anchor-id="round-반올림-하기"><code>round</code>: 반올림 하기</h3>
 <p><code>round</code> 함수를 통해 반올림을 할 수 있으며, 몇 째자리에서 반올림을 할지 정할 수 있다. <code>round(m, 2)</code>의 경우 할 경우 m열의 데이터를 소수 둘째자리까지 반올림한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>select m, n, <span class="fu">round</span>(m, n) as round_col</span>
@@ -1054,8 +914,8 @@ Note
 </div>
 <p>위의 쿼리는 m 열을 n 자리까지 반올림한다. n이 0인 경우 소수 0번째 자리, 즉 정수부분까지 반올림을 한다. n이 1인 경우에는 소수 첫째자리까지 반올림을 하기 위해 소수 둘째자리에서 반올림을 한다. <code>round</code>와 비슷한 함수로 올림에는 <code>ceil</code>, 내림에는 <code>floor</code> 함수가 있으므로 상황에 맞게 사용하면 된다</p>
 </section>
-<section id="문자열-함수" class="level3" data-number="2.8.3">
-<h3 data-number="2.8.3" class="anchored" data-anchor-id="문자열-함수"><span class="header-section-number">2.8.3</span> 문자열 함수</h3>
+<section id="문자열-함수" class="level3">
+<h3 class="anchored" data-anchor-id="문자열-함수">문자열 함수</h3>
 <p>문자열 함수는 문자 데이터를 처리할 때 사용되는 함수들이다. 먼저 아래의 샘플 테이블(SampleStr)을 만들도록 하자.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>create table SampleStr</span>
@@ -1080,8 +940,8 @@ Note
 <p><a href="images/image-460415584.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img src="images/image-460415584.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<section id="concat-문자열-연결" class="level4" data-number="2.8.3.1">
-<h4 data-number="2.8.3.1" class="anchored" data-anchor-id="concat-문자열-연결"><span class="header-section-number">2.8.3.1</span> <code>concat</code>: 문자열 연결</h4>
+<section id="concat-문자열-연결" class="level4">
+<h4 class="anchored" data-anchor-id="concat-문자열-연결"><code>concat</code>: 문자열 연결</h4>
 <p><code>concat</code> 함수는 여러 열의 문자열을 연결하는데 사용됩니다. (타 RDMS에서는 ||로 문자를 합치기도 한다.) 먼저 str1과 str2 열의 문자를 합쳐보도록 하자.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>select str1, str2, <span class="fu">concat</span>(str1, str2) as str_concat</span>
@@ -1094,8 +954,8 @@ Note
 </div>
 <p>두 열의 문자가 하나로 합쳐지며, null이 포함된 경우는 결과 역시 null이 반환된다.</p>
 </section>
-<section id="lower-소문자로-변환" class="level4" data-number="2.8.3.2">
-<h4 data-number="2.8.3.2" class="anchored" data-anchor-id="lower-소문자로-변환"><span class="header-section-number">2.8.3.2</span> <code>lower</code>: 소문자로 변환</h4>
+<section id="lower-소문자로-변환" class="level4">
+<h4 class="anchored" data-anchor-id="lower-소문자로-변환"><code>lower</code>: 소문자로 변환</h4>
 <p><code>lower</code> 함수는 모든 알파벳을 소문자로 변환한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>select str1, <span class="fu">lower</span>(str1) as low_str</span>
@@ -1108,8 +968,8 @@ Note
 </div>
 <p>ABC가 abc로 변환되는 등 모든 알파벳이 소문자로 변환되었다. 반대로 모든 알파벳을 대문자로 변환하고자 할 경우 <code>upper</code> 함수를 사용하면 된다.</p>
 </section>
-<section id="replace-문자를-변경" class="level4" data-number="2.8.3.3">
-<h4 data-number="2.8.3.3" class="anchored" data-anchor-id="replace-문자를-변경"><span class="header-section-number">2.8.3.3</span> <code>replace</code>: 문자를 변경</h4>
+<section id="replace-문자를-변경" class="level4">
+<h4 class="anchored" data-anchor-id="replace-문자를-변경"><code>replace</code>: 문자를 변경</h4>
 <p><code>replace</code> 함수는 문자열 안에 있는 일부 문자를 다른 문자열로 변경하며, <code>replace(대상 문자열, 치환 전 문자열, 치환 후 문자열)</code> 형태로 입력한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>select str1, str2, str3,</span>
@@ -1119,11 +979,11 @@ Note
 <p><a href="images/image-284393014.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44"><img src="images/image-284393014.png" class="img-fluid"></a> str1열 중 str2열에 해당하는 문자가 있을 경우 str3열의 문자로 변경된다.</p>
 </section>
 </section>
-<section id="날짜-함수" class="level3" data-number="2.8.4">
-<h3 data-number="2.8.4" class="anchored" data-anchor-id="날짜-함수"><span class="header-section-number">2.8.4</span> 날짜 함수</h3>
+<section id="날짜-함수" class="level3">
+<h3 class="anchored" data-anchor-id="날짜-함수">날짜 함수</h3>
 <p>SQL에는 날짜를 다루는 많은 함수가 있으며, DBMS 종류마다 그 형태가 약간씩 다르다.</p>
-<section id="현재-날짜-시간-일시" class="level4" data-number="2.8.4.1">
-<h4 data-number="2.8.4.1" class="anchored" data-anchor-id="현재-날짜-시간-일시"><span class="header-section-number">2.8.4.1</span> 현재 날짜, 시간, 일시</h4>
+<section id="현재-날짜-시간-일시" class="level4">
+<h4 class="anchored" data-anchor-id="현재-날짜-시간-일시">현재 날짜, 시간, 일시</h4>
 <p>현재 날짜(<code>current_date</code>)와 시간(<code>current_time</code>), 일시(<code>current_timestamp</code>)를 다루는 함수의 경우 from 구문이 없이 사용이 가능하다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>select current_date, current_time, current_timestamp;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1134,8 +994,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="날짜-요소-추출하기" class="level4" data-number="2.8.4.2">
-<h4 data-number="2.8.4.2" class="anchored" data-anchor-id="날짜-요소-추출하기"><span class="header-section-number">2.8.4.2</span> 날짜 요소 추출하기</h4>
+<section id="날짜-요소-추출하기" class="level4">
+<h4 class="anchored" data-anchor-id="날짜-요소-추출하기">날짜 요소 추출하기</h4>
 <p><code>extract(날짜 요소 from 날짜)</code> 함수를 통해 년, 월, 시, 초 등을 추출할 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>select</span>
@@ -1154,11 +1014,11 @@ Note
 </div>
 </section>
 </section>
-<section id="술어" class="level3" data-number="2.8.5">
-<h3 data-number="2.8.5" class="anchored" data-anchor-id="술어"><span class="header-section-number">2.8.5</span> 술어</h3>
+<section id="술어" class="level3">
+<h3 class="anchored" data-anchor-id="술어">술어</h3>
 <p>술어란 반환 값이 진리값(TRUE, FALSE, UNKNOWN)인 함수를 가리킨다. 대표적인 예로는 <code>like</code>, <code>between</code>, <code>is null</code>, <code>in</code> 등이 있다.</p>
-<section id="like-문자열-부분-일치" class="level4" data-number="2.8.5.1">
-<h4 data-number="2.8.5.1" class="anchored" data-anchor-id="like-문자열-부분-일치"><span class="header-section-number">2.8.5.1</span> <code>like</code>: 문자열 부분 일치</h4>
+<section id="like-문자열-부분-일치" class="level4">
+<h4 class="anchored" data-anchor-id="like-문자열-부분-일치"><code>like</code>: 문자열 부분 일치</h4>
 <p>앞에서 문자열을 검색할 때는 등호(=)를 사용했지만, 이는 완전히 일치하는 경우에만 참이 된다. 반면 <code>like</code> 술어는 문자열 중 <strong>부분 일치를 검색</strong>할 때 사용한다. 먼저 아래의 테이블을 만들도록 한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>create table SampleLike</span>
@@ -1215,8 +1075,8 @@ Note
 </div>
 <p><a href="images/image-240846908.png" class="lightbox" data-gallery="quarto-lightbox-gallery-50"><img src="images/image-240846908.png" class="img-fluid"></a> ’%ddd’의 경우 전방 일치와 반대로 ddd로 끝나는 문자열을 검색한다.</p>
 </section>
-<section id="between-범위-검색" class="level4" data-number="2.8.5.2">
-<h4 data-number="2.8.5.2" class="anchored" data-anchor-id="between-범위-검색"><span class="header-section-number">2.8.5.2</span> <code>between</code>: 범위 검색</h4>
+<section id="between-범위-검색" class="level4">
+<h4 class="anchored" data-anchor-id="between-범위-검색"><code>between</code>: 범위 검색</h4>
 <p><code>between</code>은 범위 검색을 수행한다. goods 테이블에서 sell_price가 100원부터 1000원까지인 상품을 선택할 때 <code>between</code> 술어를 사용하면 다음과 같이 나타낼 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">*</span></span>
@@ -1230,8 +1090,8 @@ Note
 </div>
 <p><code>between</code>을 사용할 경우 범위에 해당하는 100과 1000 데이터도 포함한다.</p>
 </section>
-<section id="is-null-is-not-null-null-데이터-선택" class="level4" data-number="2.8.5.3">
-<h4 data-number="2.8.5.3" class="anchored" data-anchor-id="is-null-is-not-null-null-데이터-선택"><span class="header-section-number">2.8.5.3</span> <code>is null</code>, <code>is not null</code>: null 데이터 선택</h4>
+<section id="is-null-is-not-null-null-데이터-선택" class="level4">
+<h4 class="anchored" data-anchor-id="is-null-is-not-null-null-데이터-선택"><code>is null</code>, <code>is not null</code>: null 데이터 선택</h4>
 <p>만일 null이 포함된 행을 선택하려면 어떻게 해야 할까? where 구를 <code>where buy_price = null</code> 형식으로 작성하면 될 듯 하지만 해당 쿼리를 실행하면 오류가 발생한다. 이는 null이 비교가 불가능한 특별한 표시어이기 때문이며, 이때는 <code>is null</code> 술어를 사용해야 한다. 먼저 buy_price가 null인 데이터를 선택하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">*</span></span>
@@ -1255,8 +1115,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="in-복수의-값을-지정" class="level4" data-number="2.8.5.4">
-<h4 data-number="2.8.5.4" class="anchored" data-anchor-id="in-복수의-값을-지정"><span class="header-section-number">2.8.5.4</span> <code>in</code>: 복수의 값을 지정</h4>
+<section id="in-복수의-값을-지정" class="level4">
+<h4 class="anchored" data-anchor-id="in-복수의-값을-지정"><code>in</code>: 복수의 값을 지정</h4>
 <p>만일 buy_price가 320, 500, 5000인 상품을 선택할 경우, or을 쓰면 다음과 같이 쿼리를 작성해야 한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>select <span class="sc">*</span></span>
@@ -1289,8 +1149,8 @@ Note
 </div>
 </section>
 </section>
-<section id="case-식" class="level3" data-number="2.8.6">
-<h3 data-number="2.8.6" class="anchored" data-anchor-id="case-식"><span class="header-section-number">2.8.6</span> <code>case</code> 식</h3>
+<section id="case-식" class="level3">
+<h3 class="anchored" data-anchor-id="case-식"><code>case</code> 식</h3>
 <p>case 식은 경우에 따라 값을 구분하며, 쿼리 형식은 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>case when <span class="sc">&lt;</span>평가식 <span class="dv">1</span><span class="sc">&gt;</span> then <span class="sc">&lt;</span>식 <span class="dv">1</span><span class="sc">&gt;</span></span>
@@ -1318,11 +1178,11 @@ Note
 <p><code>else</code> 구문은 위에서 만족하는 조건이 없을 때의 반환값으로써 생략할 수도 있지만 명시적으로 기술하는 것이 좋으며, <code>end</code>는 생략이 불가능하다. 조건에 따른 결과가 end as 뒤에 입력한 ‘price_classify’ 열에 표시된다.</p>
 </section>
 </section>
-<section id="테이블의-집합과-결합" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="테이블의-집합과-결합"><span class="header-section-number">2.9</span> 테이블의 집합과 결합</h2>
+<section id="테이블의-집합과-결합" class="level2">
+<h2 class="anchored" data-anchor-id="테이블의-집합과-결합">테이블의 집합과 결합</h2>
 <p>SQL을 사용할 경우 하나의 테이블만 이용해 데이터를 다루는 일은 거의 없으며, 한번에 여러개의 테이블을 더하거나 결합하여 원하는 데이터를 얻을 수 있다. 이번에는 테이블의 각종 결합 방법에 대해 알아보도록 하겠다.</p>
-<section id="테이블-결합" class="level3" data-number="2.9.1">
-<h3 data-number="2.9.1" class="anchored" data-anchor-id="테이블-결합"><span class="header-section-number">2.9.1</span> 테이블 결합</h3>
+<section id="테이블-결합" class="level3">
+<h3 class="anchored" data-anchor-id="테이블-결합">테이블 결합</h3>
 <p>앞서 살펴 본 <code>union</code> 은 행으로 테이블을 합치는 것이었다. 이번에 살펴 볼 결합(<code>join</code>)은 다른 테이블에서 열을 가지고 와 <strong>열을 늘리는</strong> 작업을 한다. 실무에서는 원하는 데이터가 여러 테이블에 분산되어 있는 경우가 많으므로, 테이블을 결합하여 사용해야 한다. <code>join</code>을 시각화하면 다음과 같다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -1414,8 +1274,8 @@ Note
 </tr>
 </tbody>
 </table>
-<section id="inner-join-내부-결합" class="level4" data-number="2.9.1.1">
-<h4 data-number="2.9.1.1" class="anchored" data-anchor-id="inner-join-내부-결합"><span class="header-section-number">2.9.1.1</span> <code>inner join</code>: 내부 결합</h4>
+<section id="inner-join-내부-결합" class="level4">
+<h4 class="anchored" data-anchor-id="inner-join-내부-결합"><code>inner join</code>: 내부 결합</h4>
 <p>내부 결합(inner join)은 가장 많이 사용되는 결합 방법이다. 위의 테이블을 살펴보면 goods_id는 두 테이블에 모두 존재하며, 다른 열들은 한쪽 테이블에만 존재한다. 따라서 goods_id를 기준으로 StoreGoods 테이블에 Goods 테이블을 결합하는 방법은 다음과 같으며, 이는 마치 엑셀의 vlookup과도 비슷하다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>select store.store_id, store.store_name, store.goods_id,</span>
@@ -1435,8 +1295,8 @@ Note
 <li><p>select 구에서는 &lt;테이블 별명&gt;.&lt;열 이름&gt; 형식으로 기술한다. 이는 테이블이 여러개가 있으므로, 어느 테이블에서 데이터를 가지고 오는지 혼동하는 것을 방지하기 위해서이다.</p></li>
 </ol>
 </section>
-<section id="outer-join-외부-결합" class="level4" data-number="2.9.1.2">
-<h4 data-number="2.9.1.2" class="anchored" data-anchor-id="outer-join-외부-결합"><span class="header-section-number">2.9.1.2</span> <code>outer join</code> 외부 결합</h4>
+<section id="outer-join-외부-결합" class="level4">
+<h4 class="anchored" data-anchor-id="outer-join-외부-결합"><code>outer join</code> 외부 결합</h4>
 <p>inner join은 두 테이블에 모두 존재하는 데이터를 합쳤지만, outer join은 한쪽 테이블에만 존재하는 데이터도 출력한다. 먼저 StoreGoods와 Goods에 존재하는 상품ID를 검색한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>select <span class="fu">distinct</span>(goods_id) from StoreGoods;</span>
@@ -1477,11 +1337,11 @@ Note
 </section>
 </section>
 </section>
-<section id="sql-고급-처리" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="sql-고급-처리"><span class="header-section-number">2.10</span> SQL 고급 처리</h2>
+<section id="sql-고급-처리" class="level2">
+<h2 class="anchored" data-anchor-id="sql-고급-처리">SQL 고급 처리</h2>
 <p>이번에는 마지막으로 순위 계산, 누적합 계산, 소계를 구하는 등 고급 집계 처리를 하는 방법인 윈도우 함수에 대해 배워보겠다.</p>
-<section id="윈도우-함수" class="level3" data-number="2.10.1">
-<h3 data-number="2.10.1" class="anchored" data-anchor-id="윈도우-함수"><span class="header-section-number">2.10.1</span> 윈도우 함수</h3>
+<section id="윈도우-함수" class="level3">
+<h3 class="anchored" data-anchor-id="윈도우-함수">윈도우 함수</h3>
 <p>윈도우 함수를 이용하면 랭킹, 순번 생성 등 일반적인 집약 함수로는 불가능한 고급처리를 할 수 있다. 윈도우 함수의 사용법은 크게 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&lt;</span>윈도우 함수<span class="sc">&gt;</span> <span class="fu">over</span> ([partition by <span class="sc">&lt;</span>열 리스트<span class="sc">&gt;</span>] order by <span class="sc">&lt;</span>정렬용 열 리스트<span class="sc">&gt;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1505,8 +1365,8 @@ Note
 <p>윈도우 전용 함수는 원칙적으로 select 구에만 사용할 수 있다.</p>
 </div>
 </div>
-<section id="rank-순위를-계산" class="level4" data-number="2.10.1.1">
-<h4 data-number="2.10.1.1" class="anchored" data-anchor-id="rank-순위를-계산"><span class="header-section-number">2.10.1.1</span> <code>rank</code>: 순위를 계산</h4>
+<section id="rank-순위를-계산" class="level4">
+<h4 class="anchored" data-anchor-id="rank-순위를-계산"><code>rank</code>: 순위를 계산</h4>
 <p><code>rank</code> 함수는 순위를 구하는 함수다. 예를 들어 Goods 테이블의 상품 중 상품분류(goods_classify) 별로 판매단가(sell_price)가 낮은 순서대로 순위를 구하는 방법은 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>select goods_name, goods_classify, sell_price,</span>
@@ -1554,8 +1414,8 @@ Note
 </figure>
 </div>
 </section>
-<section id="윈도우-함수에서-집약-함수의-사용" class="level4" data-number="2.10.1.2">
-<h4 data-number="2.10.1.2" class="anchored" data-anchor-id="윈도우-함수에서-집약-함수의-사용"><span class="header-section-number">2.10.1.2</span> 윈도우 함수에서 집약 함수의 사용</h4>
+<section id="윈도우-함수에서-집약-함수의-사용" class="level4">
+<h4 class="anchored" data-anchor-id="윈도우-함수에서-집약-함수의-사용">윈도우 함수에서 집약 함수의 사용</h4>
 <p><code>sum</code>이나 <code>avg</code>와 같은 집약 함수도 윈도우 함수로 사용할 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>select goods_id, goods_name, sell_price,</span>
@@ -1598,8 +1458,8 @@ Note
 </div>
 <p><a href="images/image-582586694.png" class="lightbox" data-gallery="quarto-lightbox-gallery-68"><img src="images/image-582586694.png" class="img-fluid"></a> partition by에 해당하는 goods_classify 별로(사무용품, 의류, 주방용품) 누적합계가 계산된다.</p>
 </section>
-<section id="이동평균-계산하기" class="level4" data-number="2.10.1.3">
-<h4 data-number="2.10.1.3" class="anchored" data-anchor-id="이동평균-계산하기"><span class="header-section-number">2.10.1.3</span> 이동평균 계산하기</h4>
+<section id="이동평균-계산하기" class="level4">
+<h4 class="anchored" data-anchor-id="이동평균-계산하기">이동평균 계산하기</h4>
 <p>윈도우 함수에서는 그 범위를 정해 ’프레임’을 만들 수도 있다. 이는 <code>over</code> 내의 <code>order by</code> 구문 뒤에 범위 지정 키워드를 사용하면 된다. 예를 들어 모든 열에 대한 누적평균이 아닌 최근 3개 데이터만 이용해 평균을 구하는 이동평균을 계산하는 쿼리는 다음과 같다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>select goods_id, goods_classify, goods_name, sell_price,</span>
@@ -1772,18 +1632,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./r_basic.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":true,"descPosition":"bottom","openEffect":"zoom","closeEffect":"zoom"});</script>
 
