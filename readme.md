@@ -3,6 +3,7 @@
 두물머리에서 제공하는 '퀀트 투자 전문가' 과정 강의록 입니다.
 
 소개: <https://festa.io/events/2997>
+
 URL: https://hyunyulhenry.github.io/dmmr_quant/
 
 # 목차
