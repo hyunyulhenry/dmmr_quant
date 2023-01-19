@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>크롤링 기초</title>
+<title>퀀트 투자 전문가 과정 - 6&nbsp; 크롤링 기초</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,11 +87,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./portfolio.html" rel="next">
+<link href="./api.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -127,20 +130,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </head>
 
-<body class="fullcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">퀀트 투자 전문가 과정</a> 
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">데이터 분석 프로세스</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">SQL 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_basic.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">R 기초 배우기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./r_sql.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">R과 SQL 연결하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./api.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crawl.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./portfolio.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./backtest.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">백테스트 실습하기</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./performance.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">성과 및 위험 평가하기</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#인코딩의-이해와-r에서-utf-8-설정하기" id="toc-인코딩의-이해와-r에서-utf-8-설정하기" class="nav-link active" data-scroll-target="#인코딩의-이해와-r에서-utf-8-설정하기"><span class="toc-section-number">6.1</span>  인코딩의 이해와 R에서 UTF-8 설정하기</a></li>
+  <li><a href="#한글-인코딩-방식의-종류" id="toc-한글-인코딩-방식의-종류" class="nav-link" data-scroll-target="#한글-인코딩-방식의-종류"><span class="toc-section-number">6.2</span>  한글 인코딩 방식의 종류</a></li>
+  <li><a href="#웹의-동작-방식" id="toc-웹의-동작-방식" class="nav-link" data-scroll-target="#웹의-동작-방식"><span class="toc-section-number">6.3</span>  웹의 동작 방식</a>
+  <ul class="collapse">
+  <li><a href="#http" id="toc-http" class="nav-link" data-scroll-target="#http"><span class="toc-section-number">6.3.1</span>  HTTP</a></li>
+  </ul></li>
+  <li><a href="#html과-css" id="toc-html과-css" class="nav-link" data-scroll-target="#html과-css"><span class="toc-section-number">6.4</span>  HTML과 CSS</a>
+  <ul class="collapse">
+  <li><a href="#html-기본-구조" id="toc-html-기본-구조" class="nav-link" data-scroll-target="#html-기본-구조"><span class="toc-section-number">6.4.1</span>  HTML 기본 구조</a></li>
+  <li><a href="#태그와-속성" id="toc-태그와-속성" class="nav-link" data-scroll-target="#태그와-속성"><span class="toc-section-number">6.4.2</span>  태그와 속성</a></li>
+  <li><a href="#h-태그와-p-태그" id="toc-h-태그와-p-태그" class="nav-link" data-scroll-target="#h-태그와-p-태그"><span class="toc-section-number">6.4.3</span>  h 태그와 p 태그</a></li>
+  <li><a href="#리스트를-나타내는-ul-태그와-ol-태그" id="toc-리스트를-나타내는-ul-태그와-ol-태그" class="nav-link" data-scroll-target="#리스트를-나타내는-ul-태그와-ol-태그"><span class="toc-section-number">6.4.4</span>  리스트를 나타내는 ul 태그와 ol 태그</a></li>
+  <li><a href="#table-태그" id="toc-table-태그" class="nav-link" data-scroll-target="#table-태그"><span class="toc-section-number">6.4.5</span>  table 태그</a></li>
+  <li><a href="#a-태그와-img-태그-및-속성" id="toc-a-태그와-img-태그-및-속성" class="nav-link" data-scroll-target="#a-태그와-img-태그-및-속성"><span class="toc-section-number">6.4.6</span>  a 태그와 img 태그 및 속성</a></li>
+  <li><a href="#div-태그" id="toc-div-태그" class="nav-link" data-scroll-target="#div-태그"><span class="toc-section-number">6.4.7</span>  div 태그</a></li>
+  <li><a href="#css" id="toc-css" class="nav-link" data-scroll-target="#css"><span class="toc-section-number">6.4.8</span>  CSS</a></li>
+  <li><a href="#클래스와-id" id="toc-클래스와-id" class="nav-link" data-scroll-target="#클래스와-id"><span class="toc-section-number">6.4.9</span>  클래스와 id</a></li>
+  </ul></li>
+  <li><a href="#크롤링-이해하기" id="toc-크롤링-이해하기" class="nav-link" data-scroll-target="#크롤링-이해하기"><span class="toc-section-number">7</span>  크롤링 이해하기</a>
+  <ul class="collapse">
+  <li><a href="#get과-post-방식-이해하기" id="toc-get과-post-방식-이해하기" class="nav-link" data-scroll-target="#get과-post-방식-이해하기"><span class="toc-section-number">7.1</span>  GET과 POST 방식 이해하기</a>
+  <ul class="collapse">
+  <li><a href="#get-방식" id="toc-get-방식" class="nav-link" data-scroll-target="#get-방식"><span class="toc-section-number">7.1.1</span>  GET 방식</a></li>
+  <li><a href="#post-방식" id="toc-post-방식" class="nav-link" data-scroll-target="#post-방식"><span class="toc-section-number">7.1.2</span>  POST 방식</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#크롤링-예제" id="toc-크롤링-예제" class="nav-link" data-scroll-target="#크롤링-예제"><span class="toc-section-number">8</span>  크롤링 예제</a>
+  <ul class="collapse">
+  <li><a href="#명언-크롤링하기" id="toc-명언-크롤링하기" class="nav-link" data-scroll-target="#명언-크롤링하기"><span class="toc-section-number">8.1</span>  명언 크롤링하기</a></li>
+  <li><a href="#xpath를-이용해-원하는-지점만-찾기" id="toc-xpath를-이용해-원하는-지점만-찾기" class="nav-link" data-scroll-target="#xpath를-이용해-원하는-지점만-찾기"><span class="toc-section-number">8.2</span>  xpath를 이용해 원하는 지점만 찾기</a></li>
+  <li><a href="#표-크롤링" id="toc-표-크롤링" class="nav-link" data-scroll-target="#표-크롤링"><span class="toc-section-number">8.3</span>  표 크롤링</a></li>
+  <li><a href="#post-방식-크롤링" id="toc-post-방식-크롤링" class="nav-link" data-scroll-target="#post-방식-크롤링"><span class="toc-section-number">8.4</span>  POST 방식 크롤링</a></li>
+  </ul></li>
+  <li><a href="#셀레니움을-이용한-동적-크롤링" id="toc-셀레니움을-이용한-동적-크롤링" class="nav-link" data-scroll-target="#셀레니움을-이용한-동적-크롤링"><span class="toc-section-number">9</span>  셀레니움을 이용한 동적 크롤링</a>
+  <ul class="collapse">
+  <li><a href="#셀레니움-실습하기" id="toc-셀레니움-실습하기" class="nav-link" data-scroll-target="#셀레니움-실습하기"><span class="toc-section-number">9.1</span>  셀레니움 실습하기</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">크롤링 기초</h1>
+<h1 class="title d-none d-lg-block"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">크롤링 기초</span></h1>
 </div>
 
 
@@ -158,13 +281,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>API를 이용하면 데이터를 매우 쉽게 수집할 수 있지만, 국내 주식 데이터를 다운로드 하기에는 한계가 있으며, 원하는 데이터가 API의 형태로 제공된다는 보장도 없습니다. 따라서 우리는 필요한 데이터를 얻기 위해 직접 찾아 나서야 합니다.</p>
 <p>크롤링 혹은 스크래핑이란 웹사이트에서 원하는 정보를 수집하는 기술입니다. 대부분의 금융 웹사이트는 간단한 형태로 작성되어 있어, 몇 가지 기술만 익히면 어렵지 않게 데이터를 크롤링할 수 있습니다.</p>
 <p>**크롤링을 할 때 주의해야 할 점이 있습니다. 특정 웹사이트의 페이지를 쉬지 않고 크롤링하는 행위를 무한 크롤링이라고 합니다. 무한 크롤링은 해당 웹사이트의 자원을 독점하게 되어 타인의 사용을 막게 되며 웹사이트에 부하를 주게 됩니다. 일부 웹사이트에서는 동일한 IP로 쉬지 않고 크롤링을 할 경우 접속을 막아버리는 경우도 있습니다. 따라서 하나의 페이지를 크롤링한 후 1\~2초 가량 정지하고 다시 다음 페이지를 크롤링하는 것이 좋습니다.**</p>
-<section id="인코딩의-이해와-r에서-utf-8-설정하기" class="level2">
-<h2 class="anchored" data-anchor-id="인코딩의-이해와-r에서-utf-8-설정하기">인코딩의 이해와 R에서 UTF-8 설정하기</h2>
+<section id="인코딩의-이해와-r에서-utf-8-설정하기" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="인코딩의-이해와-r에서-utf-8-설정하기"><span class="header-section-number">6.1</span> 인코딩의 이해와 R에서 UTF-8 설정하기</h2>
 <p>R에서 스크립트를 한글로 작성해 저장한 후 이를 다시 불러올 때, 혹은 한글로 된 데이터를 크롤링하면 오류가 뜨거나 읽을 수 없는 문자로 나타나는 경우가 종종 있습니다. 이는 한글 인코딩 때문에 발생하는 문제이며, 이러한 현상을 흔히 ’인코딩이 깨졌다’라고 표현합니다. 인코딩이란 사람이 사용하는 언어를 컴퓨터가 사용하는 0과 1로 변환하는 과정을 말하며, 이와 반대의 과정을 디코딩이라고 합니다.</p>
 <p>이렇듯 사람과 컴퓨터 간의 언어를 번역하기 위해 최초로 사용된 방식이 아스키(ASCII: American Standard Code for Information Interchange)입니다. 0부터 127까지 총 128개 바이트에 알파벳과 숫자, 자주 사용되는 특수문자 값을 부여하고, 문자가 입력되면 이에 대응되는 바이트가 저장됩니다. 그러나 아스키의 ’American’이라는 이름에서 알 수 있듯이 이는 영어의 알파벳이 아닌 다른 문자를 표현하는 데 한계가 있으며, 이를 보완하기 위한 여러 방법이 나오게 되었습니다.</p>
 </section>
-<section id="한글-인코딩-방식의-종류" class="level2">
-<h2 class="anchored" data-anchor-id="한글-인코딩-방식의-종류">한글 인코딩 방식의 종류</h2>
+<section id="한글-인코딩-방식의-종류" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="한글-인코딩-방식의-종류"><span class="header-section-number">6.2</span> 한글 인코딩 방식의 종류</h2>
 <p>인코딩에 대한 전문적인 내용은 이 책의 범위를 넘어가며, 크롤링을 위해서는 한글을 인코딩하는 데 쓰이는 EUC-KR과 CP949, UTF-8 정도만 이해해도 충분합니다. 만일 ’알’이라는 단어를 인코딩한다면 어떤 방법이 있을까요? 먼저 ’알’이라는 문자 자체에 해당하는 코드를 부여해 나타내는 방법이 있습니다. 아니면 이를 구성하는 모음과 자음을 나누어 ㅇ, ㅏ, ㄹ 각각에 해당하는 코드를 부여하고 이를 조합할 수도 있습니다. 전자와 같이 완성된 문자 자체로 나타내는 방법을 완성형, 후자와 같이 각 자모로 나타내는 방법을 조합형이라고 합니다.</p>
 <p>한글 인코딩 중 완성형으로 가장 대표적인 방법은 EUC-KR입니다. EUC-KR은 현대 한글에서 많이 쓰이는 문자 2,350개에 번호를 붙인 방법입니다. 그러나 2,350개 문자로 모든 한글 자모의 조합을 표현하기 부족해, 이를 보완하고자 마이크로소프트가 도입한 방법이 CP949입니다. CP949는 11,720개 한글 문자에 번호를 붙인 방법으로 기존 EUC-KR보다 나타낼 수 있는 한글의 개수가 훨씬 많아졌습니다. 윈도우의 경우 기본 인코딩이 CP949로 되어 있습니다.</p>
 <p>조합형의 대표적 방법인 UTF-8은 모음과 자음 각각에 코드를 부여한 후 조합해 한글을 나타냅니다. 조합형은 한글뿐만 아니라 다양한 언어에 적용할 수 있다는 장점이 있어 전 세계 웹페이지의 대부분이 UTF-8로 만들어지고 있습니다.</p>
@@ -174,8 +297,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="웹의-동작-방식" class="level2">
-<h2 class="anchored" data-anchor-id="웹의-동작-방식">웹의 동작 방식</h2>
+<section id="웹의-동작-방식" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="웹의-동작-방식"><span class="header-section-number">6.3</span> 웹의 동작 방식</h2>
 <p>크롤링은 웹사이트의 정보를 수집하는 과정입니다. 따라서 웹이 어떻게 동작하는지 이해할 필요가 있습니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -184,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>먼저 클라이언트란 여러분의 데스크톱이나 휴대폰과 같은 장치와 크롬이나 파이어폭스와 같은 소프트웨어를 의미합니다. 서버는 웹사이트와 앱을 저장하는 컴퓨터를 의미합니다. 클라이언트가 특정 정보를 요구하는 과정을 ’요청’이라고 하며, 서버가 해당 정보를 제공하는 과정을 ’응답’이라고 합니다. 그러나 클라이언트와 서버가 연결되어 있지 않다면 둘 사이에 정보를 주고받을 수 없으며, 이를 연결하는 공간이 바로 인터넷입니다. 또한 건물에도 고유의 주소가 있는 것처럼, 각 서버에도 고유의 주소가 있는데 이것이 인터넷 주소 혹은 URL입니다.</p>
 <p>여러분이 네이버에서 경제 기사를 클릭하는 경우를 생각해봅시다. 클라이언트는 사용자인 여러분이고, 서버는 네이버이며, URL은 www.naver.com 이 됩니다. 경제 기사를 클릭하는 과정이 요청이며, 클릭 후 해당 페이지를 보여주는 과정이 응답입니다.</p>
-<section id="http" class="level3">
-<h3 class="anchored" data-anchor-id="http">HTTP</h3>
+<section id="http" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="http"><span class="header-section-number">6.3.1</span> HTTP</h3>
 <p>클라이언트가 각기 다른 방법으로 데이터를 요청한다면, 서버는 해당 요청을 알아듣지 못할 것입니다. 이를 방지하기 위해 규정된 약속이나 표준에 맞추어 데이터를 요청해야 합니다. 이러한 약속을 HTTP(HyperText Transfer Protocol)라고 합니다.</p>
 <p>클라이언트가 서버에게 요청의 목적이나 종류를 알리는 방법을 HTTP 요청 방식(HTTP Request Method)이라고 합니다. HTTP 요청 방식은 크게 GET, POST, PUT, DELETE라는 네 가지로 나눌 수 있지만 크롤링에는 GET과 POST 방식이 대부분 사용되므로 이 두 가지만 알아도 충분합니다.</p>
 <p>인터넷을 사용하다 보면 한 번쯤 ‘이 페이지를 볼 수 있는 권한이 없음(HTTP 오류 403 - 사용할 수 없음)’ 혹은 ’페이지를 찾을 수 없음(HTTP 오류 404 - 파일을 찾을 수 없음)’이라는 오류를 본 적이 있을 겁니다. 여기서 403과 404라는 숫자는 클라이언트의 요청에 대한 서버의 응답 상태를 나타내는 HTTP 상태 코드입니다.</p>
@@ -233,14 +356,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </section>
 </section>
-<section id="html과-css" class="level2">
-<h2 class="anchored" data-anchor-id="html과-css">HTML과 CSS</h2>
+<section id="html과-css" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="html과-css"><span class="header-section-number">6.4</span> HTML과 CSS</h2>
 <p>클라이언트와 서버가 데이터를 주고받을 때는 디자인이라는 개념이 필요하지 않습니다. 그러나 응답받은 정보를 사람이 확인하려면 보기 편한 방식으로 바꾸어줄 필요가 있는데 웹페이지가 그러한 역할을 합니다. 웹페이지의 제목, 단락, 목록 등 레이아웃을 잡아주는 데 쓰이는 대표적인 마크업 언어가 HTML(HyperText Markup Language)입니다. HTML을 통해 잡혀진 뼈대에 글자의 색상이나 폰트, 배경색, 배치 등 화면을 꾸며주는 역할을 하는 것이 CSS(Cascading Style Sheets)입니다.</p>
 <p>우리의 목적은 웹페이지를 만드는 것이 아니므로 HTML과 CSS에 대해 자세히 알 필요는 없습니다. 그러나 크롤링하고자 하는 데이터가 웹페이지의 어떤 태그 내에 위치하고 있는지, 어떻게 크롤링하면 될지 파악하기 위해서는 HTML과 CSS에 대한 기본적인 지식은 알아야 합니다.</p>
 <p>HTML과 CSS의 실습은 아래 페이지에서 해볼 수 있습니다.</p>
 <pre><code>https://www.w3schools.com/html/tryit.asp?filename=tryhtml_intro</code></pre>
-<section id="html-기본-구조" class="level3">
-<h3 class="anchored" data-anchor-id="html-기본-구조">HTML 기본 구조</h3>
+<section id="html-기본-구조" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="html-기본-구조"><span class="header-section-number">6.4.1</span> HTML 기본 구조</h3>
 <p>HTML은 크게 메타 데이터를 나타내는 head와 본문을 나타내는 body로 나누어집니다. head에서 title은 웹페이지에서 나타나는 제목을 나타내며 body 내에는 본문에 들어갈 각종 내용들이 포함되어 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -261,8 +384,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>&lt;head&gt; 부분에 입력한 내역은 실습 페이지 구조 상 확인되지 않지만, &lt;body&gt; 부분에 입력한 글자들은 우측 결과물 페이지에서 확인이 가능합니다. &lt;h2&gt;와 &lt;p&gt; 등의 태그가 하는 역할들에 대해서 더욱 자세히 알아보도록 하겠습니다.</p>
 </section>
-<section id="태그와-속성" class="level3">
-<h3 class="anchored" data-anchor-id="태그와-속성">태그와 속성</h3>
+<section id="태그와-속성" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="태그와-속성"><span class="header-section-number">6.4.2</span> 태그와 속성</h3>
 <p>HTML 코드는 태그와 속성, 내용으로 이루어져 있습니다. 크롤링한 데이터에서 특정 태그의 데이터만을 찾는 방법, 특정 속성의 데이터만을 찾는 방법, 뽑은 자료에서 내용만을 찾는 방법 등 내용을 찾는 방법이 모두 다르기 때문에 태그와 속성에 대해 좀 더 자세히 살펴보겠습니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -275,8 +398,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 <p>태그를 통해 태그를 마쳤습니다.</p>
 </section>
-<section id="h-태그와-p-태그" class="level3">
-<h3 class="anchored" data-anchor-id="h-태그와-p-태그">h 태그와 p 태그</h3>
+<section id="h-태그와-p-태그" class="level3" data-number="6.4.3">
+<h3 data-number="6.4.3" class="anchored" data-anchor-id="h-태그와-p-태그"><span class="header-section-number">6.4.3</span> h 태그와 p 태그</h3>
 <p>h 태그는 폰트의 크기를 나타내는 태그이며, p 태그는 문단을 나타내는 태그입니다. 이를 사용한 간단한 예제는 다음과 같습니다. h 태그의 숫자가 작을수록 텍스트 크기는 커지는 것이 확인되며, 숫자는 1에서 6까지 지원됩니다. p 태그를 사용하면 각각의 문단이 만들어지는 것이 확인됩니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -299,8 +422,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>h 태그의 숫자가 작을수록 텍스트 크기는 커지며, 숫자는 1에서 6까지 지원됩니다. 또한 p 태그를 사용하면 각각의 문단이 만들어집니다.</p>
 </section>
-<section id="리스트를-나타내는-ul-태그와-ol-태그" class="level3">
-<h3 class="anchored" data-anchor-id="리스트를-나타내는-ul-태그와-ol-태그">리스트를 나타내는 ul 태그와 ol 태그</h3>
+<section id="리스트를-나타내는-ul-태그와-ol-태그" class="level3" data-number="6.4.4">
+<h3 data-number="6.4.4" class="anchored" data-anchor-id="리스트를-나타내는-ul-태그와-ol-태그"><span class="header-section-number">6.4.4</span> 리스트를 나타내는 ul 태그와 ol 태그</h3>
 <p>ul과 ol 태그는 리스트(글머리 기호)를 만들 때 사용됩니다. ul은 순서가 없는 리스트(unordered list), ol은 순서가 있는 리스트(ordered list)를 만듭니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -331,8 +454,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>ul 태그로 감싼 부분은 글머리 기호가 순서가 없는 •으로 표현되며, ol 태그로 감싼 부분은 숫자가 순서대로 표현됩니다. 각각의 리스트는 li를 통해 생성됩니다.</p>
 </section>
-<section id="table-태그" class="level3">
-<h3 class="anchored" data-anchor-id="table-태그">table 태그</h3>
+<section id="table-태그" class="level3" data-number="6.4.5">
+<h3 data-number="6.4.5" class="anchored" data-anchor-id="table-태그"><span class="header-section-number">6.4.5</span> table 태그</h3>
 <p>table 태그는 표를 만드는 태그입니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -373,8 +496,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>table 태그 내의 tr 태그는 각 행을 의미하며, 각 셀의 구분은 th 혹은 td 태그를 통해 구분할 수 있습니다. th 태그는 진하게 표현되므로 주로 테이블의 제목에 사용되고, td 태그는 테이블의 내용에 사용됩니다.</p>
 </section>
-<section id="a-태그와-img-태그-및-속성" class="level3">
-<h3 class="anchored" data-anchor-id="a-태그와-img-태그-및-속성">a 태그와 img 태그 및 속성</h3>
+<section id="a-태그와-img-태그-및-속성" class="level3" data-number="6.4.6">
+<h3 data-number="6.4.6" class="anchored" data-anchor-id="a-태그와-img-태그-및-속성"><span class="header-section-number">6.4.6</span> a 태그와 img 태그 및 속성</h3>
 <p>a 태그와 img 태그는 다른 태그와는 다르게, 혼자 쓰이기보다는 속성과 결합해 사용됩니다. a 태그는 href 속성과 결합해 다른 페이지의 링크를 걸 수 있습니다. img 태그는 src 속성과 결합해 이미지를 불러옵니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -404,8 +527,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>a 태그 뒤 href 속성에 연결하려는 웹페이지 주소를 속성값(<a href="https://blog.naver.com/leebisu">https://blog.naver.com/leebisu)으로</a>으로){.uri} 입력한 후 내용(Henry’s Quantopia)을 입력하면, 내용 텍스트에 웹페이지의 링크가 추가됩니다. img 태그 뒤 src 속성의 속성값에는 불러오려는 이미지 주소를 입력하며, width 속성과 height 속성을 통해 이미지의 가로 세로 길이를 조절할 수도 있습니다. 페이지 내에서 링크된 주소를 모두 찾거나, 모든 이미지를 저장하려고 할 때 속성값을 찾으면 손쉽게 원하는 작업을 할 수 있습니다.</p>
 </section>
-<section id="div-태그" class="level3">
-<h3 class="anchored" data-anchor-id="div-태그">div 태그</h3>
+<section id="div-태그" class="level3" data-number="6.4.7">
+<h3 data-number="6.4.7" class="anchored" data-anchor-id="div-태그"><span class="header-section-number">6.4.7</span> div 태그</h3>
 <p>div 태그는 화면의 전체적인 틀(레이아웃)을 만들 때 주로 사용하는 태그입니다. 단독으로도 사용될 수 있으며, 꾸밈을 담당하는 style 속성과 결합되어 사용되기도 합니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -436,8 +559,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>div 태그를 통해 총 세 개의 레이아웃으로 나누어진 것을 알 수 있습니다. style 속성 중 background-color는 배경 색상을, color는 글자 색상을 의미하며, 각 레이아웃마다 다른 스타일이 적용되었습니다.</p>
 </section>
-<section id="css" class="level3">
-<h3 class="anchored" data-anchor-id="css">CSS</h3>
+<section id="css" class="level3" data-number="6.4.8">
+<h3 data-number="6.4.8" class="anchored" data-anchor-id="css"><span class="header-section-number">6.4.8</span> CSS</h3>
 <p>CSS는 앞서 설명했듯이 웹페이지를 꾸며주는 역할을 합니다. head에서 각 태그에 CSS 효과를 입력하면 본문의 모든 해당 태그에 CSS 효과가 적용됩니다. 이처럼 웹페이지를 꾸미기 위해 특정 요소에 접근하는 것을 셀렉터(Selector)라고 합니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -463,8 +586,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>head의 style 태그에서 여러 CSS 효과가 정의되었습니다. 먼저 body의 전체 배경 색상을 powderblue로 설정했으며, h4 태그의 글자 색상은 파란색(blue)으로 설정했습니다. body 태그 내에서 style에 태그를 주지 않더라도, head에서 정의한 CSS 효과가 모두 적용됩니다.</p>
 </section>
-<section id="클래스와-id" class="level3">
-<h3 class="anchored" data-anchor-id="클래스와-id">클래스와 id</h3>
+<section id="클래스와-id" class="level3" data-number="6.4.9">
+<h3 data-number="6.4.9" class="anchored" data-anchor-id="클래스와-id"><span class="header-section-number">6.4.9</span> 클래스와 id</h3>
 <p>위의 예제에서 클래스 속성을 이용하면 특정 이름을 가진 클래스에 동일한 효과를 적용할 수 있습니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
@@ -533,18 +656,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>셀렉터를 id에 적용할 때는 id명 앞에 샵(#)를 붙여 표현하며, 페이지에서 한 번만 사용된다는 점을 제외하면 클래스와 사용 방법이 거의 동일합니다. <strong>클래스나 id 값을 통해 원하는 내용을 크롤링하는 경우도 많으므로, 각각의 이름 앞에 마침표(.)와 샵(#) 을 붙여야 한다는 점을 꼭 기억해야 합니다.</strong></p>
 </section>
 </section>
-<section id="크롤링-이해하기" class="level1">
-<h1>크롤링 이해하기</h1>
-<section id="get과-post-방식-이해하기" class="level2">
-<h2 class="anchored" data-anchor-id="get과-post-방식-이해하기">GET과 POST 방식 이해하기</h2>
+<section id="크롤링-이해하기" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 크롤링 이해하기</h1>
+<section id="get과-post-방식-이해하기" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="get과-post-방식-이해하기"><span class="header-section-number">7.1</span> GET과 POST 방식 이해하기</h2>
 <p>우리가 인터넷에 접속해 서버에 파일을 요청하면, 서버는 이에 해당하는 파일을 우리에게 보내줍니다. 크롬과 같은 웹 브라우저는 이러한 과정을 사람이 수행하기 편하고 시각적으로 보기 편하도록 만들어진 것이며, 인터넷 주소는 서버의 주소를 기억하기 쉽게 만든 것입니다. 우리가 서버에 데이터를 요청하는 형태는 다양하지만 크롤링에서는 주로 GET과 POST 방식을 사용합니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/api/crawl_flow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="images/api/crawl_flow.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<section id="get-방식" class="level3">
-<h3 class="anchored" data-anchor-id="get-방식">GET 방식</h3>
+<section id="get-방식" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="get-방식"><span class="header-section-number">7.1.1</span> GET 방식</h3>
 <p>GET 방식은 인터넷 주소를 기준으로 이에 해당하는 데이터나 파일을 요청하는 것입니다. 주로 클라이언트가 요청하는 쿼리를 앰퍼샌드(&amp;) 혹은 물음표(?) 형식으로 결합해 서버에 전달합니다.</p>
 <p>네이버 홈페이지에 접속한 후 [퀀트]를 검색하면, 주소 끝부분에 [&amp;query=퀀트]가 추가되며 이에 해당하는 페이지의 내용을 보여줍니다. 즉, 해당 페이지는 GET 방식을 사용하고 있으며 입력 종류는 query, 입력값은 [퀀트]임을 알 수 있습니다.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -559,8 +682,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 </section>
-<section id="post-방식" class="level3">
-<h3 class="anchored" data-anchor-id="post-방식">POST 방식</h3>
+<section id="post-방식" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="post-방식"><span class="header-section-number">7.1.2</span> POST 방식</h3>
 <p>POST 방식은 사용자가 필요한 값을 추가해서 요청하는 방법입니다. GET 방식과 달리 클라이언트가 요청하는 쿼리를 body에 넣어서 전송하므로 요청 내역을 직접 볼 수 없습니다. 동행복권 홈페이지에 접속해 [당첨결과] 메뉴를 확인해봅시다.</p>
 <ul>
 <li><a href="https://www.dhlottery.co.kr/gameResult.do?method=byWin" class="uri">https://www.dhlottery.co.kr/gameResult.do?method=byWin</a></li>
@@ -587,16 +710,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 </section>
 </section>
-<section id="크롤링-예제" class="level1">
-<h1>크롤링 예제</h1>
+<section id="크롤링-예제" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 크롤링 예제</h1>
 <p>일반적으로 크롤링은 다음의 과정을 따릅니다. 먼저, httr 패키지의 <code>GET()</code> 혹은 <code>POST()</code> 함수를 이용해 데이터를 다운로드한 후 rvest 패키지의 함수들을 이용해 원하는 데이터를 찾는 과정으로 이루어집니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="images/api/flowchart.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="images/api/flowchart.png" class="img-fluid figure-img"></a></p>
 </figure>
 </div>
-<section id="명언-크롤링하기" class="level2">
-<h2 class="anchored" data-anchor-id="명언-크롤링하기">명언 크롤링하기</h2>
+<section id="명언-크롤링하기" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="명언-크롤링하기"><span class="header-section-number">8.1</span> 명언 크롤링하기</h2>
 <p>크롤링의 간단한 예제로 ‘Quotes to Scrape’ 사이트에 있는 명언을 수집힙니다.</p>
 <ul>
 <li><a href="https://quotes.toscrape.com/" class="uri">https://quotes.toscrape.com/</a></li>
@@ -618,7 +741,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(quote)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response [https://quotes.toscrape.com/]
-  Date: 2023-01-19 02:45
+  Date: 2023-01-19 03:02
   Status: 200
   Content-Type: text/html; charset=utf-8
   Size: 11.1 kB
@@ -782,8 +905,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="xpath를-이용해-원하는-지점만-찾기" class="level2">
-<h2 class="anchored" data-anchor-id="xpath를-이용해-원하는-지점만-찾기">xpath를 이용해 원하는 지점만 찾기</h2>
+<section id="xpath를-이용해-원하는-지점만-찾기" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="xpath를-이용해-원하는-지점만-찾기"><span class="header-section-number">8.2</span> xpath를 이용해 원하는 지점만 찾기</h2>
 <p>xpath란 HTML의 위치를 나타내는 형태입니다. 만일 웹페이지에서 한 지점의 데이터만 추출해야 할 경우, 번거롭게 html의 구조를 모두 발라내기 보다는 xpath를 이용하는 것이 훨씬 효율적입니다.</p>
 <p>예제로 yes24의 판매지수를 크롤링 하도록 하겠습니다. 해당 지수는 책의 출간일 그리고 판매량에 따라 매일 바뀝니다.</p>
 <p><a href="http://www.yes24.com/Product/Goods/108408162" class="uri">http://www.yes24.com/Product/Goods/108408162</a></p>
@@ -841,8 +964,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>readr 패키지의 <code>parse_number()</code> 함수는 여러 텍스트 중 숫자 형태만 추출해주는 매우 유용한 함수입니다.</p>
 </section>
-<section id="표-크롤링" class="level2">
-<h2 class="anchored" data-anchor-id="표-크롤링">표 크롤링</h2>
+<section id="표-크롤링" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="표-크롤링"><span class="header-section-number">8.3</span> 표 크롤링</h2>
 <p>표는 html 중 td와 th 태그로 구성되어 있으며, 이를 일일이 추출하며 다시 표 형태로 만드는 것은 사실상 불가능에 가깝습니다. 다행히 R의 크롤링 패키지에는 표 형태만 간단하게 추출할 수 있는 함수 역시 존재합니다.</p>
 <p>예제로써 UFC의 역대 챔피언 리스트를 크롤링 해보도록 합시다.</p>
 <p><a href="https://en.wikipedia.org/wiki/List_of_UFC_champions" class="uri">https://en.wikipedia.org/wiki/List_of_UFC_champions</a></p>
@@ -906,8 +1029,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </section>
-<section id="post-방식-크롤링" class="level2">
-<h2 class="anchored" data-anchor-id="post-방식-크롤링">POST 방식 크롤링</h2>
+<section id="post-방식-크롤링" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="post-방식-크롤링"><span class="header-section-number">8.4</span> POST 방식 크롤링</h2>
 <p>GET 방식은 요청 쿼리가 url에 포함되어 있으므로 매우 손쉽게 페이지 내역을 받을 수 있었습니다. 그러나 POST 방식은 요청 쿼리가 숨겨져 있으므로 이를 직접 입력해야 합니다. 앞서 살펴본 로또 당첨번호를 크롤링 해보도록 하겠습니다.</p>
 <p><a href="https://www.dhlottery.co.kr/gameResult.do?method=byWin" class="uri">https://www.dhlottery.co.kr/gameResult.do?method=byWin</a></p>
 <p>개발자도구 화면을 연 상태에서 조회를 누른 후 [gameResult.do?…] 부분을 클릭합니다. [Headers] 탭의 General 에서 Request URL은 데이터를 요청하는 서버 주소를 의미합니다.</p>
@@ -978,8 +1101,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </section>
 </section>
-<section id="셀레니움을-이용한-동적-크롤링" class="level1">
-<h1>셀레니움을 이용한 동적 크롤링</h1>
+<section id="셀레니움을-이용한-동적-크롤링" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> 셀레니움을 이용한 동적 크롤링</h1>
 <p>일반적인 크롤링으로는 정적인 데이터, 즉 변하지 않는 데이터만을 수집할 수 있습니다. 한 페이지 안에서 원하는 정보가 모두 드러나는 것을 정적 데이터라 합니다. 반면 입력, 클릭, 로그인 등을 통해 데이터가 바뀌는 것을 동적 데이터라 합니다. 예를 들어 네이버 지도에서 매장을 검색을 한 후 좌측에서 원하는 선택할 때 마다 이에 해당하는 내용이 뜹니다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -993,8 +1116,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>셀레니움을 이용한 경우 정적 페이지와 동적 페이지를 모두 크롤링 할 수 있다는 강력함이 있지만, 상대적으로 속도가 느립니다. 따라서 정적 페이지는 기존의 방법을 이용한 크롤링을, 동적 페이지는 셀레니움을 이용한 크롤링을 하는 것이 일반적입니다.</p>
-<section id="셀레니움-실습하기" class="level2">
-<h2 class="anchored" data-anchor-id="셀레니움-실습하기">셀레니움 실습하기</h2>
+<section id="셀레니움-실습하기" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="셀레니움-실습하기"><span class="header-section-number">9.1</span> 셀레니움 실습하기</h2>
 <p>셀레니움의 경우 R에서 세팅하기는 지나치게 번거로우므로, 파이썬에서 하는 것을 권장합니다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>from selenium import webdriver</span>
@@ -1324,8 +1447,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./api.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">API를 이용한 데이터 수집</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./portfolio.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">포트폴리오 구성하기</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":true,"closeEffect":"zoom","selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":true,"descPosition":"bottom","selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});</script>
 
 
 

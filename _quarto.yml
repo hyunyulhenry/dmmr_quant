@@ -1,5 +1,5 @@
 project:
-  type: website
+  type: book
   output-dir: docs
 
 book:
@@ -19,6 +19,7 @@ book:
     
 format:
   html:
+    toc: true
     theme: cosmo
 
 editor: visual
