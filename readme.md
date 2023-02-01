@@ -13,7 +13,7 @@ URL: https://hyunyulhenry.github.io/dmmr_quant/
 3.  R 기초 및 데이터분석 실습
 4.  R와 SQL 연결해 사용하기
 5.  API를 이용한 데이터 수집
-6.  크롤링 기초
+6.  크롤링 기초 (https://pouncing-penguin-55b.notion.site/R-47a7f741c59f4aeeae2a737e997e7e83)
 7.  퀀트 전략을 이용한 포트폴리오 구성하기
 8.  백테스트 실습
 9.  성과 및 위험 평가하기
