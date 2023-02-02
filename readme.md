@@ -13,7 +13,7 @@ URL: https://hyunyulhenry.github.io/dmmr_quant/
 3.  R 기초 및 데이터분석 실습
 4.  R와 SQL 연결해 사용하기
 5.  API를 이용한 데이터 수집
-6.  크롤링 기초 (https://pouncing-penguin-55b.notion.site/R-47a7f741c59f4aeeae2a737e997e7e83)
+6.  크롤링 기초
 7.  퀀트 전략을 이용한 포트폴리오 구성하기
 8.  백테스트 실습
 9.  성과 및 위험 평가하기
@@ -23,6 +23,7 @@ URL: https://hyunyulhenry.github.io/dmmr_quant/
 1.  [R을 이용한 퀀트 투자 포트폴리오 만들기](http://www.yes24.com/Product/Goods/97163849)
 2.  파이썬을 이용한 퀀트 투자 포트폴리오 만들기
 3.  [감으로 하는 투자, 데이터로 하는 투자](http://www.yes24.com/Product/Goods/108408162)
+4. https://pouncing-penguin-55b.notion.site/f4930f6eb69f4b1399c2dc1156a16dd4
 
 # 퀀트대학 링크
 
