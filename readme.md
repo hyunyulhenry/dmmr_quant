@@ -5,6 +5,8 @@
 소개: <https://festa.io/events/2997>
 
 URL: https://hyunyulhenry.github.io/dmmr_quant/
+R퀀트: https://hyunyulhenry.github.io/quant_cookbook/
+
 
 # 목차
 
