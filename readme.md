@@ -28,7 +28,7 @@ SQL 데이터: https://drive.google.com/file/d/15EZgwvQbCgedQgdtuD0NDA-gILFTuEJ5
 1.  [R을 이용한 퀀트 투자 포트폴리오 만들기](http://www.yes24.com/Product/Goods/97163849)
 2.  파이썬을 이용한 퀀트 투자 포트폴리오 만들기
 3.  [감으로 하는 투자, 데이터로 하는 투자](http://www.yes24.com/Product/Goods/108408162)
-4. https://pouncing-penguin-55b.notion.site/f4930f6eb69f4b1399c2dc1156a16dd4
+4. https://henryquant.notion.site/f4930f6eb69f4b1399c2dc1156a16dd4
 
 # 퀀트대학 링크
 
